@@ -1,0 +1,740 @@
+ERROR 2026-08-15 10:10:25 views confirm 400 | Failed to queue inventory task for sale SALE-20260815101024-CC97: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+ERROR 2026-08-15 10:11:55 views confirm 400 | Failed to queue inventory task for sale SALE-20260815101154-4B40: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+ERROR 2026-08-15 11:43:45 views confirm 400 | Failed to queue inventory task for sale SALE-20260815114344-475D: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+ERROR 2026-08-15 17:54:30 views confirm 400 | Failed to queue inventory task for sale SALE-20260815175429-5605: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+ERROR 2026-08-15 17:59:12 views confirm 400 | Failed to queue inventory task for sale SALE-20260815175912-1F8D: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+ERROR 2026-09-08 09:08:54 signals _get_or_create_location 205 | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (1, 2026-09-08 09:08:54.71645+00, 2026-09-08 09:08:54.716525+00, Main Warehouse, , t, null, null, null, 1c30b263-c434-417e-8199-ef77fd6cab22, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (1, 2026-09-08 09:08:54.71645+00, 2026-09-08 09:08:54.716525+00, Main Warehouse, , t, null, null, null, 1c30b263-c434-417e-8199-ef77fd6cab22, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (1, 2026-09-08 09:08:54.71645+00, 2026-09-08 09:08:54.716525+00, Main Warehouse, , t, null, null, null, 1c30b263-c434-417e-8199-ef77fd6cab22, null, t, null).
+
+ERROR 2026-09-08 09:08:54 signals handle_sale_status_change 69 | Failed to acquire location for sale SALE-20260908090854-8D92 (ID: 1). Inventory operations cannot proceed.
+ERROR 2026-09-08 09:44:40 signals _get_or_create_location 205 | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (2, 2026-09-08 09:44:40.005723+00, 2026-09-08 09:44:40.005784+00, Main Warehouse, , t, null, null, null, 59fded26-67be-4484-bdd7-8a4909955edd, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (2, 2026-09-08 09:44:40.005723+00, 2026-09-08 09:44:40.005784+00, Main Warehouse, , t, null, null, null, 59fded26-67be-4484-bdd7-8a4909955edd, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (2, 2026-09-08 09:44:40.005723+00, 2026-09-08 09:44:40.005784+00, Main Warehouse, , t, null, null, null, 59fded26-67be-4484-bdd7-8a4909955edd, null, t, null).
+
+ERROR 2026-09-08 09:44:40 signals handle_sale_status_change 69 | Failed to acquire location for sale SALE-20260908094439-3911 (ID: 2). Inventory operations cannot proceed.
+ERROR 2026-09-08 09:46:05 signals _get_or_create_location 205 | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (3, 2026-09-08 09:46:05.266861+00, 2026-09-08 09:46:05.266931+00, Main Warehouse, , t, null, null, null, 8bf021a0-ad30-482d-8845-a4410d49624e, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (3, 2026-09-08 09:46:05.266861+00, 2026-09-08 09:46:05.266931+00, Main Warehouse, , t, null, null, null, 8bf021a0-ad30-482d-8845-a4410d49624e, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (3, 2026-09-08 09:46:05.266861+00, 2026-09-08 09:46:05.266931+00, Main Warehouse, , t, null, null, null, 8bf021a0-ad30-482d-8845-a4410d49624e, null, t, null).
+
+ERROR 2026-09-08 09:46:05 signals handle_sale_status_change 69 | Failed to acquire location for sale SALE-20260908094605-4968 (ID: 3). Inventory operations cannot proceed.
+ERROR 2026-09-08 09:49:06 signals _get_or_create_location 205 | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (4, 2026-09-08 09:49:06.159633+00, 2026-09-08 09:49:06.159702+00, Main Warehouse, , t, null, null, null, 76f70989-ac12-47cc-bf3d-c0c9a559cf16, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (4, 2026-09-08 09:49:06.159633+00, 2026-09-08 09:49:06.159702+00, Main Warehouse, , t, null, null, null, 76f70989-ac12-47cc-bf3d-c0c9a559cf16, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (4, 2026-09-08 09:49:06.159633+00, 2026-09-08 09:49:06.159702+00, Main Warehouse, , t, null, null, null, 76f70989-ac12-47cc-bf3d-c0c9a559cf16, null, t, null).
+
+ERROR 2026-09-08 09:49:06 signals handle_sale_status_change 69 | Failed to acquire location for sale SALE-20260908094906-1CE7 (ID: 4). Inventory operations cannot proceed.
+ERROR 2026-09-08 11:52:16 views confirm 400 | Failed to queue inventory task for sale SALE-20260908115215-6CF4: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+ERROR 2026-10-11 09:11:46 views confirm 400 | Failed to queue inventory task for sale SALE-20261011091144-1D8B: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+ERROR 2026-10-11 09:17:10 views confirm 400 | Failed to queue inventory task for sale SALE-20261011091709-07AB: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused

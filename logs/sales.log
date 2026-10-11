@@ -1,0 +1,1853 @@
+DEBUG 2026-08-10 18:38:35 Sales.signals | Sale signal triggered: SYNC-972AB2CB | ID: 1 | Status: UNKNOWN -> COMPLETED | Created: True
+DEBUG 2026-08-10 18:38:35 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-10 18:38:35 Sales.signals | Using existing location: Main Warehouse (ID: 1)
+DEBUG 2026-08-10 18:38:35 Sales.signals | Location acquired for sale SYNC-972AB2CB: Main Warehouse (ID: 1)
+INFO 2026-08-10 18:38:35 Sales.signals | Sale SYNC-972AB2CB (ID: 1) marked COMPLETED. Inventory deduction will be processed by async task.
+DEBUG 2026-08-10 18:39:30 Sales.signals | Sale signal triggered: SYNC-11C33E27 | ID: 2 | Status: UNKNOWN -> COMPLETED | Created: True
+DEBUG 2026-08-10 18:39:30 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-10 18:39:31 Sales.signals | Using existing location: Main Warehouse (ID: 1)
+DEBUG 2026-08-10 18:39:31 Sales.signals | Location acquired for sale SYNC-11C33E27: Main Warehouse (ID: 1)
+INFO 2026-08-10 18:39:31 Sales.signals | Sale SYNC-11C33E27 (ID: 2) marked COMPLETED. Inventory deduction will be processed by async task.
+DEBUG 2026-08-10 18:39:59 Sales.signals | Sale signal triggered: SYNC-80C9EA6F | ID: 3 | Status: UNKNOWN -> COMPLETED | Created: True
+DEBUG 2026-08-10 18:39:59 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-10 18:39:59 Sales.signals | Using existing location: Main Warehouse (ID: 1)
+DEBUG 2026-08-10 18:39:59 Sales.signals | Location acquired for sale SYNC-80C9EA6F: Main Warehouse (ID: 1)
+INFO 2026-08-10 18:39:59 Sales.signals | Sale SYNC-80C9EA6F (ID: 3) marked COMPLETED. Inventory deduction will be processed by async task.
+DEBUG 2026-08-10 18:40:33 Sales.signals | Sale signal triggered: SYNC-234FE7DE | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: True
+DEBUG 2026-08-10 18:40:33 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-10 18:40:33 Sales.signals | Using existing location: Main Warehouse (ID: 1)
+DEBUG 2026-08-10 18:40:33 Sales.signals | Location acquired for sale SYNC-234FE7DE: Main Warehouse (ID: 1)
+INFO 2026-08-10 18:40:33 Sales.signals | Sale SYNC-234FE7DE (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+DEBUG 2026-08-11 17:53:35 Sales.signals | Sale signal triggered: SALE-20260811175335-561E | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:53:35 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:53:35 Sales.signals | Using existing location: Shelf A (ID: 6)
+DEBUG 2026-08-11 17:53:35 Sales.signals | Location acquired for sale SALE-20260811175335-561E: Shelf A (ID: 6)
+INFO 2026-08-11 17:53:35 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175335-561E (ID: 1)
+DEBUG 2026-08-11 17:53:35 Sales.signals | Starting inventory reservation for sale SALE-20260811175335-561E (ID: 1) with 0 items
+INFO 2026-08-11 17:53:35 Sales.signals | Successfully reserved inventory for sale SALE-20260811175335-561E (ID: 1) | Items: 0
+DEBUG 2026-08-11 17:53:40 Sales.signals | Sale signal triggered: SALE-20260811175340-CDCE | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:53:40 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:53:40 Sales.signals | Using existing location: Shelf A (ID: 7)
+DEBUG 2026-08-11 17:53:40 Sales.signals | Location acquired for sale SALE-20260811175340-CDCE: Shelf A (ID: 7)
+INFO 2026-08-11 17:53:40 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175340-CDCE (ID: 2)
+DEBUG 2026-08-11 17:53:40 Sales.signals | Starting inventory reservation for sale SALE-20260811175340-CDCE (ID: 2) with 0 items
+INFO 2026-08-11 17:53:40 Sales.signals | Successfully reserved inventory for sale SALE-20260811175340-CDCE (ID: 2) | Items: 0
+DEBUG 2026-08-11 17:53:46 Sales.signals | Sale signal triggered: SALE-20260811175346-114C | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:53:46 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:53:46 Sales.signals | Using existing location: Shelf A (ID: 8)
+DEBUG 2026-08-11 17:53:46 Sales.signals | Location acquired for sale SALE-20260811175346-114C: Shelf A (ID: 8)
+INFO 2026-08-11 17:53:46 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175346-114C (ID: 3)
+DEBUG 2026-08-11 17:53:46 Sales.signals | Starting inventory reservation for sale SALE-20260811175346-114C (ID: 3) with 0 items
+INFO 2026-08-11 17:53:46 Sales.signals | Successfully reserved inventory for sale SALE-20260811175346-114C (ID: 3) | Items: 0
+DEBUG 2026-08-11 17:53:52 Sales.signals | Sale signal triggered: SALE-20260811175352-8F0F | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:53:52 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:53:52 Sales.signals | Using existing location: Shelf A (ID: 9)
+DEBUG 2026-08-11 17:53:52 Sales.signals | Location acquired for sale SALE-20260811175352-8F0F: Shelf A (ID: 9)
+INFO 2026-08-11 17:53:52 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175352-8F0F (ID: 4)
+DEBUG 2026-08-11 17:53:52 Sales.signals | Starting inventory reservation for sale SALE-20260811175352-8F0F (ID: 4) with 0 items
+INFO 2026-08-11 17:53:52 Sales.signals | Successfully reserved inventory for sale SALE-20260811175352-8F0F (ID: 4) | Items: 0
+DEBUG 2026-08-11 17:53:58 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-11 17:53:58 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-11 17:53:58 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-11 17:54:04 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:54:04 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:54:04 Sales.signals | Using existing location: Central Stockroom (ID: 11)
+DEBUG 2026-08-11 17:54:04 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 11)
+INFO 2026-08-11 17:54:04 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 5)
+DEBUG 2026-08-11 17:54:04 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 5) with 0 items
+INFO 2026-08-11 17:54:04 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 5) | Items: 0
+DEBUG 2026-08-11 17:54:07 Sales.signals | Sale signal triggered: SALE-20260811175407-BB7B | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:54:07 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:54:07 Sales.signals | Using existing location: Main Warehouse (ID: 12)
+DEBUG 2026-08-11 17:54:07 Sales.signals | Location acquired for sale SALE-20260811175407-BB7B: Main Warehouse (ID: 12)
+INFO 2026-08-11 17:54:07 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175407-BB7B (ID: 6)
+DEBUG 2026-08-11 17:54:07 Sales.signals | Starting inventory reservation for sale SALE-20260811175407-BB7B (ID: 6) with 0 items
+INFO 2026-08-11 17:54:07 Sales.signals | Successfully reserved inventory for sale SALE-20260811175407-BB7B (ID: 6) | Items: 0
+DEBUG 2026-08-11 17:54:10 Sales.signals | Sale signal triggered: SALE-20260811175410-62C6 | ID: 7 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:54:10 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:54:10 Sales.signals | Using existing location: Main Warehouse (ID: 13)
+DEBUG 2026-08-11 17:54:10 Sales.signals | Location acquired for sale SALE-20260811175410-62C6: Main Warehouse (ID: 13)
+INFO 2026-08-11 17:54:10 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175410-62C6 (ID: 7)
+DEBUG 2026-08-11 17:54:10 Sales.signals | Starting inventory reservation for sale SALE-20260811175410-62C6 (ID: 7) with 0 items
+INFO 2026-08-11 17:54:10 Sales.signals | Successfully reserved inventory for sale SALE-20260811175410-62C6 (ID: 7) | Items: 0
+DEBUG 2026-08-11 17:54:16 Sales.signals | Sale signal triggered: SALE-20260811175416-2B4E | ID: 8 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:54:16 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:54:16 Sales.signals | Using existing location: Bundle Warehouse (ID: 15)
+DEBUG 2026-08-11 17:54:16 Sales.signals | Location acquired for sale SALE-20260811175416-2B4E: Bundle Warehouse (ID: 15)
+INFO 2026-08-11 17:54:16 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175416-2B4E (ID: 8)
+DEBUG 2026-08-11 17:54:16 Sales.signals | Starting inventory reservation for sale SALE-20260811175416-2B4E (ID: 8) with 0 items
+INFO 2026-08-11 17:54:16 Sales.signals | Successfully reserved inventory for sale SALE-20260811175416-2B4E (ID: 8) | Items: 0
+DEBUG 2026-08-11 17:54:19 Sales.signals | Sale signal triggered: SALE-20260811175419-DC86 | ID: 9 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 17:54:19 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 17:54:19 Sales.signals | Using existing location: Bundle Warehouse (ID: 16)
+DEBUG 2026-08-11 17:54:19 Sales.signals | Location acquired for sale SALE-20260811175419-DC86: Bundle Warehouse (ID: 16)
+INFO 2026-08-11 17:54:19 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811175419-DC86 (ID: 9)
+DEBUG 2026-08-11 17:54:19 Sales.signals | Starting inventory reservation for sale SALE-20260811175419-DC86 (ID: 9) with 0 items
+INFO 2026-08-11 17:54:19 Sales.signals | Successfully reserved inventory for sale SALE-20260811175419-DC86 (ID: 9) | Items: 0
+DEBUG 2026-08-11 18:18:39 Sales.signals | Sale signal triggered: SALE-20260811181839-BD04 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:18:39 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:18:39 Sales.signals | Using existing location: Shelf A (ID: 6)
+DEBUG 2026-08-11 18:18:39 Sales.signals | Location acquired for sale SALE-20260811181839-BD04: Shelf A (ID: 6)
+INFO 2026-08-11 18:18:39 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181839-BD04 (ID: 1)
+DEBUG 2026-08-11 18:18:39 Sales.signals | Starting inventory reservation for sale SALE-20260811181839-BD04 (ID: 1) with 0 items
+INFO 2026-08-11 18:18:39 Sales.signals | Successfully reserved inventory for sale SALE-20260811181839-BD04 (ID: 1) | Items: 0
+DEBUG 2026-08-11 18:18:45 Sales.signals | Sale signal triggered: SALE-20260811181845-4BE4 | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:18:45 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:18:45 Sales.signals | Using existing location: Shelf A (ID: 7)
+DEBUG 2026-08-11 18:18:45 Sales.signals | Location acquired for sale SALE-20260811181845-4BE4: Shelf A (ID: 7)
+INFO 2026-08-11 18:18:45 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181845-4BE4 (ID: 2)
+DEBUG 2026-08-11 18:18:45 Sales.signals | Starting inventory reservation for sale SALE-20260811181845-4BE4 (ID: 2) with 0 items
+INFO 2026-08-11 18:18:45 Sales.signals | Successfully reserved inventory for sale SALE-20260811181845-4BE4 (ID: 2) | Items: 0
+DEBUG 2026-08-11 18:18:51 Sales.signals | Sale signal triggered: SALE-20260811181851-730B | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:18:51 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:18:51 Sales.signals | Using existing location: Shelf A (ID: 8)
+DEBUG 2026-08-11 18:18:51 Sales.signals | Location acquired for sale SALE-20260811181851-730B: Shelf A (ID: 8)
+INFO 2026-08-11 18:18:51 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181851-730B (ID: 3)
+DEBUG 2026-08-11 18:18:51 Sales.signals | Starting inventory reservation for sale SALE-20260811181851-730B (ID: 3) with 0 items
+INFO 2026-08-11 18:18:51 Sales.signals | Successfully reserved inventory for sale SALE-20260811181851-730B (ID: 3) | Items: 0
+DEBUG 2026-08-11 18:18:57 Sales.signals | Sale signal triggered: SALE-20260811181857-391A | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:18:57 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:18:57 Sales.signals | Using existing location: Shelf A (ID: 9)
+DEBUG 2026-08-11 18:18:57 Sales.signals | Location acquired for sale SALE-20260811181857-391A: Shelf A (ID: 9)
+INFO 2026-08-11 18:18:57 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181857-391A (ID: 4)
+DEBUG 2026-08-11 18:18:57 Sales.signals | Starting inventory reservation for sale SALE-20260811181857-391A (ID: 4) with 0 items
+INFO 2026-08-11 18:18:57 Sales.signals | Successfully reserved inventory for sale SALE-20260811181857-391A (ID: 4) | Items: 0
+DEBUG 2026-08-11 18:19:03 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-11 18:19:03 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-11 18:19:03 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-11 18:19:09 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:19:09 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:19:09 Sales.signals | Using existing location: Central Stockroom (ID: 11)
+DEBUG 2026-08-11 18:19:09 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 11)
+INFO 2026-08-11 18:19:09 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 5)
+DEBUG 2026-08-11 18:19:09 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 5) with 0 items
+INFO 2026-08-11 18:19:09 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 5) | Items: 0
+DEBUG 2026-08-11 18:19:12 Sales.signals | Sale signal triggered: SALE-20260811181912-4A0B | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:19:12 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:19:12 Sales.signals | Using existing location: Main Warehouse (ID: 12)
+DEBUG 2026-08-11 18:19:12 Sales.signals | Location acquired for sale SALE-20260811181912-4A0B: Main Warehouse (ID: 12)
+INFO 2026-08-11 18:19:12 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181912-4A0B (ID: 6)
+DEBUG 2026-08-11 18:19:12 Sales.signals | Starting inventory reservation for sale SALE-20260811181912-4A0B (ID: 6) with 0 items
+INFO 2026-08-11 18:19:12 Sales.signals | Successfully reserved inventory for sale SALE-20260811181912-4A0B (ID: 6) | Items: 0
+DEBUG 2026-08-11 18:19:15 Sales.signals | Sale signal triggered: SALE-20260811181915-CCCA | ID: 7 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:19:15 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:19:15 Sales.signals | Using existing location: Main Warehouse (ID: 13)
+DEBUG 2026-08-11 18:19:15 Sales.signals | Location acquired for sale SALE-20260811181915-CCCA: Main Warehouse (ID: 13)
+INFO 2026-08-11 18:19:15 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181915-CCCA (ID: 7)
+DEBUG 2026-08-11 18:19:15 Sales.signals | Starting inventory reservation for sale SALE-20260811181915-CCCA (ID: 7) with 0 items
+INFO 2026-08-11 18:19:15 Sales.signals | Successfully reserved inventory for sale SALE-20260811181915-CCCA (ID: 7) | Items: 0
+DEBUG 2026-08-11 18:19:21 Sales.signals | Sale signal triggered: SALE-20260811181921-3EBC | ID: 8 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:19:21 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:19:21 Sales.signals | Using existing location: Bundle Warehouse (ID: 15)
+DEBUG 2026-08-11 18:19:21 Sales.signals | Location acquired for sale SALE-20260811181921-3EBC: Bundle Warehouse (ID: 15)
+INFO 2026-08-11 18:19:21 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181921-3EBC (ID: 8)
+DEBUG 2026-08-11 18:19:21 Sales.signals | Starting inventory reservation for sale SALE-20260811181921-3EBC (ID: 8) with 0 items
+INFO 2026-08-11 18:19:21 Sales.signals | Successfully reserved inventory for sale SALE-20260811181921-3EBC (ID: 8) | Items: 0
+DEBUG 2026-08-11 18:19:24 Sales.signals | Sale signal triggered: SALE-20260811181924-71D7 | ID: 9 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:19:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:19:24 Sales.signals | Using existing location: Bundle Warehouse (ID: 16)
+DEBUG 2026-08-11 18:19:24 Sales.signals | Location acquired for sale SALE-20260811181924-71D7: Bundle Warehouse (ID: 16)
+INFO 2026-08-11 18:19:24 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811181924-71D7 (ID: 9)
+DEBUG 2026-08-11 18:19:24 Sales.signals | Starting inventory reservation for sale SALE-20260811181924-71D7 (ID: 9) with 0 items
+INFO 2026-08-11 18:19:24 Sales.signals | Successfully reserved inventory for sale SALE-20260811181924-71D7 (ID: 9) | Items: 0
+DEBUG 2026-08-11 18:22:17 Sales.signals | Sale signal triggered: SALE-20260811182217-45B8 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:17 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:17 Sales.signals | Using existing location: Shelf A (ID: 1)
+DEBUG 2026-08-11 18:22:17 Sales.signals | Location acquired for sale SALE-20260811182217-45B8: Shelf A (ID: 1)
+INFO 2026-08-11 18:22:17 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182217-45B8 (ID: 1)
+DEBUG 2026-08-11 18:22:17 Sales.signals | Starting inventory reservation for sale SALE-20260811182217-45B8 (ID: 1) with 0 items
+INFO 2026-08-11 18:22:17 Sales.signals | Successfully reserved inventory for sale SALE-20260811182217-45B8 (ID: 1) | Items: 0
+DEBUG 2026-08-11 18:22:23 Sales.signals | Sale signal triggered: SALE-20260811182223-E07F | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:23 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:23 Sales.signals | Using existing location: Shelf A (ID: 2)
+DEBUG 2026-08-11 18:22:23 Sales.signals | Location acquired for sale SALE-20260811182223-E07F: Shelf A (ID: 2)
+INFO 2026-08-11 18:22:23 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182223-E07F (ID: 2)
+DEBUG 2026-08-11 18:22:23 Sales.signals | Starting inventory reservation for sale SALE-20260811182223-E07F (ID: 2) with 0 items
+INFO 2026-08-11 18:22:23 Sales.signals | Successfully reserved inventory for sale SALE-20260811182223-E07F (ID: 2) | Items: 0
+DEBUG 2026-08-11 18:22:29 Sales.signals | Sale signal triggered: SALE-20260811182229-DA98 | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:29 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:29 Sales.signals | Using existing location: Shelf A (ID: 3)
+DEBUG 2026-08-11 18:22:29 Sales.signals | Location acquired for sale SALE-20260811182229-DA98: Shelf A (ID: 3)
+INFO 2026-08-11 18:22:29 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182229-DA98 (ID: 3)
+DEBUG 2026-08-11 18:22:29 Sales.signals | Starting inventory reservation for sale SALE-20260811182229-DA98 (ID: 3) with 0 items
+INFO 2026-08-11 18:22:29 Sales.signals | Successfully reserved inventory for sale SALE-20260811182229-DA98 (ID: 3) | Items: 0
+DEBUG 2026-08-11 18:22:35 Sales.signals | Sale signal triggered: SALE-20260811182235-4F19 | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:35 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:35 Sales.signals | Using existing location: Shelf A (ID: 4)
+DEBUG 2026-08-11 18:22:35 Sales.signals | Location acquired for sale SALE-20260811182235-4F19: Shelf A (ID: 4)
+INFO 2026-08-11 18:22:35 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182235-4F19 (ID: 4)
+DEBUG 2026-08-11 18:22:35 Sales.signals | Starting inventory reservation for sale SALE-20260811182235-4F19 (ID: 4) with 0 items
+INFO 2026-08-11 18:22:35 Sales.signals | Successfully reserved inventory for sale SALE-20260811182235-4F19 (ID: 4) | Items: 0
+DEBUG 2026-08-11 18:22:41 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-11 18:22:41 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-11 18:22:41 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-11 18:22:47 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:47 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:47 Sales.signals | Using existing location: Central Stockroom (ID: 6)
+DEBUG 2026-08-11 18:22:47 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 6)
+INFO 2026-08-11 18:22:47 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 5)
+DEBUG 2026-08-11 18:22:47 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 5) with 0 items
+INFO 2026-08-11 18:22:47 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 5) | Items: 0
+DEBUG 2026-08-11 18:22:50 Sales.signals | Sale signal triggered: SALE-20260811182250-5465 | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:50 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:50 Sales.signals | Using existing location: Main Warehouse (ID: 7)
+DEBUG 2026-08-11 18:22:50 Sales.signals | Location acquired for sale SALE-20260811182250-5465: Main Warehouse (ID: 7)
+INFO 2026-08-11 18:22:50 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182250-5465 (ID: 6)
+DEBUG 2026-08-11 18:22:50 Sales.signals | Starting inventory reservation for sale SALE-20260811182250-5465 (ID: 6) with 0 items
+INFO 2026-08-11 18:22:50 Sales.signals | Successfully reserved inventory for sale SALE-20260811182250-5465 (ID: 6) | Items: 0
+DEBUG 2026-08-11 18:22:53 Sales.signals | Sale signal triggered: SALE-20260811182253-4C75 | ID: 7 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:53 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:53 Sales.signals | Using existing location: Main Warehouse (ID: 8)
+DEBUG 2026-08-11 18:22:53 Sales.signals | Location acquired for sale SALE-20260811182253-4C75: Main Warehouse (ID: 8)
+INFO 2026-08-11 18:22:53 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182253-4C75 (ID: 7)
+DEBUG 2026-08-11 18:22:53 Sales.signals | Starting inventory reservation for sale SALE-20260811182253-4C75 (ID: 7) with 0 items
+INFO 2026-08-11 18:22:53 Sales.signals | Successfully reserved inventory for sale SALE-20260811182253-4C75 (ID: 7) | Items: 0
+DEBUG 2026-08-11 18:22:59 Sales.signals | Sale signal triggered: SALE-20260811182259-7B9F | ID: 8 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:22:59 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:22:59 Sales.signals | Using existing location: Bundle Warehouse (ID: 10)
+DEBUG 2026-08-11 18:22:59 Sales.signals | Location acquired for sale SALE-20260811182259-7B9F: Bundle Warehouse (ID: 10)
+INFO 2026-08-11 18:22:59 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182259-7B9F (ID: 8)
+DEBUG 2026-08-11 18:22:59 Sales.signals | Starting inventory reservation for sale SALE-20260811182259-7B9F (ID: 8) with 0 items
+INFO 2026-08-11 18:22:59 Sales.signals | Successfully reserved inventory for sale SALE-20260811182259-7B9F (ID: 8) | Items: 0
+DEBUG 2026-08-11 18:23:02 Sales.signals | Sale signal triggered: SALE-20260811182302-BFDC | ID: 9 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-11 18:23:02 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-11 18:23:02 Sales.signals | Using existing location: Bundle Warehouse (ID: 11)
+DEBUG 2026-08-11 18:23:02 Sales.signals | Location acquired for sale SALE-20260811182302-BFDC: Bundle Warehouse (ID: 11)
+INFO 2026-08-11 18:23:02 Sales.signals | Initiating inventory reservation for pending sale SALE-20260811182302-BFDC (ID: 9)
+DEBUG 2026-08-11 18:23:02 Sales.signals | Starting inventory reservation for sale SALE-20260811182302-BFDC (ID: 9) with 0 items
+INFO 2026-08-11 18:23:02 Sales.signals | Successfully reserved inventory for sale SALE-20260811182302-BFDC (ID: 9) | Items: 0
+DEBUG 2026-08-15 10:07:19 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-15 10:07:19 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-15 10:07:19 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-15 10:07:24 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:07:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:07:24 Sales.signals | Using existing location: Central Stockroom (ID: 2)
+DEBUG 2026-08-15 10:07:24 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 2)
+INFO 2026-08-15 10:07:24 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 1)
+DEBUG 2026-08-15 10:07:24 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 1) with 0 items
+INFO 2026-08-15 10:07:24 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 1) | Items: 0
+DEBUG 2026-08-15 10:07:27 Sales.signals | Sale signal triggered: SALE-20260815100727-BEDC | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:07:27 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:07:27 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 10:07:27 Sales.signals | Location acquired for sale SALE-20260815100727-BEDC: Main Warehouse (ID: 3)
+INFO 2026-08-15 10:07:27 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815100727-BEDC (ID: 2)
+DEBUG 2026-08-15 10:07:27 Sales.signals | Starting inventory reservation for sale SALE-20260815100727-BEDC (ID: 2) with 0 items
+INFO 2026-08-15 10:07:27 Sales.signals | Successfully reserved inventory for sale SALE-20260815100727-BEDC (ID: 2) | Items: 0
+DEBUG 2026-08-15 10:07:30 Sales.signals | Sale signal triggered: SALE-20260815100730-5001 | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:07:30 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:07:30 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 10:07:30 Sales.signals | Location acquired for sale SALE-20260815100730-5001: Main Warehouse (ID: 4)
+INFO 2026-08-15 10:07:30 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815100730-5001 (ID: 3)
+DEBUG 2026-08-15 10:07:30 Sales.signals | Starting inventory reservation for sale SALE-20260815100730-5001 (ID: 3) with 0 items
+INFO 2026-08-15 10:07:30 Sales.signals | Successfully reserved inventory for sale SALE-20260815100730-5001 (ID: 3) | Items: 0
+DEBUG 2026-08-15 10:07:32 Sales.signals | Sale signal triggered: SALE-20260815100732-A60F | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:07:32 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:07:32 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:07:32 Sales.signals | Location acquired for sale SALE-20260815100732-A60F: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:07:32 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815100732-A60F (ID: 4)
+DEBUG 2026-08-15 10:07:32 Sales.signals | Starting inventory reservation for sale SALE-20260815100732-A60F (ID: 4) with 0 items
+INFO 2026-08-15 10:07:32 Sales.signals | Successfully reserved inventory for sale SALE-20260815100732-A60F (ID: 4) | Items: 0
+DEBUG 2026-08-15 10:07:37 Sales.signals | Sale signal triggered: SALE-20260815100737-390B | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:07:37 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:07:37 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 10:07:37 Sales.signals | Location acquired for sale SALE-20260815100737-390B: Bundle Warehouse (ID: 7)
+INFO 2026-08-15 10:07:37 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815100737-390B (ID: 5)
+DEBUG 2026-08-15 10:07:37 Sales.signals | Starting inventory reservation for sale SALE-20260815100737-390B (ID: 5) with 0 items
+INFO 2026-08-15 10:07:37 Sales.signals | Successfully reserved inventory for sale SALE-20260815100737-390B (ID: 5) | Items: 0
+DEBUG 2026-08-15 10:07:40 Sales.signals | Sale signal triggered: SALE-20260815100740-24DB | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:07:40 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:07:40 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 10:07:40 Sales.signals | Location acquired for sale SALE-20260815100740-24DB: Bundle Warehouse (ID: 8)
+INFO 2026-08-15 10:07:40 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815100740-24DB (ID: 6)
+DEBUG 2026-08-15 10:07:40 Sales.signals | Starting inventory reservation for sale SALE-20260815100740-24DB (ID: 6) with 0 items
+INFO 2026-08-15 10:07:40 Sales.signals | Successfully reserved inventory for sale SALE-20260815100740-24DB (ID: 6) | Items: 0
+DEBUG 2026-08-15 10:08:48 Sales.signals | Sale signal triggered: SALE-20260815100848-6FF7 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:08:48 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:08:48 Sales.signals | Using existing location: Main Warehouse (ID: 1)
+DEBUG 2026-08-15 10:08:48 Sales.signals | Location acquired for sale SALE-20260815100848-6FF7: Main Warehouse (ID: 1)
+INFO 2026-08-15 10:08:48 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815100848-6FF7 (ID: 1)
+DEBUG 2026-08-15 10:08:48 Sales.signals | Starting inventory reservation for sale SALE-20260815100848-6FF7 (ID: 1) with 0 items
+INFO 2026-08-15 10:08:48 Sales.signals | Successfully reserved inventory for sale SALE-20260815100848-6FF7 (ID: 1) | Items: 0
+DEBUG 2026-08-15 10:10:10 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-15 10:10:10 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-15 10:10:10 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-15 10:10:15 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:10:15 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:15 Sales.signals | Using existing location: Central Stockroom (ID: 2)
+DEBUG 2026-08-15 10:10:15 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 2)
+INFO 2026-08-15 10:10:15 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 1)
+DEBUG 2026-08-15 10:10:15 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 1) with 0 items
+INFO 2026-08-15 10:10:15 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 1) | Items: 0
+DEBUG 2026-08-15 10:10:18 Sales.signals | Sale signal triggered: SALE-20260815101018-5C0A | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:10:18 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:18 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 10:10:18 Sales.signals | Location acquired for sale SALE-20260815101018-5C0A: Main Warehouse (ID: 3)
+INFO 2026-08-15 10:10:18 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101018-5C0A (ID: 2)
+DEBUG 2026-08-15 10:10:18 Sales.signals | Starting inventory reservation for sale SALE-20260815101018-5C0A (ID: 2) with 0 items
+INFO 2026-08-15 10:10:18 Sales.signals | Successfully reserved inventory for sale SALE-20260815101018-5C0A (ID: 2) | Items: 0
+DEBUG 2026-08-15 10:10:19 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:19 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 10:10:19 Sales.signals | Starting inventory reservation for sale SALE-20260815101018-5C0A (ID: 2) with 1 items
+DEBUG 2026-08-15 10:10:19 Sales.signals | Processing reservation for product: Potato Chips (ID: 5) | Qty: 3
+DEBUG 2026-08-15 10:10:19 Sales.signals | Successfully reserved 3 units of Potato Chips | Reserved: 0 -> 3
+INFO 2026-08-15 10:10:19 Sales.signals | Successfully reserved inventory for sale SALE-20260815101018-5C0A (ID: 2) | Items: 1
+DEBUG 2026-08-15 10:10:19 Sales.signals | Sale signal triggered: SALE-20260815101018-5C0A | ID: 2 | Status: UNKNOWN -> CANCELLED | Created: False
+DEBUG 2026-08-15 10:10:19 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:19 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 10:10:19 Sales.signals | Location acquired for sale SALE-20260815101018-5C0A: Main Warehouse (ID: 3)
+INFO 2026-08-15 10:10:19 Sales.signals | Initiating inventory release for cancelled sale SALE-20260815101018-5C0A (ID: 2)
+DEBUG 2026-08-15 10:10:19 Sales.signals | Starting inventory release for cancelled sale SALE-20260815101018-5C0A (ID: 2) with 1 items
+DEBUG 2026-08-15 10:10:19 Sales.signals | Processing release for product: Potato Chips (ID: 5) | Qty to release: 3
+DEBUG 2026-08-15 10:10:19 Sales.signals | Successfully released 3 units of Potato Chips | Reserved: 3 -> 0
+INFO 2026-08-15 10:10:19 Sales.signals | Successfully released inventory for cancelled sale SALE-20260815101018-5C0A (ID: 2) | Items: 1
+DEBUG 2026-08-15 10:10:19 Sales.signals | Starting cancellation transaction creation for sale SALE-20260815101018-5C0A (ID: 2) with 1 items
+DEBUG 2026-08-15 10:10:19 Sales.signals | Creating cancellation transaction for product Potato Chips (ID: 5) | Return Quantity: 3
+DEBUG 2026-08-15 10:10:19 Sales.signals | Created cancellation transaction: ID=1 | Reference=CANCELLED_SALE-20260815101018-5C0A | Product=Potato Chips | Qty=3
+INFO 2026-08-15 10:10:19 Sales.signals | Successfully created cancellation transactions for sale SALE-20260815101018-5C0A (ID: 2) | Transactions: 1 | Total Units Returned: 3
+DEBUG 2026-08-15 10:10:21 Sales.signals | Sale signal triggered: SALE-20260815101021-5100 | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:10:21 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:21 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 10:10:21 Sales.signals | Location acquired for sale SALE-20260815101021-5100: Main Warehouse (ID: 4)
+INFO 2026-08-15 10:10:21 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101021-5100 (ID: 3)
+DEBUG 2026-08-15 10:10:21 Sales.signals | Starting inventory reservation for sale SALE-20260815101021-5100 (ID: 3) with 0 items
+INFO 2026-08-15 10:10:21 Sales.signals | Successfully reserved inventory for sale SALE-20260815101021-5100 (ID: 3) | Items: 0
+DEBUG 2026-08-15 10:10:21 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:21 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 10:10:21 Sales.signals | Starting inventory reservation for sale SALE-20260815101021-5100 (ID: 3) with 1 items
+DEBUG 2026-08-15 10:10:21 Sales.signals | Processing reservation for product: Potato Chips (ID: 6) | Qty: 2
+DEBUG 2026-08-15 10:10:21 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 10:10:21 Sales.signals | Successfully reserved inventory for sale SALE-20260815101021-5100 (ID: 3) | Items: 1
+DEBUG 2026-08-15 10:10:24 Sales.signals | Sale signal triggered: SALE-20260815101024-CC97 | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:10:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:24 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:10:24 Sales.signals | Location acquired for sale SALE-20260815101024-CC97: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:10:24 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101024-CC97 (ID: 4)
+DEBUG 2026-08-15 10:10:24 Sales.signals | Starting inventory reservation for sale SALE-20260815101024-CC97 (ID: 4) with 0 items
+INFO 2026-08-15 10:10:24 Sales.signals | Successfully reserved inventory for sale SALE-20260815101024-CC97 (ID: 4) | Items: 0
+DEBUG 2026-08-15 10:10:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:24 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:10:24 Sales.signals | Starting inventory reservation for sale SALE-20260815101024-CC97 (ID: 4) with 1 items
+DEBUG 2026-08-15 10:10:24 Sales.signals | Processing reservation for product: Potato Chips (ID: 7) | Qty: 2
+DEBUG 2026-08-15 10:10:24 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 10:10:24 Sales.signals | Successfully reserved inventory for sale SALE-20260815101024-CC97 (ID: 4) | Items: 1
+INFO 2026-08-15 10:10:24 Sales.views | Confirm request for sale SALE-20260815101024-CC97 (ID: 4)
+DEBUG 2026-08-15 10:10:24 Sales.views | Marking sale SALE-20260815101024-CC97 as COMPLETED
+DEBUG 2026-08-15 10:10:24 Sales.signals | Sale signal triggered: SALE-20260815101024-CC97 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:10:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:24 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:10:24 Sales.signals | Location acquired for sale SALE-20260815101024-CC97: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:10:24 Sales.signals | Sale SALE-20260815101024-CC97 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 10:10:24 Sales.views | Sale SALE-20260815101024-CC97 marked COMPLETED. Queuing async inventory task.
+ERROR 2026-08-15 10:10:25 Sales.views | Failed to queue inventory task for sale SALE-20260815101024-CC97: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-08-15 10:10:25 Sales.signals | Sale signal triggered: SALE-20260815101024-CC97 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:10:25 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:25 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:10:25 Sales.signals | Location acquired for sale SALE-20260815101024-CC97: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:10:25 Sales.signals | Sale SALE-20260815101024-CC97 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-08-15 10:10:25 Sales.views | Falling back to synchronous inventory completion for sale SALE-20260815101024-CC97.
+INFO 2026-08-15 10:10:25 Sales.tasks | Starting inventory completion for sale ID: 4
+DEBUG 2026-08-15 10:10:25 Sales.tasks | Fetched sale SALE-20260815101024-CC97 (ID: 4)
+DEBUG 2026-08-15 10:10:25 Sales.tasks | Using location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:10:25 Sales.tasks | Deducting 2 units of Potato Chips @ $3.50
+DEBUG 2026-08-15 10:10:25 Sales.tasks | Successfully deducted 2 units of Potato Chips. Stock: 20 → 18
+DEBUG 2026-08-15 10:10:25 Sales.signals | Sale signal triggered: SALE-20260815101024-CC97 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:10:25 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:25 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:10:25 Sales.signals | Location acquired for sale SALE-20260815101024-CC97: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:10:25 Sales.signals | Sale SALE-20260815101024-CC97 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 10:10:25 Sales.tasks | Inventory deduction completed for sale SALE-20260815101024-CC97 (ID: 4). Items: 1, Total Value: $7.00
+DEBUG 2026-08-15 10:10:25 Sales.signals | Sale signal triggered: SALE-20260815101024-CC97 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:10:25 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:25 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:10:25 Sales.signals | Location acquired for sale SALE-20260815101024-CC97: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:10:25 Sales.signals | Sale SALE-20260815101024-CC97 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 10:10:25 Sales.views | Synchronous inventory completion succeeded for sale SALE-20260815101024-CC97.
+DEBUG 2026-08-15 10:10:31 Sales.signals | Sale signal triggered: SALE-20260815101031-86D4 | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:10:31 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:31 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 10:10:31 Sales.signals | Location acquired for sale SALE-20260815101031-86D4: Bundle Warehouse (ID: 7)
+INFO 2026-08-15 10:10:31 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101031-86D4 (ID: 5)
+DEBUG 2026-08-15 10:10:31 Sales.signals | Starting inventory reservation for sale SALE-20260815101031-86D4 (ID: 5) with 0 items
+INFO 2026-08-15 10:10:31 Sales.signals | Successfully reserved inventory for sale SALE-20260815101031-86D4 (ID: 5) | Items: 0
+DEBUG 2026-08-15 10:10:31 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:31 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 10:10:31 Sales.signals | Starting inventory reservation for sale SALE-20260815101031-86D4 (ID: 5) with 1 items
+DEBUG 2026-08-15 10:10:31 Sales.signals | Processing reservation for product: Energy Drink (ID: 9) | Qty: 7
+DEBUG 2026-08-15 10:10:31 Sales.signals | Successfully reserved 7 units of Energy Drink | Reserved: 0 -> 7
+INFO 2026-08-15 10:10:31 Sales.signals | Successfully reserved inventory for sale SALE-20260815101031-86D4 (ID: 5) | Items: 1
+DEBUG 2026-08-15 10:10:33 Sales.signals | Sale signal triggered: SALE-20260815101033-77A7 | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:10:33 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:33 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 10:10:33 Sales.signals | Location acquired for sale SALE-20260815101033-77A7: Bundle Warehouse (ID: 8)
+INFO 2026-08-15 10:10:33 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101033-77A7 (ID: 6)
+DEBUG 2026-08-15 10:10:33 Sales.signals | Starting inventory reservation for sale SALE-20260815101033-77A7 (ID: 6) with 0 items
+INFO 2026-08-15 10:10:33 Sales.signals | Successfully reserved inventory for sale SALE-20260815101033-77A7 (ID: 6) | Items: 0
+DEBUG 2026-08-15 10:10:33 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:10:33 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 10:10:33 Sales.signals | Starting inventory reservation for sale SALE-20260815101033-77A7 (ID: 6) with 1 items
+DEBUG 2026-08-15 10:10:33 Sales.signals | Processing reservation for product: Energy Drink (ID: 10) | Qty: 6
+DEBUG 2026-08-15 10:10:33 Sales.signals | Successfully reserved 6 units of Energy Drink | Reserved: 0 -> 6
+INFO 2026-08-15 10:10:33 Sales.signals | Successfully reserved inventory for sale SALE-20260815101033-77A7 (ID: 6) | Items: 1
+DEBUG 2026-08-15 10:11:37 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-15 10:11:37 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-15 10:11:37 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-15 10:11:43 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:11:43 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:43 Sales.signals | Using existing location: Central Stockroom (ID: 2)
+DEBUG 2026-08-15 10:11:43 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 2)
+INFO 2026-08-15 10:11:43 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 1)
+DEBUG 2026-08-15 10:11:44 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 1) with 0 items
+INFO 2026-08-15 10:11:44 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 1) | Items: 0
+DEBUG 2026-08-15 10:11:47 Sales.signals | Sale signal triggered: SALE-20260815101147-72DF | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:11:47 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:47 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 10:11:47 Sales.signals | Location acquired for sale SALE-20260815101147-72DF: Main Warehouse (ID: 3)
+INFO 2026-08-15 10:11:47 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101147-72DF (ID: 2)
+DEBUG 2026-08-15 10:11:47 Sales.signals | Starting inventory reservation for sale SALE-20260815101147-72DF (ID: 2) with 0 items
+INFO 2026-08-15 10:11:47 Sales.signals | Successfully reserved inventory for sale SALE-20260815101147-72DF (ID: 2) | Items: 0
+DEBUG 2026-08-15 10:11:47 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:47 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 10:11:47 Sales.signals | Starting inventory reservation for sale SALE-20260815101147-72DF (ID: 2) with 1 items
+DEBUG 2026-08-15 10:11:47 Sales.signals | Processing reservation for product: Potato Chips (ID: 5) | Qty: 3
+DEBUG 2026-08-15 10:11:47 Sales.signals | Successfully reserved 3 units of Potato Chips | Reserved: 0 -> 3
+INFO 2026-08-15 10:11:47 Sales.signals | Successfully reserved inventory for sale SALE-20260815101147-72DF (ID: 2) | Items: 1
+DEBUG 2026-08-15 10:11:47 Sales.signals | Sale signal triggered: SALE-20260815101147-72DF | ID: 2 | Status: UNKNOWN -> CANCELLED | Created: False
+DEBUG 2026-08-15 10:11:47 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:47 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 10:11:47 Sales.signals | Location acquired for sale SALE-20260815101147-72DF: Main Warehouse (ID: 3)
+INFO 2026-08-15 10:11:47 Sales.signals | Initiating inventory release for cancelled sale SALE-20260815101147-72DF (ID: 2)
+DEBUG 2026-08-15 10:11:47 Sales.signals | Starting inventory release for cancelled sale SALE-20260815101147-72DF (ID: 2) with 1 items
+DEBUG 2026-08-15 10:11:47 Sales.signals | Processing release for product: Potato Chips (ID: 5) | Qty to release: 3
+DEBUG 2026-08-15 10:11:47 Sales.signals | Successfully released 3 units of Potato Chips | Reserved: 3 -> 0
+INFO 2026-08-15 10:11:47 Sales.signals | Successfully released inventory for cancelled sale SALE-20260815101147-72DF (ID: 2) | Items: 1
+DEBUG 2026-08-15 10:11:47 Sales.signals | Starting cancellation transaction creation for sale SALE-20260815101147-72DF (ID: 2) with 1 items
+DEBUG 2026-08-15 10:11:47 Sales.signals | Creating cancellation transaction for product Potato Chips (ID: 5) | Return Quantity: 3
+DEBUG 2026-08-15 10:11:47 Sales.signals | Created cancellation transaction: ID=1 | Reference=CANCELLED_SALE-20260815101147-72DF | Product=Potato Chips | Qty=3
+INFO 2026-08-15 10:11:47 Sales.signals | Successfully created cancellation transactions for sale SALE-20260815101147-72DF (ID: 2) | Transactions: 1 | Total Units Returned: 3
+DEBUG 2026-08-15 10:11:51 Sales.signals | Sale signal triggered: SALE-20260815101151-08FE | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:11:51 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:51 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 10:11:51 Sales.signals | Location acquired for sale SALE-20260815101151-08FE: Main Warehouse (ID: 4)
+INFO 2026-08-15 10:11:51 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101151-08FE (ID: 3)
+DEBUG 2026-08-15 10:11:51 Sales.signals | Starting inventory reservation for sale SALE-20260815101151-08FE (ID: 3) with 0 items
+INFO 2026-08-15 10:11:51 Sales.signals | Successfully reserved inventory for sale SALE-20260815101151-08FE (ID: 3) | Items: 0
+DEBUG 2026-08-15 10:11:51 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:51 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 10:11:51 Sales.signals | Starting inventory reservation for sale SALE-20260815101151-08FE (ID: 3) with 1 items
+DEBUG 2026-08-15 10:11:51 Sales.signals | Processing reservation for product: Potato Chips (ID: 6) | Qty: 2
+DEBUG 2026-08-15 10:11:51 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 10:11:51 Sales.signals | Successfully reserved inventory for sale SALE-20260815101151-08FE (ID: 3) | Items: 1
+DEBUG 2026-08-15 10:11:54 Sales.signals | Sale signal triggered: SALE-20260815101154-4B40 | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:11:54 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:54 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:11:54 Sales.signals | Location acquired for sale SALE-20260815101154-4B40: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:11:54 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101154-4B40 (ID: 4)
+DEBUG 2026-08-15 10:11:54 Sales.signals | Starting inventory reservation for sale SALE-20260815101154-4B40 (ID: 4) with 0 items
+INFO 2026-08-15 10:11:54 Sales.signals | Successfully reserved inventory for sale SALE-20260815101154-4B40 (ID: 4) | Items: 0
+DEBUG 2026-08-15 10:11:55 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:55 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:11:55 Sales.signals | Starting inventory reservation for sale SALE-20260815101154-4B40 (ID: 4) with 1 items
+DEBUG 2026-08-15 10:11:55 Sales.signals | Processing reservation for product: Potato Chips (ID: 7) | Qty: 2
+DEBUG 2026-08-15 10:11:55 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 10:11:55 Sales.signals | Successfully reserved inventory for sale SALE-20260815101154-4B40 (ID: 4) | Items: 1
+INFO 2026-08-15 10:11:55 Sales.views | Confirm request for sale SALE-20260815101154-4B40 (ID: 4)
+DEBUG 2026-08-15 10:11:55 Sales.views | Marking sale SALE-20260815101154-4B40 as COMPLETED
+DEBUG 2026-08-15 10:11:55 Sales.signals | Sale signal triggered: SALE-20260815101154-4B40 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:11:55 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:55 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:11:55 Sales.signals | Location acquired for sale SALE-20260815101154-4B40: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:11:55 Sales.signals | Sale SALE-20260815101154-4B40 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 10:11:55 Sales.views | Sale SALE-20260815101154-4B40 marked COMPLETED. Queuing async inventory task.
+ERROR 2026-08-15 10:11:55 Sales.views | Failed to queue inventory task for sale SALE-20260815101154-4B40: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-08-15 10:11:55 Sales.signals | Sale signal triggered: SALE-20260815101154-4B40 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:11:55 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:55 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:11:55 Sales.signals | Location acquired for sale SALE-20260815101154-4B40: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:11:55 Sales.signals | Sale SALE-20260815101154-4B40 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-08-15 10:11:55 Sales.views | Falling back to synchronous inventory completion for sale SALE-20260815101154-4B40.
+INFO 2026-08-15 10:11:55 Sales.tasks | Starting inventory completion for sale ID: 4
+DEBUG 2026-08-15 10:11:55 Sales.tasks | Fetched sale SALE-20260815101154-4B40 (ID: 4)
+DEBUG 2026-08-15 10:11:55 Sales.tasks | Using location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:11:55 Sales.tasks | Deducting 2 units of Potato Chips @ $3.50
+DEBUG 2026-08-15 10:11:55 Sales.tasks | Successfully deducted 2 units of Potato Chips. Stock: 20 → 18
+DEBUG 2026-08-15 10:11:56 Sales.signals | Sale signal triggered: SALE-20260815101154-4B40 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:11:56 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:56 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:11:56 Sales.signals | Location acquired for sale SALE-20260815101154-4B40: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:11:56 Sales.signals | Sale SALE-20260815101154-4B40 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 10:11:56 Sales.tasks | Inventory deduction completed for sale SALE-20260815101154-4B40 (ID: 4). Items: 1, Total Value: $7.00
+DEBUG 2026-08-15 10:11:56 Sales.signals | Sale signal triggered: SALE-20260815101154-4B40 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 10:11:56 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:11:56 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 10:11:56 Sales.signals | Location acquired for sale SALE-20260815101154-4B40: Main Warehouse (ID: 5)
+INFO 2026-08-15 10:11:56 Sales.signals | Sale SALE-20260815101154-4B40 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 10:11:56 Sales.views | Synchronous inventory completion succeeded for sale SALE-20260815101154-4B40.
+DEBUG 2026-08-15 10:11:59 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 25.00 | Method: CASH
+DEBUG 2026-08-15 10:11:59 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 25.00 | Balance: 75.00
+DEBUG 2026-08-15 10:11:59 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 75.00
+DEBUG 2026-08-15 10:11:59 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 15.00 | Method: CARD
+DEBUG 2026-08-15 10:11:59 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 40.00 | Balance: 60.00
+DEBUG 2026-08-15 10:11:59 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 60.00
+DEBUG 2026-08-15 10:12:02 Sales.signals | Sale signal triggered: SALE-20260815101202-9CCE | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:12:02 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:12:02 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 10:12:02 Sales.signals | Location acquired for sale SALE-20260815101202-9CCE: Bundle Warehouse (ID: 7)
+INFO 2026-08-15 10:12:02 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101202-9CCE (ID: 5)
+DEBUG 2026-08-15 10:12:02 Sales.signals | Starting inventory reservation for sale SALE-20260815101202-9CCE (ID: 5) with 0 items
+INFO 2026-08-15 10:12:02 Sales.signals | Successfully reserved inventory for sale SALE-20260815101202-9CCE (ID: 5) | Items: 0
+DEBUG 2026-08-15 10:12:02 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:12:02 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 10:12:02 Sales.signals | Starting inventory reservation for sale SALE-20260815101202-9CCE (ID: 5) with 1 items
+DEBUG 2026-08-15 10:12:02 Sales.signals | Processing reservation for product: Energy Drink (ID: 9) | Qty: 7
+DEBUG 2026-08-15 10:12:02 Sales.signals | Successfully reserved 7 units of Energy Drink | Reserved: 0 -> 7
+INFO 2026-08-15 10:12:02 Sales.signals | Successfully reserved inventory for sale SALE-20260815101202-9CCE (ID: 5) | Items: 1
+DEBUG 2026-08-15 10:12:05 Sales.signals | Sale signal triggered: SALE-20260815101205-496D | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 10:12:05 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:12:05 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 10:12:05 Sales.signals | Location acquired for sale SALE-20260815101205-496D: Bundle Warehouse (ID: 8)
+INFO 2026-08-15 10:12:05 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815101205-496D (ID: 6)
+DEBUG 2026-08-15 10:12:05 Sales.signals | Starting inventory reservation for sale SALE-20260815101205-496D (ID: 6) with 0 items
+INFO 2026-08-15 10:12:05 Sales.signals | Successfully reserved inventory for sale SALE-20260815101205-496D (ID: 6) | Items: 0
+DEBUG 2026-08-15 10:12:05 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 10:12:05 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 10:12:05 Sales.signals | Starting inventory reservation for sale SALE-20260815101205-496D (ID: 6) with 1 items
+DEBUG 2026-08-15 10:12:05 Sales.signals | Processing reservation for product: Energy Drink (ID: 10) | Qty: 6
+DEBUG 2026-08-15 10:12:05 Sales.signals | Successfully reserved 6 units of Energy Drink | Reserved: 0 -> 6
+INFO 2026-08-15 10:12:05 Sales.signals | Successfully reserved inventory for sale SALE-20260815101205-496D (ID: 6) | Items: 1
+DEBUG 2026-08-15 11:43:23 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-15 11:43:23 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-15 11:43:23 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-15 11:43:31 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 11:43:31 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:31 Sales.signals | Using existing location: Central Stockroom (ID: 7)
+DEBUG 2026-08-15 11:43:31 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 7)
+INFO 2026-08-15 11:43:31 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 1)
+DEBUG 2026-08-15 11:43:31 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 1) with 0 items
+INFO 2026-08-15 11:43:31 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 1) | Items: 0
+DEBUG 2026-08-15 11:43:37 Sales.signals | Sale signal triggered: SALE-20260815114337-E770 | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 11:43:37 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:37 Sales.signals | Using existing location: Main Warehouse (ID: 8)
+DEBUG 2026-08-15 11:43:37 Sales.signals | Location acquired for sale SALE-20260815114337-E770: Main Warehouse (ID: 8)
+INFO 2026-08-15 11:43:37 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815114337-E770 (ID: 2)
+DEBUG 2026-08-15 11:43:37 Sales.signals | Starting inventory reservation for sale SALE-20260815114337-E770 (ID: 2) with 0 items
+INFO 2026-08-15 11:43:37 Sales.signals | Successfully reserved inventory for sale SALE-20260815114337-E770 (ID: 2) | Items: 0
+DEBUG 2026-08-15 11:43:37 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:37 Sales.signals | Using existing location: Main Warehouse (ID: 8)
+DEBUG 2026-08-15 11:43:37 Sales.signals | Starting inventory reservation for sale SALE-20260815114337-E770 (ID: 2) with 1 items
+DEBUG 2026-08-15 11:43:37 Sales.signals | Processing reservation for product: Potato Chips (ID: 13) | Qty: 3
+DEBUG 2026-08-15 11:43:37 Sales.signals | Successfully reserved 3 units of Potato Chips | Reserved: 0 -> 3
+INFO 2026-08-15 11:43:37 Sales.signals | Successfully reserved inventory for sale SALE-20260815114337-E770 (ID: 2) | Items: 1
+DEBUG 2026-08-15 11:43:37 Sales.signals | Sale signal triggered: SALE-20260815114337-E770 | ID: 2 | Status: UNKNOWN -> CANCELLED | Created: False
+DEBUG 2026-08-15 11:43:37 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:37 Sales.signals | Using existing location: Main Warehouse (ID: 8)
+DEBUG 2026-08-15 11:43:37 Sales.signals | Location acquired for sale SALE-20260815114337-E770: Main Warehouse (ID: 8)
+INFO 2026-08-15 11:43:37 Sales.signals | Initiating inventory release for cancelled sale SALE-20260815114337-E770 (ID: 2)
+DEBUG 2026-08-15 11:43:37 Sales.signals | Starting inventory release for cancelled sale SALE-20260815114337-E770 (ID: 2) with 1 items
+DEBUG 2026-08-15 11:43:37 Sales.signals | Processing release for product: Potato Chips (ID: 13) | Qty to release: 3
+DEBUG 2026-08-15 11:43:37 Sales.signals | Successfully released 3 units of Potato Chips | Reserved: 3 -> 0
+INFO 2026-08-15 11:43:37 Sales.signals | Successfully released inventory for cancelled sale SALE-20260815114337-E770 (ID: 2) | Items: 1
+DEBUG 2026-08-15 11:43:37 Sales.signals | Starting cancellation transaction creation for sale SALE-20260815114337-E770 (ID: 2) with 1 items
+DEBUG 2026-08-15 11:43:37 Sales.signals | Creating cancellation transaction for product Potato Chips (ID: 13) | Return Quantity: 3
+DEBUG 2026-08-15 11:43:37 Sales.signals | Created cancellation transaction: ID=2 | Reference=CANCELLED_SALE-20260815114337-E770 | Product=Potato Chips | Qty=3
+INFO 2026-08-15 11:43:37 Sales.signals | Successfully created cancellation transactions for sale SALE-20260815114337-E770 (ID: 2) | Transactions: 1 | Total Units Returned: 3
+DEBUG 2026-08-15 11:43:41 Sales.signals | Sale signal triggered: SALE-20260815114341-90E8 | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 11:43:41 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:41 Sales.signals | Using existing location: Main Warehouse (ID: 9)
+DEBUG 2026-08-15 11:43:41 Sales.signals | Location acquired for sale SALE-20260815114341-90E8: Main Warehouse (ID: 9)
+INFO 2026-08-15 11:43:41 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815114341-90E8 (ID: 3)
+DEBUG 2026-08-15 11:43:41 Sales.signals | Starting inventory reservation for sale SALE-20260815114341-90E8 (ID: 3) with 0 items
+INFO 2026-08-15 11:43:41 Sales.signals | Successfully reserved inventory for sale SALE-20260815114341-90E8 (ID: 3) | Items: 0
+DEBUG 2026-08-15 11:43:41 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:41 Sales.signals | Using existing location: Main Warehouse (ID: 9)
+DEBUG 2026-08-15 11:43:41 Sales.signals | Starting inventory reservation for sale SALE-20260815114341-90E8 (ID: 3) with 1 items
+DEBUG 2026-08-15 11:43:41 Sales.signals | Processing reservation for product: Potato Chips (ID: 14) | Qty: 2
+DEBUG 2026-08-15 11:43:41 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 11:43:41 Sales.signals | Successfully reserved inventory for sale SALE-20260815114341-90E8 (ID: 3) | Items: 1
+DEBUG 2026-08-15 11:43:44 Sales.signals | Sale signal triggered: SALE-20260815114344-475D | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 11:43:44 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:44 Sales.signals | Using existing location: Main Warehouse (ID: 10)
+DEBUG 2026-08-15 11:43:44 Sales.signals | Location acquired for sale SALE-20260815114344-475D: Main Warehouse (ID: 10)
+INFO 2026-08-15 11:43:44 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815114344-475D (ID: 4)
+DEBUG 2026-08-15 11:43:44 Sales.signals | Starting inventory reservation for sale SALE-20260815114344-475D (ID: 4) with 0 items
+INFO 2026-08-15 11:43:44 Sales.signals | Successfully reserved inventory for sale SALE-20260815114344-475D (ID: 4) | Items: 0
+DEBUG 2026-08-15 11:43:44 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:44 Sales.signals | Using existing location: Main Warehouse (ID: 10)
+DEBUG 2026-08-15 11:43:44 Sales.signals | Starting inventory reservation for sale SALE-20260815114344-475D (ID: 4) with 1 items
+DEBUG 2026-08-15 11:43:44 Sales.signals | Processing reservation for product: Potato Chips (ID: 15) | Qty: 2
+DEBUG 2026-08-15 11:43:44 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 11:43:44 Sales.signals | Successfully reserved inventory for sale SALE-20260815114344-475D (ID: 4) | Items: 1
+INFO 2026-08-15 11:43:44 Sales.views | Confirm request for sale SALE-20260815114344-475D (ID: 4)
+DEBUG 2026-08-15 11:43:44 Sales.views | Marking sale SALE-20260815114344-475D as COMPLETED
+DEBUG 2026-08-15 11:43:44 Sales.signals | Sale signal triggered: SALE-20260815114344-475D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 11:43:44 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:44 Sales.signals | Using existing location: Main Warehouse (ID: 10)
+DEBUG 2026-08-15 11:43:44 Sales.signals | Location acquired for sale SALE-20260815114344-475D: Main Warehouse (ID: 10)
+INFO 2026-08-15 11:43:44 Sales.signals | Sale SALE-20260815114344-475D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 11:43:44 Sales.views | Sale SALE-20260815114344-475D marked COMPLETED. Queuing async inventory task.
+ERROR 2026-08-15 11:43:45 Sales.views | Failed to queue inventory task for sale SALE-20260815114344-475D: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-08-15 11:43:45 Sales.signals | Sale signal triggered: SALE-20260815114344-475D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 11:43:45 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:45 Sales.signals | Using existing location: Main Warehouse (ID: 10)
+DEBUG 2026-08-15 11:43:45 Sales.signals | Location acquired for sale SALE-20260815114344-475D: Main Warehouse (ID: 10)
+INFO 2026-08-15 11:43:45 Sales.signals | Sale SALE-20260815114344-475D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-08-15 11:43:45 Sales.views | Falling back to synchronous inventory completion for sale SALE-20260815114344-475D.
+INFO 2026-08-15 11:43:45 Sales.tasks | Starting inventory completion for sale ID: 4
+DEBUG 2026-08-15 11:43:45 Sales.tasks | Fetched sale SALE-20260815114344-475D (ID: 4)
+DEBUG 2026-08-15 11:43:45 Sales.tasks | Using location: Main Warehouse (ID: 10)
+DEBUG 2026-08-15 11:43:45 Sales.tasks | Deducting 2 units of Potato Chips @ $3.50
+DEBUG 2026-08-15 11:43:45 Sales.tasks | Successfully deducted 2 units of Potato Chips. Stock: 20 → 18
+DEBUG 2026-08-15 11:43:45 Sales.signals | Sale signal triggered: SALE-20260815114344-475D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 11:43:45 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:45 Sales.signals | Using existing location: Main Warehouse (ID: 10)
+DEBUG 2026-08-15 11:43:45 Sales.signals | Location acquired for sale SALE-20260815114344-475D: Main Warehouse (ID: 10)
+INFO 2026-08-15 11:43:45 Sales.signals | Sale SALE-20260815114344-475D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 11:43:45 Sales.tasks | Inventory deduction completed for sale SALE-20260815114344-475D (ID: 4). Items: 1, Total Value: $7.00
+DEBUG 2026-08-15 11:43:45 Sales.signals | Sale signal triggered: SALE-20260815114344-475D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 11:43:45 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:45 Sales.signals | Using existing location: Main Warehouse (ID: 10)
+DEBUG 2026-08-15 11:43:45 Sales.signals | Location acquired for sale SALE-20260815114344-475D: Main Warehouse (ID: 10)
+INFO 2026-08-15 11:43:45 Sales.signals | Sale SALE-20260815114344-475D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 11:43:45 Sales.views | Synchronous inventory completion succeeded for sale SALE-20260815114344-475D.
+DEBUG 2026-08-15 11:43:48 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 25.00 | Method: CASH
+DEBUG 2026-08-15 11:43:48 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 25.00 | Balance: 75.00
+DEBUG 2026-08-15 11:43:48 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 75.00
+DEBUG 2026-08-15 11:43:48 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 15.00 | Method: CARD
+DEBUG 2026-08-15 11:43:48 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 40.00 | Balance: 60.00
+DEBUG 2026-08-15 11:43:48 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 60.00
+DEBUG 2026-08-15 11:43:51 Sales.signals | Sale signal triggered: SALE-20260815114351-8B7E | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 11:43:51 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:51 Sales.signals | Using existing location: Bundle Warehouse (ID: 12)
+DEBUG 2026-08-15 11:43:51 Sales.signals | Location acquired for sale SALE-20260815114351-8B7E: Bundle Warehouse (ID: 12)
+INFO 2026-08-15 11:43:51 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815114351-8B7E (ID: 5)
+DEBUG 2026-08-15 11:43:51 Sales.signals | Starting inventory reservation for sale SALE-20260815114351-8B7E (ID: 5) with 0 items
+INFO 2026-08-15 11:43:51 Sales.signals | Successfully reserved inventory for sale SALE-20260815114351-8B7E (ID: 5) | Items: 0
+DEBUG 2026-08-15 11:43:51 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:51 Sales.signals | Using existing location: Bundle Warehouse (ID: 12)
+DEBUG 2026-08-15 11:43:51 Sales.signals | Starting inventory reservation for sale SALE-20260815114351-8B7E (ID: 5) with 1 items
+DEBUG 2026-08-15 11:43:51 Sales.signals | Processing reservation for product: Energy Drink (ID: 17) | Qty: 7
+DEBUG 2026-08-15 11:43:51 Sales.signals | Successfully reserved 7 units of Energy Drink | Reserved: 0 -> 7
+INFO 2026-08-15 11:43:51 Sales.signals | Successfully reserved inventory for sale SALE-20260815114351-8B7E (ID: 5) | Items: 1
+DEBUG 2026-08-15 11:43:54 Sales.signals | Sale signal triggered: SALE-20260815114354-8AE5 | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 11:43:54 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:54 Sales.signals | Using existing location: Bundle Warehouse (ID: 13)
+DEBUG 2026-08-15 11:43:54 Sales.signals | Location acquired for sale SALE-20260815114354-8AE5: Bundle Warehouse (ID: 13)
+INFO 2026-08-15 11:43:54 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815114354-8AE5 (ID: 6)
+DEBUG 2026-08-15 11:43:54 Sales.signals | Starting inventory reservation for sale SALE-20260815114354-8AE5 (ID: 6) with 0 items
+INFO 2026-08-15 11:43:54 Sales.signals | Successfully reserved inventory for sale SALE-20260815114354-8AE5 (ID: 6) | Items: 0
+DEBUG 2026-08-15 11:43:54 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 11:43:54 Sales.signals | Using existing location: Bundle Warehouse (ID: 13)
+DEBUG 2026-08-15 11:43:54 Sales.signals | Starting inventory reservation for sale SALE-20260815114354-8AE5 (ID: 6) with 1 items
+DEBUG 2026-08-15 11:43:54 Sales.signals | Processing reservation for product: Energy Drink (ID: 18) | Qty: 6
+DEBUG 2026-08-15 11:43:54 Sales.signals | Successfully reserved 6 units of Energy Drink | Reserved: 0 -> 6
+INFO 2026-08-15 11:43:54 Sales.signals | Successfully reserved inventory for sale SALE-20260815114354-8AE5 (ID: 6) | Items: 1
+DEBUG 2026-08-15 17:54:16 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-15 17:54:16 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-15 17:54:16 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-15 17:54:21 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:54:21 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:21 Sales.signals | Using existing location: Central Stockroom (ID: 2)
+DEBUG 2026-08-15 17:54:21 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 2)
+INFO 2026-08-15 17:54:21 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 1)
+DEBUG 2026-08-15 17:54:21 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 1) with 0 items
+INFO 2026-08-15 17:54:21 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 1) | Items: 0
+DEBUG 2026-08-15 17:54:24 Sales.signals | Sale signal triggered: SALE-20260815175424-6238 | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:54:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:24 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 17:54:24 Sales.signals | Location acquired for sale SALE-20260815175424-6238: Main Warehouse (ID: 3)
+INFO 2026-08-15 17:54:24 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175424-6238 (ID: 2)
+DEBUG 2026-08-15 17:54:24 Sales.signals | Starting inventory reservation for sale SALE-20260815175424-6238 (ID: 2) with 0 items
+INFO 2026-08-15 17:54:24 Sales.signals | Successfully reserved inventory for sale SALE-20260815175424-6238 (ID: 2) | Items: 0
+DEBUG 2026-08-15 17:54:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:24 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 17:54:24 Sales.signals | Starting inventory reservation for sale SALE-20260815175424-6238 (ID: 2) with 1 items
+DEBUG 2026-08-15 17:54:24 Sales.signals | Processing reservation for product: Potato Chips (ID: 5) | Qty: 3
+DEBUG 2026-08-15 17:54:24 Sales.signals | Successfully reserved 3 units of Potato Chips | Reserved: 0 -> 3
+INFO 2026-08-15 17:54:24 Sales.signals | Successfully reserved inventory for sale SALE-20260815175424-6238 (ID: 2) | Items: 1
+DEBUG 2026-08-15 17:54:24 Sales.signals | Sale signal triggered: SALE-20260815175424-6238 | ID: 2 | Status: UNKNOWN -> CANCELLED | Created: False
+DEBUG 2026-08-15 17:54:24 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:24 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 17:54:24 Sales.signals | Location acquired for sale SALE-20260815175424-6238: Main Warehouse (ID: 3)
+INFO 2026-08-15 17:54:24 Sales.signals | Initiating inventory release for cancelled sale SALE-20260815175424-6238 (ID: 2)
+DEBUG 2026-08-15 17:54:24 Sales.signals | Starting inventory release for cancelled sale SALE-20260815175424-6238 (ID: 2) with 1 items
+DEBUG 2026-08-15 17:54:24 Sales.signals | Processing release for product: Potato Chips (ID: 5) | Qty to release: 3
+DEBUG 2026-08-15 17:54:24 Sales.signals | Successfully released 3 units of Potato Chips | Reserved: 3 -> 0
+INFO 2026-08-15 17:54:24 Sales.signals | Successfully released inventory for cancelled sale SALE-20260815175424-6238 (ID: 2) | Items: 1
+DEBUG 2026-08-15 17:54:24 Sales.signals | Starting cancellation transaction creation for sale SALE-20260815175424-6238 (ID: 2) with 1 items
+DEBUG 2026-08-15 17:54:24 Sales.signals | Creating cancellation transaction for product Potato Chips (ID: 5) | Return Quantity: 3
+DEBUG 2026-08-15 17:54:24 Sales.signals | Created cancellation transaction: ID=1 | Reference=CANCELLED_SALE-20260815175424-6238 | Product=Potato Chips | Qty=3
+INFO 2026-08-15 17:54:24 Sales.signals | Successfully created cancellation transactions for sale SALE-20260815175424-6238 (ID: 2) | Transactions: 1 | Total Units Returned: 3
+DEBUG 2026-08-15 17:54:27 Sales.signals | Sale signal triggered: SALE-20260815175427-CAE1 | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:54:27 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:27 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 17:54:27 Sales.signals | Location acquired for sale SALE-20260815175427-CAE1: Main Warehouse (ID: 4)
+INFO 2026-08-15 17:54:27 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175427-CAE1 (ID: 3)
+DEBUG 2026-08-15 17:54:27 Sales.signals | Starting inventory reservation for sale SALE-20260815175427-CAE1 (ID: 3) with 0 items
+INFO 2026-08-15 17:54:27 Sales.signals | Successfully reserved inventory for sale SALE-20260815175427-CAE1 (ID: 3) | Items: 0
+DEBUG 2026-08-15 17:54:27 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:27 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 17:54:27 Sales.signals | Starting inventory reservation for sale SALE-20260815175427-CAE1 (ID: 3) with 1 items
+DEBUG 2026-08-15 17:54:27 Sales.signals | Processing reservation for product: Potato Chips (ID: 6) | Qty: 2
+DEBUG 2026-08-15 17:54:27 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 17:54:27 Sales.signals | Successfully reserved inventory for sale SALE-20260815175427-CAE1 (ID: 3) | Items: 1
+DEBUG 2026-08-15 17:54:29 Sales.signals | Sale signal triggered: SALE-20260815175429-5605 | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:54:29 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:29 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:54:29 Sales.signals | Location acquired for sale SALE-20260815175429-5605: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:54:29 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175429-5605 (ID: 4)
+DEBUG 2026-08-15 17:54:29 Sales.signals | Starting inventory reservation for sale SALE-20260815175429-5605 (ID: 4) with 0 items
+INFO 2026-08-15 17:54:29 Sales.signals | Successfully reserved inventory for sale SALE-20260815175429-5605 (ID: 4) | Items: 0
+DEBUG 2026-08-15 17:54:29 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:29 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:54:29 Sales.signals | Starting inventory reservation for sale SALE-20260815175429-5605 (ID: 4) with 1 items
+DEBUG 2026-08-15 17:54:29 Sales.signals | Processing reservation for product: Potato Chips (ID: 7) | Qty: 2
+DEBUG 2026-08-15 17:54:29 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 17:54:29 Sales.signals | Successfully reserved inventory for sale SALE-20260815175429-5605 (ID: 4) | Items: 1
+INFO 2026-08-15 17:54:29 Sales.views | Confirm request for sale SALE-20260815175429-5605 (ID: 4)
+DEBUG 2026-08-15 17:54:29 Sales.views | Marking sale SALE-20260815175429-5605 as COMPLETED
+DEBUG 2026-08-15 17:54:29 Sales.signals | Sale signal triggered: SALE-20260815175429-5605 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:54:29 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:29 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:54:29 Sales.signals | Location acquired for sale SALE-20260815175429-5605: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:54:29 Sales.signals | Sale SALE-20260815175429-5605 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 17:54:29 Sales.views | Sale SALE-20260815175429-5605 marked COMPLETED. Queuing async inventory task.
+ERROR 2026-08-15 17:54:30 Sales.views | Failed to queue inventory task for sale SALE-20260815175429-5605: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-08-15 17:54:30 Sales.signals | Sale signal triggered: SALE-20260815175429-5605 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:54:30 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:30 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:54:30 Sales.signals | Location acquired for sale SALE-20260815175429-5605: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:54:30 Sales.signals | Sale SALE-20260815175429-5605 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-08-15 17:54:30 Sales.views | Falling back to synchronous inventory completion for sale SALE-20260815175429-5605.
+INFO 2026-08-15 17:54:30 Sales.tasks | Starting inventory completion for sale ID: 4
+DEBUG 2026-08-15 17:54:30 Sales.tasks | Fetched sale SALE-20260815175429-5605 (ID: 4)
+DEBUG 2026-08-15 17:54:30 Sales.tasks | Using location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:54:30 Sales.tasks | Deducting 2 units of Potato Chips @ $3.50
+DEBUG 2026-08-15 17:54:30 Sales.tasks | Successfully deducted 2 units of Potato Chips. Stock: 20 → 18
+DEBUG 2026-08-15 17:54:30 Sales.signals | Sale signal triggered: SALE-20260815175429-5605 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:54:30 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:30 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:54:30 Sales.signals | Location acquired for sale SALE-20260815175429-5605: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:54:30 Sales.signals | Sale SALE-20260815175429-5605 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 17:54:30 Sales.tasks | Inventory deduction completed for sale SALE-20260815175429-5605 (ID: 4). Items: 1, Total Value: $7.00
+DEBUG 2026-08-15 17:54:30 Sales.signals | Sale signal triggered: SALE-20260815175429-5605 | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:54:30 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:30 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:54:30 Sales.signals | Location acquired for sale SALE-20260815175429-5605: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:54:30 Sales.signals | Sale SALE-20260815175429-5605 (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 17:54:30 Sales.views | Synchronous inventory completion succeeded for sale SALE-20260815175429-5605.
+DEBUG 2026-08-15 17:54:34 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 25.00 | Method: CASH
+DEBUG 2026-08-15 17:54:34 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 25.00 | Balance: 75.00
+DEBUG 2026-08-15 17:54:34 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 75.00
+DEBUG 2026-08-15 17:54:34 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 15.00 | Method: CARD
+DEBUG 2026-08-15 17:54:34 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 40.00 | Balance: 60.00
+DEBUG 2026-08-15 17:54:34 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 60.00
+DEBUG 2026-08-15 17:54:37 Sales.signals | Sale signal triggered: SALE-20260815175437-D0C3 | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:54:37 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:37 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 17:54:37 Sales.signals | Location acquired for sale SALE-20260815175437-D0C3: Bundle Warehouse (ID: 7)
+INFO 2026-08-15 17:54:37 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175437-D0C3 (ID: 5)
+DEBUG 2026-08-15 17:54:37 Sales.signals | Starting inventory reservation for sale SALE-20260815175437-D0C3 (ID: 5) with 0 items
+INFO 2026-08-15 17:54:37 Sales.signals | Successfully reserved inventory for sale SALE-20260815175437-D0C3 (ID: 5) | Items: 0
+DEBUG 2026-08-15 17:54:37 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:37 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 17:54:37 Sales.signals | Starting inventory reservation for sale SALE-20260815175437-D0C3 (ID: 5) with 1 items
+DEBUG 2026-08-15 17:54:37 Sales.signals | Processing reservation for product: Energy Drink (ID: 9) | Qty: 7
+DEBUG 2026-08-15 17:54:37 Sales.signals | Successfully reserved 7 units of Energy Drink | Reserved: 0 -> 7
+INFO 2026-08-15 17:54:37 Sales.signals | Successfully reserved inventory for sale SALE-20260815175437-D0C3 (ID: 5) | Items: 1
+DEBUG 2026-08-15 17:54:40 Sales.signals | Sale signal triggered: SALE-20260815175440-4BB6 | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:54:40 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:40 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 17:54:40 Sales.signals | Location acquired for sale SALE-20260815175440-4BB6: Bundle Warehouse (ID: 8)
+INFO 2026-08-15 17:54:40 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175440-4BB6 (ID: 6)
+DEBUG 2026-08-15 17:54:40 Sales.signals | Starting inventory reservation for sale SALE-20260815175440-4BB6 (ID: 6) with 0 items
+INFO 2026-08-15 17:54:40 Sales.signals | Successfully reserved inventory for sale SALE-20260815175440-4BB6 (ID: 6) | Items: 0
+DEBUG 2026-08-15 17:54:40 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:54:40 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 17:54:40 Sales.signals | Starting inventory reservation for sale SALE-20260815175440-4BB6 (ID: 6) with 1 items
+DEBUG 2026-08-15 17:54:40 Sales.signals | Processing reservation for product: Energy Drink (ID: 10) | Qty: 6
+DEBUG 2026-08-15 17:54:41 Sales.signals | Successfully reserved 6 units of Energy Drink | Reserved: 0 -> 6
+INFO 2026-08-15 17:54:41 Sales.signals | Successfully reserved inventory for sale SALE-20260815175440-4BB6 (ID: 6) | Items: 1
+DEBUG 2026-08-15 17:58:56 Sales.signals | Payment recorded for layby LB-TEST-001 (ID: 2) | Amount: 10.00 | Method: CASH
+DEBUG 2026-08-15 17:58:56 Sales.signals | Layby LB-TEST-001 (ID: 2) | Total Amount: 30.00 | Total Paid: 10.00 | Balance: 20.00
+DEBUG 2026-08-15 17:58:56 Sales.signals | Layby LB-TEST-001 (ID: 2) still has balance: 20.00
+DEBUG 2026-08-15 17:59:02 Sales.signals | Sale signal triggered: SALE-RET-001 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:59:02 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:02 Sales.signals | Using existing location: Central Stockroom (ID: 2)
+DEBUG 2026-08-15 17:59:02 Sales.signals | Location acquired for sale SALE-RET-001: Central Stockroom (ID: 2)
+INFO 2026-08-15 17:59:02 Sales.signals | Initiating inventory reservation for pending sale SALE-RET-001 (ID: 1)
+DEBUG 2026-08-15 17:59:02 Sales.signals | Starting inventory reservation for sale SALE-RET-001 (ID: 1) with 0 items
+INFO 2026-08-15 17:59:02 Sales.signals | Successfully reserved inventory for sale SALE-RET-001 (ID: 1) | Items: 0
+DEBUG 2026-08-15 17:59:05 Sales.signals | Sale signal triggered: SALE-20260815175905-260E | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:59:05 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:05 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 17:59:05 Sales.signals | Location acquired for sale SALE-20260815175905-260E: Main Warehouse (ID: 3)
+INFO 2026-08-15 17:59:05 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175905-260E (ID: 2)
+DEBUG 2026-08-15 17:59:05 Sales.signals | Starting inventory reservation for sale SALE-20260815175905-260E (ID: 2) with 0 items
+INFO 2026-08-15 17:59:05 Sales.signals | Successfully reserved inventory for sale SALE-20260815175905-260E (ID: 2) | Items: 0
+DEBUG 2026-08-15 17:59:05 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:05 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 17:59:05 Sales.signals | Starting inventory reservation for sale SALE-20260815175905-260E (ID: 2) with 1 items
+DEBUG 2026-08-15 17:59:05 Sales.signals | Processing reservation for product: Potato Chips (ID: 5) | Qty: 3
+DEBUG 2026-08-15 17:59:05 Sales.signals | Successfully reserved 3 units of Potato Chips | Reserved: 0 -> 3
+INFO 2026-08-15 17:59:05 Sales.signals | Successfully reserved inventory for sale SALE-20260815175905-260E (ID: 2) | Items: 1
+DEBUG 2026-08-15 17:59:05 Sales.signals | Sale signal triggered: SALE-20260815175905-260E | ID: 2 | Status: UNKNOWN -> CANCELLED | Created: False
+DEBUG 2026-08-15 17:59:05 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:05 Sales.signals | Using existing location: Main Warehouse (ID: 3)
+DEBUG 2026-08-15 17:59:05 Sales.signals | Location acquired for sale SALE-20260815175905-260E: Main Warehouse (ID: 3)
+INFO 2026-08-15 17:59:05 Sales.signals | Initiating inventory release for cancelled sale SALE-20260815175905-260E (ID: 2)
+DEBUG 2026-08-15 17:59:05 Sales.signals | Starting inventory release for cancelled sale SALE-20260815175905-260E (ID: 2) with 1 items
+DEBUG 2026-08-15 17:59:05 Sales.signals | Processing release for product: Potato Chips (ID: 5) | Qty to release: 3
+DEBUG 2026-08-15 17:59:05 Sales.signals | Successfully released 3 units of Potato Chips | Reserved: 3 -> 0
+INFO 2026-08-15 17:59:05 Sales.signals | Successfully released inventory for cancelled sale SALE-20260815175905-260E (ID: 2) | Items: 1
+DEBUG 2026-08-15 17:59:05 Sales.signals | Starting cancellation transaction creation for sale SALE-20260815175905-260E (ID: 2) with 1 items
+DEBUG 2026-08-15 17:59:05 Sales.signals | Creating cancellation transaction for product Potato Chips (ID: 5) | Return Quantity: 3
+DEBUG 2026-08-15 17:59:05 Sales.signals | Created cancellation transaction: ID=1 | Reference=CANCELLED_SALE-20260815175905-260E | Product=Potato Chips | Qty=3
+INFO 2026-08-15 17:59:05 Sales.signals | Successfully created cancellation transactions for sale SALE-20260815175905-260E (ID: 2) | Transactions: 1 | Total Units Returned: 3
+DEBUG 2026-08-15 17:59:09 Sales.signals | Sale signal triggered: SALE-20260815175909-C45F | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:59:09 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:09 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 17:59:09 Sales.signals | Location acquired for sale SALE-20260815175909-C45F: Main Warehouse (ID: 4)
+INFO 2026-08-15 17:59:09 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175909-C45F (ID: 3)
+DEBUG 2026-08-15 17:59:09 Sales.signals | Starting inventory reservation for sale SALE-20260815175909-C45F (ID: 3) with 0 items
+INFO 2026-08-15 17:59:09 Sales.signals | Successfully reserved inventory for sale SALE-20260815175909-C45F (ID: 3) | Items: 0
+DEBUG 2026-08-15 17:59:09 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:09 Sales.signals | Using existing location: Main Warehouse (ID: 4)
+DEBUG 2026-08-15 17:59:09 Sales.signals | Starting inventory reservation for sale SALE-20260815175909-C45F (ID: 3) with 1 items
+DEBUG 2026-08-15 17:59:09 Sales.signals | Processing reservation for product: Potato Chips (ID: 6) | Qty: 2
+DEBUG 2026-08-15 17:59:09 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 17:59:09 Sales.signals | Successfully reserved inventory for sale SALE-20260815175909-C45F (ID: 3) | Items: 1
+DEBUG 2026-08-15 17:59:12 Sales.signals | Sale signal triggered: SALE-20260815175912-1F8D | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:59:12 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:12 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:59:12 Sales.signals | Location acquired for sale SALE-20260815175912-1F8D: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:59:12 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175912-1F8D (ID: 4)
+DEBUG 2026-08-15 17:59:12 Sales.signals | Starting inventory reservation for sale SALE-20260815175912-1F8D (ID: 4) with 0 items
+INFO 2026-08-15 17:59:12 Sales.signals | Successfully reserved inventory for sale SALE-20260815175912-1F8D (ID: 4) | Items: 0
+DEBUG 2026-08-15 17:59:12 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:12 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:59:12 Sales.signals | Starting inventory reservation for sale SALE-20260815175912-1F8D (ID: 4) with 1 items
+DEBUG 2026-08-15 17:59:12 Sales.signals | Processing reservation for product: Potato Chips (ID: 7) | Qty: 2
+DEBUG 2026-08-15 17:59:12 Sales.signals | Successfully reserved 2 units of Potato Chips | Reserved: 0 -> 2
+INFO 2026-08-15 17:59:12 Sales.signals | Successfully reserved inventory for sale SALE-20260815175912-1F8D (ID: 4) | Items: 1
+INFO 2026-08-15 17:59:12 Sales.views | Confirm request for sale SALE-20260815175912-1F8D (ID: 4)
+DEBUG 2026-08-15 17:59:12 Sales.views | Marking sale SALE-20260815175912-1F8D as COMPLETED
+DEBUG 2026-08-15 17:59:12 Sales.signals | Sale signal triggered: SALE-20260815175912-1F8D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:59:12 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:12 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:59:12 Sales.signals | Location acquired for sale SALE-20260815175912-1F8D: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:59:12 Sales.signals | Sale SALE-20260815175912-1F8D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 17:59:12 Sales.views | Sale SALE-20260815175912-1F8D marked COMPLETED. Queuing async inventory task.
+ERROR 2026-08-15 17:59:12 Sales.views | Failed to queue inventory task for sale SALE-20260815175912-1F8D: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-08-15 17:59:12 Sales.signals | Sale signal triggered: SALE-20260815175912-1F8D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:59:12 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:12 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:59:12 Sales.signals | Location acquired for sale SALE-20260815175912-1F8D: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:59:12 Sales.signals | Sale SALE-20260815175912-1F8D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-08-15 17:59:12 Sales.views | Falling back to synchronous inventory completion for sale SALE-20260815175912-1F8D.
+INFO 2026-08-15 17:59:12 Sales.tasks | Starting inventory completion for sale ID: 4
+DEBUG 2026-08-15 17:59:12 Sales.tasks | Fetched sale SALE-20260815175912-1F8D (ID: 4)
+DEBUG 2026-08-15 17:59:12 Sales.tasks | Using location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:59:13 Sales.tasks | Deducting 2 units of Potato Chips @ $3.50
+DEBUG 2026-08-15 17:59:13 Sales.tasks | Successfully deducted 2 units of Potato Chips. Stock: 20 → 18
+DEBUG 2026-08-15 17:59:13 Sales.signals | Sale signal triggered: SALE-20260815175912-1F8D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:59:13 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:13 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:59:13 Sales.signals | Location acquired for sale SALE-20260815175912-1F8D: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:59:13 Sales.signals | Sale SALE-20260815175912-1F8D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 17:59:13 Sales.tasks | Inventory deduction completed for sale SALE-20260815175912-1F8D (ID: 4). Items: 1, Total Value: $7.00
+DEBUG 2026-08-15 17:59:13 Sales.signals | Sale signal triggered: SALE-20260815175912-1F8D | ID: 4 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-08-15 17:59:13 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:13 Sales.signals | Using existing location: Main Warehouse (ID: 5)
+DEBUG 2026-08-15 17:59:13 Sales.signals | Location acquired for sale SALE-20260815175912-1F8D: Main Warehouse (ID: 5)
+INFO 2026-08-15 17:59:13 Sales.signals | Sale SALE-20260815175912-1F8D (ID: 4) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-08-15 17:59:13 Sales.views | Synchronous inventory completion succeeded for sale SALE-20260815175912-1F8D.
+DEBUG 2026-08-15 17:59:16 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 25.00 | Method: CASH
+DEBUG 2026-08-15 17:59:16 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 25.00 | Balance: 75.00
+DEBUG 2026-08-15 17:59:16 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 75.00
+DEBUG 2026-08-15 17:59:16 Sales.signals | Payment recorded for layby LB-RECON-001 (ID: 3) | Amount: 15.00 | Method: CARD
+DEBUG 2026-08-15 17:59:16 Sales.signals | Layby LB-RECON-001 (ID: 3) | Total Amount: 100.00 | Total Paid: 40.00 | Balance: 60.00
+DEBUG 2026-08-15 17:59:16 Sales.signals | Layby LB-RECON-001 (ID: 3) still has balance: 60.00
+DEBUG 2026-08-15 17:59:19 Sales.signals | Sale signal triggered: SALE-20260815175919-68A5 | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:59:19 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:19 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 17:59:19 Sales.signals | Location acquired for sale SALE-20260815175919-68A5: Bundle Warehouse (ID: 7)
+INFO 2026-08-15 17:59:19 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175919-68A5 (ID: 5)
+DEBUG 2026-08-15 17:59:19 Sales.signals | Starting inventory reservation for sale SALE-20260815175919-68A5 (ID: 5) with 0 items
+INFO 2026-08-15 17:59:19 Sales.signals | Successfully reserved inventory for sale SALE-20260815175919-68A5 (ID: 5) | Items: 0
+DEBUG 2026-08-15 17:59:19 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:19 Sales.signals | Using existing location: Bundle Warehouse (ID: 7)
+DEBUG 2026-08-15 17:59:19 Sales.signals | Starting inventory reservation for sale SALE-20260815175919-68A5 (ID: 5) with 1 items
+DEBUG 2026-08-15 17:59:19 Sales.signals | Processing reservation for product: Energy Drink (ID: 9) | Qty: 7
+DEBUG 2026-08-15 17:59:19 Sales.signals | Successfully reserved 7 units of Energy Drink | Reserved: 0 -> 7
+INFO 2026-08-15 17:59:19 Sales.signals | Successfully reserved inventory for sale SALE-20260815175919-68A5 (ID: 5) | Items: 1
+DEBUG 2026-08-15 17:59:22 Sales.signals | Sale signal triggered: SALE-20260815175922-E37E | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-08-15 17:59:22 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:22 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 17:59:22 Sales.signals | Location acquired for sale SALE-20260815175922-E37E: Bundle Warehouse (ID: 8)
+INFO 2026-08-15 17:59:22 Sales.signals | Initiating inventory reservation for pending sale SALE-20260815175922-E37E (ID: 6)
+DEBUG 2026-08-15 17:59:22 Sales.signals | Starting inventory reservation for sale SALE-20260815175922-E37E (ID: 6) with 0 items
+INFO 2026-08-15 17:59:22 Sales.signals | Successfully reserved inventory for sale SALE-20260815175922-E37E (ID: 6) | Items: 0
+DEBUG 2026-08-15 17:59:22 Sales.signals | Attempting to locate or create default inventory location
+DEBUG 2026-08-15 17:59:22 Sales.signals | Using existing location: Bundle Warehouse (ID: 8)
+DEBUG 2026-08-15 17:59:22 Sales.signals | Starting inventory reservation for sale SALE-20260815175922-E37E (ID: 6) with 1 items
+DEBUG 2026-08-15 17:59:22 Sales.signals | Processing reservation for product: Energy Drink (ID: 10) | Qty: 6
+DEBUG 2026-08-15 17:59:22 Sales.signals | Successfully reserved 6 units of Energy Drink | Reserved: 0 -> 6
+INFO 2026-08-15 17:59:22 Sales.signals | Successfully reserved inventory for sale SALE-20260815175922-E37E (ID: 6) | Items: 1
+DEBUG 2026-09-08 09:08:54 Sales.signals | Sale signal triggered: SALE-20260908090854-8D92 | ID: 1 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-09-08 09:08:54 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 09:08:54 Sales.signals | No branch provided — falling back to global location lookup
+WARNING 2026-09-08 09:08:54 Sales.signals | No active locations found anywhere. Creating global 'Main Warehouse'.
+ERROR 2026-09-08 09:08:54 Sales.signals | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (1, 2026-09-08 09:08:54.71645+00, 2026-09-08 09:08:54.716525+00, Main Warehouse, , t, null, null, null, 1c30b263-c434-417e-8199-ef77fd6cab22, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (1, 2026-09-08 09:08:54.71645+00, 2026-09-08 09:08:54.716525+00, Main Warehouse, , t, null, null, null, 1c30b263-c434-417e-8199-ef77fd6cab22, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (1, 2026-09-08 09:08:54.71645+00, 2026-09-08 09:08:54.716525+00, Main Warehouse, , t, null, null, null, 1c30b263-c434-417e-8199-ef77fd6cab22, null, t, null).
+
+ERROR 2026-09-08 09:08:54 Sales.signals | Failed to acquire location for sale SALE-20260908090854-8D92 (ID: 1). Inventory operations cannot proceed.
+DEBUG 2026-09-08 09:44:39 Sales.signals | Sale signal triggered: SALE-20260908094439-3911 | ID: 2 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-09-08 09:44:39 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 09:44:39 Sales.signals | No branch provided — falling back to global location lookup
+WARNING 2026-09-08 09:44:39 Sales.signals | No active locations found anywhere. Creating global 'Main Warehouse'.
+ERROR 2026-09-08 09:44:40 Sales.signals | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (2, 2026-09-08 09:44:40.005723+00, 2026-09-08 09:44:40.005784+00, Main Warehouse, , t, null, null, null, 59fded26-67be-4484-bdd7-8a4909955edd, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (2, 2026-09-08 09:44:40.005723+00, 2026-09-08 09:44:40.005784+00, Main Warehouse, , t, null, null, null, 59fded26-67be-4484-bdd7-8a4909955edd, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (2, 2026-09-08 09:44:40.005723+00, 2026-09-08 09:44:40.005784+00, Main Warehouse, , t, null, null, null, 59fded26-67be-4484-bdd7-8a4909955edd, null, t, null).
+
+ERROR 2026-09-08 09:44:40 Sales.signals | Failed to acquire location for sale SALE-20260908094439-3911 (ID: 2). Inventory operations cannot proceed.
+DEBUG 2026-09-08 09:46:05 Sales.signals | Sale signal triggered: SALE-20260908094605-4968 | ID: 3 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-09-08 09:46:05 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 09:46:05 Sales.signals | No branch provided — falling back to global location lookup
+WARNING 2026-09-08 09:46:05 Sales.signals | No active locations found anywhere. Creating global 'Main Warehouse'.
+ERROR 2026-09-08 09:46:05 Sales.signals | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (3, 2026-09-08 09:46:05.266861+00, 2026-09-08 09:46:05.266931+00, Main Warehouse, , t, null, null, null, 8bf021a0-ad30-482d-8845-a4410d49624e, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (3, 2026-09-08 09:46:05.266861+00, 2026-09-08 09:46:05.266931+00, Main Warehouse, , t, null, null, null, 8bf021a0-ad30-482d-8845-a4410d49624e, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (3, 2026-09-08 09:46:05.266861+00, 2026-09-08 09:46:05.266931+00, Main Warehouse, , t, null, null, null, 8bf021a0-ad30-482d-8845-a4410d49624e, null, t, null).
+
+ERROR 2026-09-08 09:46:05 Sales.signals | Failed to acquire location for sale SALE-20260908094605-4968 (ID: 3). Inventory operations cannot proceed.
+DEBUG 2026-09-08 09:49:06 Sales.signals | Sale signal triggered: SALE-20260908094906-1CE7 | ID: 4 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-09-08 09:49:06 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 09:49:06 Sales.signals | No branch provided — falling back to global location lookup
+WARNING 2026-09-08 09:49:06 Sales.signals | No active locations found anywhere. Creating global 'Main Warehouse'.
+ERROR 2026-09-08 09:49:06 Sales.signals | DB integrity error resolving location for (no branch): null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (4, 2026-09-08 09:49:06.159633+00, 2026-09-08 09:49:06.159702+00, Main Warehouse, , t, null, null, null, 76f70989-ac12-47cc-bf3d-c0c9a559cf16, null, t, null).
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 948, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 635, in get
+    raise self.model.DoesNotExist(
+Inventory.models.Location.DoesNotExist: Location matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (4, 2026-09-08 09:49:06.159633+00, 2026-09-08 09:49:06.159702+00, Main Warehouse, , t, null, null, null, 76f70989-ac12-47cc-bf3d-c0c9a559cf16, null, t, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/signals.py", line 193, in _get_or_create_location
+    location, created = Location.objects.get_or_create(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 955, in get_or_create
+    return self.create(**params), True
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 665, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/query.py", line 1873, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "created_by_id" of relation "Inventory_location" violates not-null constraint
+DETAIL:  Failing row contains (4, 2026-09-08 09:49:06.159633+00, 2026-09-08 09:49:06.159702+00, Main Warehouse, , t, null, null, null, 76f70989-ac12-47cc-bf3d-c0c9a559cf16, null, t, null).
+
+ERROR 2026-09-08 09:49:06 Sales.signals | Failed to acquire location for sale SALE-20260908094906-1CE7 (ID: 4). Inventory operations cannot proceed.
+DEBUG 2026-09-08 11:52:15 Sales.signals | Sale signal triggered: SALE-20260908115215-6CF4 | ID: 5 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-09-08 11:52:15 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 11:52:15 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-09-08 11:52:15 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-09-08 11:52:15 Sales.signals | Location acquired for sale SALE-20260908115215-6CF4: Main Warehouse (ID: 5)
+INFO 2026-09-08 11:52:15 Sales.signals | Initiating inventory reservation for pending sale SALE-20260908115215-6CF4 (ID: 5)
+DEBUG 2026-09-08 11:52:15 Sales.signals | Starting inventory reservation for sale SALE-20260908115215-6CF4 (ID: 5) with 0 items
+INFO 2026-09-08 11:52:15 Sales.signals | Successfully reserved inventory for sale SALE-20260908115215-6CF4 (ID: 5) | Items: 0
+DEBUG 2026-09-08 11:52:15 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 11:52:15 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-09-08 11:52:15 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-09-08 11:52:15 Sales.signals | Starting inventory reservation for sale SALE-20260908115215-6CF4 (ID: 5) with 3 items
+DEBUG 2026-09-08 11:52:15 Sales.signals | Processing reservation for product: bt speaker (ID: 8) | Qty: 1
+DEBUG 2026-09-08 11:52:15 Sales.signals | Successfully reserved 1 units of bt speaker | Reserved: 0 -> 1
+DEBUG 2026-09-08 11:52:15 Sales.signals | Processing reservation for product: TV (ID: 7) | Qty: 1
+DEBUG 2026-09-08 11:52:15 Sales.signals | Successfully reserved 1 units of TV | Reserved: 0 -> 1
+DEBUG 2026-09-08 11:52:15 Sales.signals | Processing reservation for product: Flask (ID: 6) | Qty: 1
+DEBUG 2026-09-08 11:52:15 Sales.signals | Successfully reserved 1 units of Flask | Reserved: 0 -> 1
+INFO 2026-09-08 11:52:15 Sales.signals | Successfully reserved inventory for sale SALE-20260908115215-6CF4 (ID: 5) | Items: 3
+INFO 2026-09-08 11:52:15 Sales.views | Confirm request for sale SALE-20260908115215-6CF4 (ID: 5)
+DEBUG 2026-09-08 11:52:15 Sales.views | Payment method set to: CASH
+DEBUG 2026-09-08 11:52:15 Sales.views | Amount received: 68
+DEBUG 2026-09-08 11:52:15 Sales.views | Marking sale SALE-20260908115215-6CF4 as COMPLETED
+DEBUG 2026-09-08 11:52:15 Sales.signals | Sale signal triggered: SALE-20260908115215-6CF4 | ID: 5 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-09-08 11:52:15 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 11:52:15 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-09-08 11:52:15 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-09-08 11:52:15 Sales.signals | Location acquired for sale SALE-20260908115215-6CF4: Main Warehouse (ID: 5)
+INFO 2026-09-08 11:52:15 Sales.signals | Sale SALE-20260908115215-6CF4 (ID: 5) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-09-08 11:52:15 Sales.views | Sale SALE-20260908115215-6CF4 marked COMPLETED. Queuing async inventory task.
+ERROR 2026-09-08 11:52:16 Sales.views | Failed to queue inventory task for sale SALE-20260908115215-6CF4: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-09-08 11:52:16 Sales.signals | Sale signal triggered: SALE-20260908115215-6CF4 | ID: 5 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-09-08 11:52:16 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 11:52:16 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-09-08 11:52:16 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-09-08 11:52:16 Sales.signals | Location acquired for sale SALE-20260908115215-6CF4: Main Warehouse (ID: 5)
+INFO 2026-09-08 11:52:16 Sales.signals | Sale SALE-20260908115215-6CF4 (ID: 5) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-09-08 11:52:16 Sales.views | Falling back to synchronous inventory completion for sale SALE-20260908115215-6CF4.
+INFO 2026-09-08 11:52:16 Sales.tasks | Starting inventory completion for sale ID: 5
+DEBUG 2026-09-08 11:52:16 Sales.tasks | Fetched sale SALE-20260908115215-6CF4 (ID: 5)
+DEBUG 2026-09-08 11:52:16 Sales.tasks | Using location: Main Warehouse (ID: 5)
+DEBUG 2026-09-08 11:52:16 Sales.tasks | Deducting 1 units of bt speaker @ $10.00
+DEBUG 2026-09-08 11:52:16 Sales.tasks | Successfully deducted 1 units of bt speaker. Stock: 20 → 19
+DEBUG 2026-09-08 11:52:16 Sales.tasks | Deducting 1 units of TV @ $50.00
+DEBUG 2026-09-08 11:52:17 Sales.tasks | Successfully deducted 1 units of TV. Stock: 10 → 9
+DEBUG 2026-09-08 11:52:17 Sales.tasks | Deducting 1 units of Flask @ $8.00
+DEBUG 2026-09-08 11:52:17 Sales.tasks | Successfully deducted 1 units of Flask. Stock: 10 → 9
+DEBUG 2026-09-08 11:52:17 Sales.signals | Sale signal triggered: SALE-20260908115215-6CF4 | ID: 5 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-09-08 11:52:17 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 11:52:17 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-09-08 11:52:17 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-09-08 11:52:17 Sales.signals | Location acquired for sale SALE-20260908115215-6CF4: Main Warehouse (ID: 5)
+INFO 2026-09-08 11:52:17 Sales.signals | Sale SALE-20260908115215-6CF4 (ID: 5) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-09-08 11:52:17 Sales.tasks | Inventory deduction completed for sale SALE-20260908115215-6CF4 (ID: 5). Items: 3, Total Value: $68.00
+DEBUG 2026-09-08 11:52:17 Sales.signals | Sale signal triggered: SALE-20260908115215-6CF4 | ID: 5 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-09-08 11:52:17 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-09-08 11:52:17 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-09-08 11:52:17 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-09-08 11:52:17 Sales.signals | Location acquired for sale SALE-20260908115215-6CF4: Main Warehouse (ID: 5)
+INFO 2026-09-08 11:52:17 Sales.signals | Sale SALE-20260908115215-6CF4 (ID: 5) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-09-08 11:52:17 Sales.views | Synchronous inventory completion succeeded for sale SALE-20260908115215-6CF4.
+DEBUG 2026-10-04 13:31:45 Sales.signals | Sale signal triggered: SALE-20261004133145-2844 | ID: 6 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-10-04 13:31:45 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-04 13:31:45 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-04 13:31:45 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-04 13:31:45 Sales.signals | Location acquired for sale SALE-20261004133145-2844: Main Warehouse (ID: 5)
+INFO 2026-10-04 13:31:45 Sales.signals | Initiating inventory reservation for pending sale SALE-20261004133145-2844 (ID: 6)
+DEBUG 2026-10-04 13:31:45 Sales.signals | Starting inventory reservation for sale SALE-20261004133145-2844 (ID: 6) with 0 items
+INFO 2026-10-04 13:31:45 Sales.signals | Successfully reserved inventory for sale SALE-20261004133145-2844 (ID: 6) | Items: 0
+DEBUG 2026-10-04 13:32:23 Sales.signals | Sale signal triggered: SALE-20261004133223-255B | ID: 7 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-10-04 13:32:23 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-04 13:32:23 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-04 13:32:23 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-04 13:32:23 Sales.signals | Location acquired for sale SALE-20261004133223-255B: Main Warehouse (ID: 5)
+INFO 2026-10-04 13:32:23 Sales.signals | Initiating inventory reservation for pending sale SALE-20261004133223-255B (ID: 7)
+DEBUG 2026-10-04 13:32:23 Sales.signals | Starting inventory reservation for sale SALE-20261004133223-255B (ID: 7) with 0 items
+INFO 2026-10-04 13:32:23 Sales.signals | Successfully reserved inventory for sale SALE-20261004133223-255B (ID: 7) | Items: 0
+DEBUG 2026-10-04 13:32:40 Sales.signals | Sale signal triggered: SALE-20261004133240-6DBD | ID: 8 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-10-04 13:32:40 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-04 13:32:40 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-04 13:32:40 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-04 13:32:40 Sales.signals | Location acquired for sale SALE-20261004133240-6DBD: Main Warehouse (ID: 5)
+INFO 2026-10-04 13:32:40 Sales.signals | Initiating inventory reservation for pending sale SALE-20261004133240-6DBD (ID: 8)
+DEBUG 2026-10-04 13:32:40 Sales.signals | Starting inventory reservation for sale SALE-20261004133240-6DBD (ID: 8) with 0 items
+INFO 2026-10-04 13:32:40 Sales.signals | Successfully reserved inventory for sale SALE-20261004133240-6DBD (ID: 8) | Items: 0
+DEBUG 2026-10-04 13:32:50 Sales.signals | Sale signal triggered: SALE-20261004133250-E26C | ID: 9 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-10-04 13:32:50 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-04 13:32:50 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-04 13:32:50 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-04 13:32:50 Sales.signals | Location acquired for sale SALE-20261004133250-E26C: Main Warehouse (ID: 5)
+INFO 2026-10-04 13:32:50 Sales.signals | Initiating inventory reservation for pending sale SALE-20261004133250-E26C (ID: 9)
+DEBUG 2026-10-04 13:32:50 Sales.signals | Starting inventory reservation for sale SALE-20261004133250-E26C (ID: 9) with 0 items
+INFO 2026-10-04 13:32:50 Sales.signals | Successfully reserved inventory for sale SALE-20261004133250-E26C (ID: 9) | Items: 0
+DEBUG 2026-10-04 13:32:55 Sales.signals | Sale signal triggered: SALE-20261004133255-E255 | ID: 10 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-10-04 13:32:55 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-04 13:32:55 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-04 13:32:55 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-04 13:32:55 Sales.signals | Location acquired for sale SALE-20261004133255-E255: Main Warehouse (ID: 5)
+INFO 2026-10-04 13:32:55 Sales.signals | Initiating inventory reservation for pending sale SALE-20261004133255-E255 (ID: 10)
+DEBUG 2026-10-04 13:32:55 Sales.signals | Starting inventory reservation for sale SALE-20261004133255-E255 (ID: 10) with 0 items
+INFO 2026-10-04 13:32:55 Sales.signals | Successfully reserved inventory for sale SALE-20261004133255-E255 (ID: 10) | Items: 0
+DEBUG 2026-10-11 09:11:44 Sales.signals | Sale signal triggered: SALE-20261011091144-1D8B | ID: 11 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-10-11 09:11:44 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:11:44 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:11:44 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:11:44 Sales.signals | Location acquired for sale SALE-20261011091144-1D8B: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:11:44 Sales.signals | Initiating inventory reservation for pending sale SALE-20261011091144-1D8B (ID: 11)
+DEBUG 2026-10-11 09:11:44 Sales.signals | Starting inventory reservation for sale SALE-20261011091144-1D8B (ID: 11) with 0 items
+INFO 2026-10-11 09:11:44 Sales.signals | Successfully reserved inventory for sale SALE-20261011091144-1D8B (ID: 11) | Items: 0
+DEBUG 2026-10-11 09:11:44 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:11:44 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:11:44 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:11:44 Sales.signals | Starting inventory reservation for sale SALE-20261011091144-1D8B (ID: 11) with 2 items
+DEBUG 2026-10-11 09:11:44 Sales.signals | Processing reservation for product: bt speaker (ID: 8) | Qty: 3
+DEBUG 2026-10-11 09:11:45 Sales.signals | Successfully reserved 3 units of bt speaker | Reserved: 0 -> 3
+DEBUG 2026-10-11 09:11:45 Sales.signals | Processing reservation for product: TV (ID: 7) | Qty: 1
+DEBUG 2026-10-11 09:11:45 Sales.signals | Successfully reserved 1 units of TV | Reserved: 0 -> 1
+INFO 2026-10-11 09:11:45 Sales.signals | Successfully reserved inventory for sale SALE-20261011091144-1D8B (ID: 11) | Items: 2
+INFO 2026-10-11 09:11:45 Sales.views | Confirm request for sale SALE-20261011091144-1D8B (ID: 11)
+DEBUG 2026-10-11 09:11:45 Sales.views | Payment method set to: CASH
+DEBUG 2026-10-11 09:11:45 Sales.views | Amount received: 80
+DEBUG 2026-10-11 09:11:45 Sales.views | Marking sale SALE-20261011091144-1D8B as COMPLETED
+DEBUG 2026-10-11 09:11:45 Sales.signals | Sale signal triggered: SALE-20261011091144-1D8B | ID: 11 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:11:45 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:11:45 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:11:45 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:11:45 Sales.signals | Location acquired for sale SALE-20261011091144-1D8B: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:11:45 Sales.signals | Sale SALE-20261011091144-1D8B (ID: 11) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-10-11 09:11:45 Sales.views | Sale SALE-20261011091144-1D8B marked COMPLETED. Queuing async inventory task.
+ERROR 2026-10-11 09:11:46 Sales.views | Failed to queue inventory task for sale SALE-20261011091144-1D8B: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-10-11 09:11:46 Sales.signals | Sale signal triggered: SALE-20261011091144-1D8B | ID: 11 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:11:46 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:11:46 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:11:46 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:11:46 Sales.signals | Location acquired for sale SALE-20261011091144-1D8B: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:11:46 Sales.signals | Sale SALE-20261011091144-1D8B (ID: 11) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-10-11 09:11:46 Sales.views | Falling back to synchronous inventory completion for sale SALE-20261011091144-1D8B.
+INFO 2026-10-11 09:11:46 Sales.tasks | Starting inventory completion for sale ID: 11
+DEBUG 2026-10-11 09:11:46 Sales.tasks | Fetched sale SALE-20261011091144-1D8B (ID: 11)
+DEBUG 2026-10-11 09:11:46 Sales.tasks | Using location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:11:46 Sales.tasks | Deducting 3 units of bt speaker @ $10.00
+DEBUG 2026-10-11 09:11:46 Sales.tasks | Successfully deducted 3 units of bt speaker. Stock: 18 → 15
+DEBUG 2026-10-11 09:11:46 Sales.tasks | Deducting 1 units of TV @ $50.00
+DEBUG 2026-10-11 09:11:46 Sales.tasks | Successfully deducted 1 units of TV. Stock: 9 → 8
+DEBUG 2026-10-11 09:11:46 Sales.signals | Sale signal triggered: SALE-20261011091144-1D8B | ID: 11 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:11:46 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:11:46 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:11:46 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:11:46 Sales.signals | Location acquired for sale SALE-20261011091144-1D8B: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:11:46 Sales.signals | Sale SALE-20261011091144-1D8B (ID: 11) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-10-11 09:11:46 Sales.tasks | Inventory deduction completed for sale SALE-20261011091144-1D8B (ID: 11). Items: 2, Total Value: $80.00
+DEBUG 2026-10-11 09:11:46 Sales.signals | Sale signal triggered: SALE-20261011091144-1D8B | ID: 11 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:11:46 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:11:46 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:11:46 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:11:46 Sales.signals | Location acquired for sale SALE-20261011091144-1D8B: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:11:46 Sales.signals | Sale SALE-20261011091144-1D8B (ID: 11) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-10-11 09:11:46 Sales.views | Synchronous inventory completion succeeded for sale SALE-20261011091144-1D8B.
+DEBUG 2026-10-11 09:17:09 Sales.signals | Sale signal triggered: SALE-20261011091709-07AB | ID: 12 | Status: UNKNOWN -> PENDING | Created: True
+DEBUG 2026-10-11 09:17:09 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:17:09 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:17:09 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:17:09 Sales.signals | Location acquired for sale SALE-20261011091709-07AB: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:17:09 Sales.signals | Initiating inventory reservation for pending sale SALE-20261011091709-07AB (ID: 12)
+DEBUG 2026-10-11 09:17:09 Sales.signals | Starting inventory reservation for sale SALE-20261011091709-07AB (ID: 12) with 0 items
+INFO 2026-10-11 09:17:09 Sales.signals | Successfully reserved inventory for sale SALE-20261011091709-07AB (ID: 12) | Items: 0
+DEBUG 2026-10-11 09:17:09 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:17:09 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:17:09 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:17:09 Sales.signals | Starting inventory reservation for sale SALE-20261011091709-07AB (ID: 12) with 1 items
+DEBUG 2026-10-11 09:17:09 Sales.signals | Processing reservation for product: bt speaker (ID: 8) | Qty: 1
+DEBUG 2026-10-11 09:17:09 Sales.signals | Successfully reserved 1 units of bt speaker | Reserved: 0 -> 1
+INFO 2026-10-11 09:17:09 Sales.signals | Successfully reserved inventory for sale SALE-20261011091709-07AB (ID: 12) | Items: 1
+INFO 2026-10-11 09:17:10 Sales.views | Confirm request for sale SALE-20261011091709-07AB (ID: 12)
+DEBUG 2026-10-11 09:17:10 Sales.views | Payment method set to: CASH
+DEBUG 2026-10-11 09:17:10 Sales.views | Amount received: 5
+DEBUG 2026-10-11 09:17:10 Sales.views | Marking sale SALE-20261011091709-07AB as COMPLETED
+DEBUG 2026-10-11 09:17:10 Sales.signals | Sale signal triggered: SALE-20261011091709-07AB | ID: 12 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:17:10 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:17:10 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:17:10 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:17:10 Sales.signals | Location acquired for sale SALE-20261011091709-07AB: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:17:10 Sales.signals | Sale SALE-20261011091709-07AB (ID: 12) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-10-11 09:17:10 Sales.views | Sale SALE-20261011091709-07AB marked COMPLETED. Queuing async inventory task.
+ERROR 2026-10-11 09:17:10 Sales.views | Failed to queue inventory task for sale SALE-20261011091709-07AB: [Errno 111] Connection refused
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 32, in __call__
+    return self.__value__
+AttributeError: 'ChannelPromise' object has no attribute '__value__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/transport/pyamqp.py", line 203, in establish_connection
+    conn.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/connection.py", line 324, in connect
+    self.transport.connect()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 132, in connect
+    self._connect(self.host, self.port, self.connect_timeout)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/amqp/transport.py", line 187, in _connect
+    self.sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/willy/Desktop/willypos/backend/Sales/views.py", line 391, in confirm
+    task = complete_sale_inventory_task.delay(sale.id)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/celery/app/amqp.py", line 517, in send_task_message
+    ret = producer.publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 190, in publish
+    return _publish(
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 200, in _publish
+    channel = self.channel
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/utils/functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 460, in _ensure_connection
+    with ctx():
+  File "/usr/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/willy/Documents/pro/androidpos/backend/venv/lib/python3.10/site-packages/kombu/connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: [Errno 111] Connection refused
+DEBUG 2026-10-11 09:17:10 Sales.signals | Sale signal triggered: SALE-20261011091709-07AB | ID: 12 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:17:10 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:17:10 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:17:10 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:17:10 Sales.signals | Location acquired for sale SALE-20261011091709-07AB: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:17:10 Sales.signals | Sale SALE-20261011091709-07AB (ID: 12) marked COMPLETED. Inventory deduction will be processed by async task.
+WARNING 2026-10-11 09:17:10 Sales.views | Falling back to synchronous inventory completion for sale SALE-20261011091709-07AB.
+INFO 2026-10-11 09:17:10 Sales.tasks | Starting inventory completion for sale ID: 12
+DEBUG 2026-10-11 09:17:10 Sales.tasks | Fetched sale SALE-20261011091709-07AB (ID: 12)
+DEBUG 2026-10-11 09:17:10 Sales.tasks | Using location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:17:10 Sales.tasks | Deducting 1 units of bt speaker @ $5.00
+DEBUG 2026-10-11 09:17:10 Sales.tasks | Successfully deducted 1 units of bt speaker. Stock: 15 → 14
+DEBUG 2026-10-11 09:17:11 Sales.signals | Sale signal triggered: SALE-20261011091709-07AB | ID: 12 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:17:11 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:17:11 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:17:11 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:17:11 Sales.signals | Location acquired for sale SALE-20261011091709-07AB: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:17:11 Sales.signals | Sale SALE-20261011091709-07AB (ID: 12) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-10-11 09:17:11 Sales.tasks | Inventory deduction completed for sale SALE-20261011091709-07AB (ID: 12). Items: 1, Total Value: $5.00
+DEBUG 2026-10-11 09:17:11 Sales.signals | Sale signal triggered: SALE-20261011091709-07AB | ID: 12 | Status: UNKNOWN -> COMPLETED | Created: False
+DEBUG 2026-10-11 09:17:11 Sales.signals | Resolving inventory location for (no branch)
+DEBUG 2026-10-11 09:17:11 Sales.signals | No branch provided — falling back to global location lookup
+DEBUG 2026-10-11 09:17:11 Sales.signals | Using global location: Main Warehouse (ID: 5)
+DEBUG 2026-10-11 09:17:11 Sales.signals | Location acquired for sale SALE-20261011091709-07AB: Main Warehouse (ID: 5)
+INFO 2026-10-11 09:17:11 Sales.signals | Sale SALE-20261011091709-07AB (ID: 12) marked COMPLETED. Inventory deduction will be processed by async task.
+INFO 2026-10-11 09:17:11 Sales.views | Synchronous inventory completion succeeded for sale SALE-20261011091709-07AB.

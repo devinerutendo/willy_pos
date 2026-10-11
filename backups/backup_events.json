@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-07-09T20:23:05.625118+00:00",
+    "type": "MANUAL_BACKUP",
+    "message": "Manual backup created: manual-backup-20260709-202304.json",
+    "outcome": "SUCCESS",
+    "actor": "willy@pos.com",
+    "file": "manual-backup-20260709-202304.json"
+  },
+  {
+    "timestamp": "2026-06-24T13:55:23.794991+00:00",
+    "type": "DOWNLOAD",
+    "message": "Backup downloaded: manual-backup-20260624-135509.json",
+    "outcome": "SUCCESS",
+    "actor": "willy@pos.com",
+    "file": "manual-backup-20260624-135509.json"
+  },
+  {
+    "timestamp": "2026-06-24T13:55:10.398355+00:00",
+    "type": "MANUAL_BACKUP",
+    "message": "Manual backup created: manual-backup-20260624-135509.json",
+    "outcome": "SUCCESS",
+    "actor": "willy@pos.com",
+    "file": "manual-backup-20260624-135509.json"
+  }
+]

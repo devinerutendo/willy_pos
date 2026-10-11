@@ -1,0 +1,5158 @@
+[
+{
+  "model": "Accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$X2byhmnVlbQusohg8yVCdr$IE0+KZDQBIIKxmnHGFdwyiQiDevqy50cG7rjcTk9Hh4=",
+    "last_login": "2026-07-04T09:16:42.284Z",
+    "is_superuser": true,
+    "username": "willy@pos.com",
+    "first_name": "Willard",
+    "last_name": "Dhliwayo",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-06-20T15:25:24.185Z",
+    "email": "willy@pos.com",
+    "phone": "",
+    "role": "ADMIN",
+    "employee_id": null,
+    "branch": null,
+    "profile_image": "profiles/image10_mU7nOhP.jpg",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "Accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$fMcyiiZH7TWPcOW4pR35qB$LuzFodeK2gHebiwlZJ2htxb9YYEId9YtmmZNltVi84c=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "dee@pos.com",
+    "first_name": "dee",
+    "last_name": "dee",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-06-20T15:39:08.611Z",
+    "email": "dee@pos.com",
+    "phone": null,
+    "role": "MANAGER",
+    "employee_id": null,
+    "branch": null,
+    "profile_image": "profiles/DSC_0007.jpg",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "Inventory.category",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-23T13:12:38.974Z",
+    "updated_at": "2026-06-23T13:12:38.974Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "name": "lcd",
+    "description": "",
+    "is_active": true
+  }
+},
+{
+  "model": "Inventory.category",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-06-23T14:19:08.825Z",
+    "updated_at": "2026-06-23T14:19:08.825Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "name": "kitchenware",
+    "description": "",
+    "is_active": true
+  }
+},
+{
+  "model": "Inventory.product",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-23T14:21:01.577Z",
+    "updated_at": "2026-06-23T14:21:01.577Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "name": "cup",
+    "category": 2,
+    "sku": "KIT-0000",
+    "sku_sequence": 0,
+    "barcode": null,
+    "description": "nice cup",
+    "cost_price": "1.00",
+    "selling_price": "2.00",
+    "bundle_quantity": 6,
+    "bundle_price": "10.00",
+    "reorder_level": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "Inventory.product",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-06-23T14:22:26.379Z",
+    "updated_at": "2026-06-23T14:22:26.379Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "name": "p36 lcd",
+    "category": 1,
+    "sku": "LCD-0001",
+    "sku_sequence": 1,
+    "barcode": null,
+    "description": "itel p36 lcd",
+    "cost_price": "7.00",
+    "selling_price": "10.00",
+    "bundle_quantity": 5,
+    "bundle_price": "40.00",
+    "reorder_level": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "Inventory.location",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-23T14:24:13.390Z",
+    "updated_at": "2026-06-23T14:24:13.390Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "name": "Main Warehouse",
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "Inventory.stock",
+  "pk": 1,
+  "fields": {
+    "product": 2,
+    "location": 1,
+    "quantity": 13,
+    "reserved_quantity": 0
+  }
+},
+{
+  "model": "Inventory.stock",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "location": 1,
+    "quantity": 394,
+    "reserved_quantity": 0
+  }
+},
+{
+  "model": "Inventory.stocktransaction",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-23T14:24:13.491Z",
+    "updated_at": "2026-06-23T14:24:13.491Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "product": 2,
+    "location": 1,
+    "branch": null,
+    "pos_terminal": null,
+    "transaction_type": "IN",
+    "quantity": 10,
+    "reference": "PO-2026-06-001",
+    "notes": "Purchase from homecity"
+  }
+},
+{
+  "model": "Inventory.stocktransaction",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-06-23T14:24:13.587Z",
+    "updated_at": "2026-06-23T14:24:13.587Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "product": 1,
+    "location": 1,
+    "branch": null,
+    "pos_terminal": null,
+    "transaction_type": "IN",
+    "quantity": 50,
+    "reference": "PO-2026-06-001",
+    "notes": "Purchase from homecity"
+  }
+},
+{
+  "model": "Inventory.stocktransaction",
+  "pk": 3,
+  "fields": {
+    "created_at": "2026-06-30T21:40:15.265Z",
+    "updated_at": "2026-06-30T21:40:15.265Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "product": 1,
+    "location": 1,
+    "branch": null,
+    "pos_terminal": null,
+    "transaction_type": "ADJUSTMENT",
+    "quantity": 253,
+    "reference": "ADJ-1",
+    "notes": "count variance"
+  }
+},
+{
+  "model": "Inventory.stocktransaction",
+  "pk": 4,
+  "fields": {
+    "created_at": "2026-07-01T14:03:12.055Z",
+    "updated_at": "2026-07-01T14:03:12.055Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "product": 2,
+    "location": 1,
+    "branch": null,
+    "pos_terminal": null,
+    "transaction_type": "IN",
+    "quantity": 10,
+    "reference": "PO-2026-07-001",
+    "notes": "Purchase from homecity"
+  }
+},
+{
+  "model": "Inventory.stocktransaction",
+  "pk": 5,
+  "fields": {
+    "created_at": "2026-07-01T14:03:12.071Z",
+    "updated_at": "2026-07-01T14:03:12.071Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "product": 1,
+    "location": 1,
+    "branch": null,
+    "pos_terminal": null,
+    "transaction_type": "IN",
+    "quantity": 100,
+    "reference": "PO-2026-07-001",
+    "notes": "Purchase from homecity"
+  }
+},
+{
+  "model": "Inventory.stockadjustment",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-30T21:40:15.196Z",
+    "updated_at": "2026-06-30T21:40:15.196Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "product": 1,
+    "location": 1,
+    "branch": null,
+    "pos_terminal": null,
+    "quantity_before": 47,
+    "quantity_after": 300,
+    "quantity_delta": 253,
+    "reason": "count variance",
+    "reference": "",
+    "notes": ""
+  }
+},
+{
+  "model": "Inventory.supplier",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-23T14:23:22.942Z",
+    "updated_at": "2026-06-23T14:23:22.942Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "name": "homecity",
+    "email": "homecity@gmail.com",
+    "phone": "0777534718",
+    "address": "chivhu town",
+    "contact_person": "",
+    "is_active": true
+  }
+},
+{
+  "model": "Inventory.purchase",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-23T14:24:13.325Z",
+    "updated_at": "2026-06-23T14:24:13.325Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "supplier": 1,
+    "reference": "PO-2026-06-001",
+    "status": "RECEIVED",
+    "delivery_date": "2026-06-23",
+    "notes": "first order"
+  }
+},
+{
+  "model": "Inventory.purchase",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-07-01T14:03:11.987Z",
+    "updated_at": "2026-07-01T14:03:11.987Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "supplier": 1,
+    "reference": "PO-2026-07-001",
+    "status": "RECEIVED",
+    "delivery_date": "2026-07-01",
+    "notes": "new order"
+  }
+},
+{
+  "model": "Inventory.purchaseitem",
+  "pk": 1,
+  "fields": {
+    "purchase": 1,
+    "product": 2,
+    "quantity": 10,
+    "cost_price": "7.00",
+    "received_quantity": 10
+  }
+},
+{
+  "model": "Inventory.purchaseitem",
+  "pk": 2,
+  "fields": {
+    "purchase": 1,
+    "product": 1,
+    "quantity": 50,
+    "cost_price": "1.00",
+    "received_quantity": 50
+  }
+},
+{
+  "model": "Inventory.purchaseitem",
+  "pk": 3,
+  "fields": {
+    "purchase": 2,
+    "product": 2,
+    "quantity": 10,
+    "cost_price": "7.00",
+    "received_quantity": 10
+  }
+},
+{
+  "model": "Inventory.purchaseitem",
+  "pk": 4,
+  "fields": {
+    "purchase": 2,
+    "product": 1,
+    "quantity": 100,
+    "cost_price": "1.00",
+    "received_quantity": 100
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 1,
+  "fields": {
+    "created_at": "2026-06-23T14:31:04.811Z",
+    "updated_at": "2026-06-23T14:31:05.417Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260623143104-7BF3",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 2,
+  "fields": {
+    "created_at": "2026-07-24T18:13:29.182Z",
+    "updated_at": "2026-07-24T18:13:29.601Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260724181329-0922",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 3,
+  "fields": {
+    "created_at": "2026-06-26T08:19:53.695Z",
+    "updated_at": "2026-06-26T08:19:54.225Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260626081953-1024",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 4,
+  "fields": {
+    "created_at": "2026-06-30T20:58:08.238Z",
+    "updated_at": "2026-06-30T20:58:08.515Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260630205808-2A4F",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 5,
+  "fields": {
+    "created_at": "2026-06-30T21:03:44.121Z",
+    "updated_at": "2026-06-30T21:03:44.320Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260630210344-14CE",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 6,
+  "fields": {
+    "created_at": "2026-07-03T09:13:29.814Z",
+    "updated_at": "2026-07-03T09:13:30.228Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260703091329-F61B",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "100.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 7,
+  "fields": {
+    "created_at": "2026-07-03T10:23:22.944Z",
+    "updated_at": "2026-07-03T10:23:23.113Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260703102322-1DA1",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 8,
+  "fields": {
+    "created_at": "2026-07-03T10:38:48.964Z",
+    "updated_at": "2026-07-03T10:38:49.157Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260703103848-BFB8",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 9,
+  "fields": {
+    "created_at": "2026-07-03T11:02:31.708Z",
+    "updated_at": "2026-07-03T11:02:31.873Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260703110231-1640",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 10,
+  "fields": {
+    "created_at": "2026-07-03T11:18:05.325Z",
+    "updated_at": "2026-07-03T11:18:05.491Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260703111805-EF21",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.sale",
+  "pk": 11,
+  "fields": {
+    "created_at": "2026-07-03T11:18:48.277Z",
+    "updated_at": "2026-07-03T11:18:48.464Z",
+    "created_by": [
+      "willy@pos.com"
+    ],
+    "updated_by": [
+      "willy@pos.com"
+    ],
+    "customer": null,
+    "sold_by": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "pos_terminal": null,
+    "reference": "SALE-20260703111848-E1FE",
+    "status": "COMPLETED",
+    "notes": "",
+    "payment_method": "cash",
+    "layby": null,
+    "amount_received": null,
+    "change_amount": "0.00",
+    "inventory_sync_status": "SUCCESS",
+    "inventory_completed": true,
+    "celery_task_id": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 1,
+  "fields": {
+    "sale": 1,
+    "product": 2,
+    "quantity": 1,
+    "unit_price": "9.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 2,
+  "fields": {
+    "sale": 2,
+    "product": 2,
+    "quantity": 1,
+    "unit_price": "10.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 3,
+  "fields": {
+    "sale": 3,
+    "product": 2,
+    "quantity": 1,
+    "unit_price": "10.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 4,
+  "fields": {
+    "sale": 3,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 5,
+  "fields": {
+    "sale": 4,
+    "product": 2,
+    "quantity": 1,
+    "unit_price": "10.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 6,
+  "fields": {
+    "sale": 4,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 7,
+  "fields": {
+    "sale": 5,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 8,
+  "fields": {
+    "sale": 6,
+    "product": 2,
+    "quantity": 1,
+    "unit_price": "10.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 9,
+  "fields": {
+    "sale": 6,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 10,
+  "fields": {
+    "sale": 7,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 11,
+  "fields": {
+    "sale": 8,
+    "product": 2,
+    "quantity": 1,
+    "unit_price": "10.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 12,
+  "fields": {
+    "sale": 8,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 13,
+  "fields": {
+    "sale": 9,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 14,
+  "fields": {
+    "sale": 10,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 15,
+  "fields": {
+    "sale": 11,
+    "product": 2,
+    "quantity": 1,
+    "unit_price": "10.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Sales.saleitem",
+  "pk": 16,
+  "fields": {
+    "sale": 11,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "2.00",
+    "discount_percentage": "0.00",
+    "discount_amount": "0.00",
+    "bundle_quantity": null,
+    "bundle_price": null
+  }
+},
+{
+  "model": "Notifications.notification",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "dee@pos.com"
+    ],
+    "notification_type": "out_of_stock",
+    "level": "warning",
+    "title": "p36 lcd is out of stock",
+    "message": "p36 lcd is out of stock at Main Warehouse. Reorder immediately to avoid lost sales.",
+    "payload": {
+      "quantity": 0,
+      "stock_id": 1,
+      "product_id": 2,
+      "location_id": 1,
+      "product_name": "p36 lcd",
+      "location_name": "Main Warehouse",
+      "reorder_level": 5
+    },
+    "is_read": true,
+    "created_at": "2026-06-23T14:24:13.450Z",
+    "resolved_at": null,
+    "related_object_type": "Stock",
+    "related_object_id": "1"
+  }
+},
+{
+  "model": "Notifications.notification",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "dee@pos.com"
+    ],
+    "notification_type": "out_of_stock",
+    "level": "warning",
+    "title": "cup is out of stock",
+    "message": "cup is out of stock at Main Warehouse. Reorder immediately to avoid lost sales.",
+    "payload": {
+      "quantity": 0,
+      "stock_id": 2,
+      "product_id": 1,
+      "location_id": 1,
+      "product_name": "cup",
+      "location_name": "Main Warehouse",
+      "reorder_level": 5
+    },
+    "is_read": true,
+    "created_at": "2026-06-23T14:24:13.559Z",
+    "resolved_at": null,
+    "related_object_type": "Stock",
+    "related_object_id": "2"
+  }
+},
+{
+  "model": "Notifications.notificationlog",
+  "pk": 1,
+  "fields": {
+    "notification": 1,
+    "channel": "in_app",
+    "status": "pending",
+    "attempted_at": "2026-06-23T14:24:13.464Z",
+    "response": null
+  }
+},
+{
+  "model": "Notifications.notificationlog",
+  "pk": 2,
+  "fields": {
+    "notification": 2,
+    "channel": "in_app",
+    "status": "pending",
+    "attempted_at": "2026-06-23T14:24:13.561Z",
+    "response": null
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "098c31bc5b4fe348e7f66c01cb93320c414849b3",
+  "fields": {
+    "user": [
+      "willy@pos.com"
+    ],
+    "created": "2026-07-03T07:43:17.609Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "23d06653bfb646376b6e47adec6b03520a246fa8",
+  "fields": {
+    "user": [
+      "dee@pos.com"
+    ],
+    "created": "2026-06-20T19:49:10.575Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 1,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Accounts.User",
+    "object_pk": "1",
+    "object_repr": "willard d (willy@pos.com)",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "role": {
+        "to": "SALES",
+        "from": null
+      },
+      "email": {
+        "to": "willy@pos.com",
+        "from": null
+      },
+      "is_staff": {
+        "to": true,
+        "from": null
+      },
+      "password": {
+        "to": "pbkdf2_sha256$1000000$X2byhmnVlbQusohg8yVCdr$IE0+KZDQBIIKxmnHGFdwyiQiDevqy50cG7rjcTk9Hh4=",
+        "from": null
+      },
+      "username": {
+        "to": "willy",
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "last_name": {
+        "to": "d",
+        "from": null
+      },
+      "first_name": {
+        "to": "willard",
+        "from": null
+      },
+      "date_joined": {
+        "to": "2026-06-20 15:25:24.185837+00:00",
+        "from": null
+      },
+      "is_superuser": {
+        "to": true,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-20T15:25:24.739Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 2,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Accounts.User",
+    "object_pk": "1",
+    "object_repr": "willard d (willy@pos.com)",
+    "changes": {
+      "role": {
+        "to": "ADMIN",
+        "from": "SALES"
+      },
+      "username": {
+        "to": "willy@pos.com",
+        "from": "willy"
+      },
+      "profile_image": {
+        "to": "profiles/image10_mU7nOhP.jpg",
+        "from": ""
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-20T15:31:24.250Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 3,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Accounts.User",
+    "object_pk": "1",
+    "object_repr": "Willard Dhliwayo (willy@pos.com)",
+    "changes": {
+      "phone": {
+        "to": "",
+        "from": null
+      },
+      "last_name": {
+        "to": "Dhliwayo",
+        "from": "d"
+      },
+      "first_name": {
+        "to": "Willard",
+        "from": "willard"
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-20T15:35:10.933Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 4,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Accounts.User",
+    "object_pk": "2",
+    "object_repr": "dee dee (dee@pos.com)",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "role": {
+        "to": "INVENTORY",
+        "from": null
+      },
+      "email": {
+        "to": "dee@pos.com",
+        "from": null
+      },
+      "is_staff": {
+        "to": false,
+        "from": null
+      },
+      "password": {
+        "to": "pbkdf2_sha256$1000000$fMcyiiZH7TWPcOW4pR35qB$LuzFodeK2gHebiwlZJ2htxb9YYEId9YtmmZNltVi84c=",
+        "from": null
+      },
+      "username": {
+        "to": "dee@pos.com",
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "last_name": {
+        "to": "dee",
+        "from": null
+      },
+      "first_name": {
+        "to": "dee",
+        "from": null
+      },
+      "date_joined": {
+        "to": "2026-06-20 15:39:08.611638+00:00",
+        "from": null
+      },
+      "is_superuser": {
+        "to": false,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-20T15:39:09.222Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 5,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Accounts.User",
+    "object_pk": "2",
+    "object_repr": "dee dee (dee@pos.com)",
+    "changes": {
+      "profile_image": {
+        "to": "profiles/DSC_0007.jpg",
+        "from": ""
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-20T15:40:17.989Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 6,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Accounts.User",
+    "object_pk": "2",
+    "object_repr": "dee dee (dee@pos.com)",
+    "changes": {
+      "role": {
+        "to": "MANAGER",
+        "from": "INVENTORY"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-20T19:46:55.216Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 7,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Category",
+    "object_pk": "1",
+    "object_repr": "lcd",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "name": {
+        "to": "lcd",
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T13:12:38.991Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 8,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Category",
+    "object_pk": "2",
+    "object_repr": "kitchenware",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "name": {
+        "to": "kitchenware",
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:19:08.829Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 9,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Product",
+    "object_pk": "1",
+    "object_repr": "cup",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "sku": {
+        "to": "KIT-0000",
+        "from": null
+      },
+      "name": {
+        "to": "cup",
+        "from": null
+      },
+      "category": {
+        "to": 2,
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "cost_price": {
+        "to": "1.00",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "description": {
+        "to": "nice cup",
+        "from": null
+      },
+      "bundle_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "sku_sequence": {
+        "to": 0,
+        "from": null
+      },
+      "reorder_level": {
+        "to": 5,
+        "from": null
+      },
+      "selling_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "bundle_quantity": {
+        "to": 6,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:21:01.593Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 10,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Product",
+    "object_pk": "2",
+    "object_repr": "p36 lcd",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "sku": {
+        "to": "LCD-0001",
+        "from": null
+      },
+      "name": {
+        "to": "p36 lcd",
+        "from": null
+      },
+      "category": {
+        "to": 1,
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "cost_price": {
+        "to": "7.00",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "description": {
+        "to": "itel p36 lcd",
+        "from": null
+      },
+      "bundle_price": {
+        "to": "40.00",
+        "from": null
+      },
+      "sku_sequence": {
+        "to": 1,
+        "from": null
+      },
+      "reorder_level": {
+        "to": 5,
+        "from": null
+      },
+      "selling_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "bundle_quantity": {
+        "to": 5,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:22:26.398Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 11,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Supplier",
+    "object_pk": "1",
+    "object_repr": "homecity",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "name": {
+        "to": "homecity",
+        "from": null
+      },
+      "email": {
+        "to": "homecity@gmail.com",
+        "from": null
+      },
+      "phone": {
+        "to": "0777534718",
+        "from": null
+      },
+      "address": {
+        "to": "chivhu town",
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:23:22.959Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 12,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Purchase",
+    "object_pk": "1",
+    "object_repr": "PO-2026-06-001 - homecity",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "notes": {
+        "to": "first order",
+        "from": null
+      },
+      "status": {
+        "to": "RECEIVED",
+        "from": null
+      },
+      "supplier": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "PO-2026-06-001",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "delivery_date": {
+        "to": "2026-06-23",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.330Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 13,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.PurchaseItem",
+    "object_pk": "1",
+    "object_repr": "p36 lcd x 10 @ 7.00",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "purchase": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 10,
+        "from": null
+      },
+      "cost_price": {
+        "to": "7.00",
+        "from": null
+      },
+      "received_quantity": {
+        "to": 10,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.345Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 14,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.PurchaseItem",
+    "object_pk": "2",
+    "object_repr": "cup x 50 @ 1.00",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "purchase": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 50,
+        "from": null
+      },
+      "cost_price": {
+        "to": "1.00",
+        "from": null
+      },
+      "received_quantity": {
+        "to": 50,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.358Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 15,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Location",
+    "object_pk": "1",
+    "object_repr": "Main Warehouse",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "name": {
+        "to": "Main Warehouse",
+        "from": null
+      },
+      "is_active": {
+        "to": true,
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.394Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 16,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (0 available)",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 0,
+        "from": null
+      },
+      "reserved_quantity": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.424Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 17,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Notifications.Notification",
+    "object_pk": "1",
+    "object_repr": "Out Of Stock - p36 lcd is out of stock",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "user": {
+        "to": 2,
+        "from": null
+      },
+      "level": {
+        "to": "warning",
+        "from": null
+      },
+      "title": {
+        "to": "p36 lcd is out of stock",
+        "from": null
+      },
+      "is_read": {
+        "to": false,
+        "from": null
+      },
+      "message": {
+        "to": "p36 lcd is out of stock at Main Warehouse. Reorder immediately to avoid lost sales.",
+        "from": null
+      },
+      "payload": {
+        "to": {
+          "quantity": 0,
+          "stock_id": 1,
+          "product_id": 2,
+          "location_id": 1,
+          "product_name": "p36 lcd",
+          "location_name": "Main Warehouse",
+          "reorder_level": 5
+        },
+        "from": null
+      },
+      "notification_type": {
+        "to": "out_of_stock",
+        "from": null
+      },
+      "related_object_id": {
+        "to": "1",
+        "from": null
+      },
+      "related_object_type": {
+        "to": "Stock",
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.460Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 18,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (F(quantity) + Value(10) - Value(0) available)",
+    "changes": {
+      "quantity": {
+        "to": "F(quantity) + Value(10)",
+        "from": 0
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.486Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 19,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.StockTransaction",
+    "object_pk": "1",
+    "object_repr": "Stock In - Purchase Receipt - p36 lcd (10)",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "notes": {
+        "to": "Purchase from homecity",
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 10,
+        "from": null
+      },
+      "reference": {
+        "to": "PO-2026-06-001",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "transaction_type": {
+        "to": "IN",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.524Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 20,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (0 available)",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 0,
+        "from": null
+      },
+      "reserved_quantity": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.544Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 21,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Notifications.Notification",
+    "object_pk": "2",
+    "object_repr": "Out Of Stock - cup is out of stock",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "user": {
+        "to": 2,
+        "from": null
+      },
+      "level": {
+        "to": "warning",
+        "from": null
+      },
+      "title": {
+        "to": "cup is out of stock",
+        "from": null
+      },
+      "is_read": {
+        "to": false,
+        "from": null
+      },
+      "message": {
+        "to": "cup is out of stock at Main Warehouse. Reorder immediately to avoid lost sales.",
+        "from": null
+      },
+      "payload": {
+        "to": {
+          "quantity": 0,
+          "stock_id": 2,
+          "product_id": 1,
+          "location_id": 1,
+          "product_name": "cup",
+          "location_name": "Main Warehouse",
+          "reorder_level": 5
+        },
+        "from": null
+      },
+      "notification_type": {
+        "to": "out_of_stock",
+        "from": null
+      },
+      "related_object_id": {
+        "to": "2",
+        "from": null
+      },
+      "related_object_type": {
+        "to": "Stock",
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.561Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 22,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (F(quantity) + Value(50) - Value(0) available)",
+    "changes": {
+      "quantity": {
+        "to": "F(quantity) + Value(50)",
+        "from": 0
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.575Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 23,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.StockTransaction",
+    "object_pk": "2",
+    "object_repr": "Stock In - Purchase Receipt - cup (50)",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "notes": {
+        "to": "Purchase from homecity",
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 50,
+        "from": null
+      },
+      "reference": {
+        "to": "PO-2026-06-001",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "transaction_type": {
+        "to": "IN",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:24:13.592Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 24,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "1",
+    "object_repr": "Sale SALE-20260623143104-7BF3 - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260623143104-7BF3",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:31:04.887Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 25,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "1",
+    "object_repr": "p36 lcd x 1",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "sale": {
+        "to": 1,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "9.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:31:05.124Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 26,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "1",
+    "object_repr": "Sale SALE-20260623143104-7BF3 - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:31:05.423Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 27,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "1",
+    "object_repr": "Sale SALE-20260623143104-7BF3 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:31:10.311Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 28,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (9 available)",
+    "changes": {
+      "quantity": {
+        "to": 9,
+        "from": 10
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:31:10.400Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 29,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "1",
+    "object_repr": "Sale SALE-20260623143104-7BF3 - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:31:10.949Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 30,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "1",
+    "object_repr": "Sale SALE-20260623143104-7BF3 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-23T14:31:10.970Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 31,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Notifications.Notification",
+    "object_pk": "2",
+    "object_repr": "Out Of Stock - cup is out of stock",
+    "changes": {
+      "is_read": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:37:02.398Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 32,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Notifications.Notification",
+    "object_pk": "1",
+    "object_repr": "Out Of Stock - p36 lcd is out of stock",
+    "changes": {
+      "is_read": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-23T14:37:07.918Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 33,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "2",
+    "object_repr": "Sale SALE-20260724181329-0922 - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260724181329-0922",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-24T18:13:29.200Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 34,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "2",
+    "object_repr": "p36 lcd x 1",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "sale": {
+        "to": 2,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-24T18:13:29.321Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 35,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "2",
+    "object_repr": "Sale SALE-20260724181329-0922 - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-24T18:13:29.609Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 36,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "2",
+    "object_repr": "Sale SALE-20260724181329-0922 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-24T18:13:33.738Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 37,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (8 available)",
+    "changes": {
+      "quantity": {
+        "to": 8,
+        "from": 9
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-24T18:13:33.830Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 38,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "2",
+    "object_repr": "Sale SALE-20260724181329-0922 - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-24T18:13:33.878Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 39,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "2",
+    "object_repr": "Sale SALE-20260724181329-0922 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-24T18:13:33.908Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 40,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "3",
+    "object_repr": "Sale SALE-20260626081953-1024 - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 3,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260626081953-1024",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-26T08:19:53.759Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 41,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "3",
+    "object_repr": "p36 lcd x 1",
+    "changes": {
+      "id": {
+        "to": 3,
+        "from": null
+      },
+      "sale": {
+        "to": 3,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-26T08:19:53.910Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 42,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "4",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 4,
+        "from": null
+      },
+      "sale": {
+        "to": 3,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-26T08:19:53.929Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 43,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "3",
+    "object_repr": "Sale SALE-20260626081953-1024 - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-26T08:19:54.237Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 44,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "3",
+    "object_repr": "Sale SALE-20260626081953-1024 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-26T08:19:58.555Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 45,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (7 available)",
+    "changes": {
+      "quantity": {
+        "to": 7,
+        "from": 8
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-26T08:19:58.646Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 46,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (49 available)",
+    "changes": {
+      "quantity": {
+        "to": 49,
+        "from": 50
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-26T08:19:58.960Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 47,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "3",
+    "object_repr": "Sale SALE-20260626081953-1024 - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-26T08:19:59.021Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 48,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "3",
+    "object_repr": "Sale SALE-20260626081953-1024 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-26T08:19:59.052Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 49,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "4",
+    "object_repr": "Sale SALE-20260630205808-2A4F - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 4,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260630205808-2A4F",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T20:58:08.263Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 50,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "5",
+    "object_repr": "p36 lcd x 1",
+    "changes": {
+      "id": {
+        "to": 5,
+        "from": null
+      },
+      "sale": {
+        "to": 4,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-30T20:58:08.355Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 51,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "6",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 6,
+        "from": null
+      },
+      "sale": {
+        "to": 4,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-30T20:58:08.365Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 52,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "4",
+    "object_repr": "Sale SALE-20260630205808-2A4F - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T20:58:08.515Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 53,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "4",
+    "object_repr": "Sale SALE-20260630205808-2A4F - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T20:58:12.819Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 54,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (6 available)",
+    "changes": {
+      "quantity": {
+        "to": 6,
+        "from": 7
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-30T20:58:12.862Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 55,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (48 available)",
+    "changes": {
+      "quantity": {
+        "to": 48,
+        "from": 49
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-30T20:58:13.176Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 56,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "4",
+    "object_repr": "Sale SALE-20260630205808-2A4F - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T20:58:13.197Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 57,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "4",
+    "object_repr": "Sale SALE-20260630205808-2A4F - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T20:58:13.212Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 58,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "5",
+    "object_repr": "Sale SALE-20260630210344-14CE - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 5,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260630210344-14CE",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T21:03:44.125Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 59,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "7",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 7,
+        "from": null
+      },
+      "sale": {
+        "to": 5,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-30T21:03:44.171Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 60,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "5",
+    "object_repr": "Sale SALE-20260630210344-14CE - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T21:03:44.332Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 61,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "5",
+    "object_repr": "Sale SALE-20260630210344-14CE - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T21:03:48.420Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 62,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (47 available)",
+    "changes": {
+      "quantity": {
+        "to": 47,
+        "from": 48
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-30T21:03:48.468Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 63,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "5",
+    "object_repr": "Sale SALE-20260630210344-14CE - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T21:03:48.482Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 64,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "5",
+    "object_repr": "Sale SALE-20260630210344-14CE - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T21:03:48.503Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 65,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.StockAdjustment",
+    "object_pk": "1",
+    "object_repr": "Adjustment 1 - cup (+253)",
+    "changes": {
+      "id": {
+        "to": 1,
+        "from": null
+      },
+      "reason": {
+        "to": "count variance",
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "quantity_after": {
+        "to": 300,
+        "from": null
+      },
+      "quantity_delta": {
+        "to": 253,
+        "from": null
+      },
+      "quantity_before": {
+        "to": 47,
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T21:40:15.225Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 66,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (300 available)",
+    "changes": {
+      "quantity": {
+        "to": 300,
+        "from": 47
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-06-30T21:40:15.261Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 67,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.StockTransaction",
+    "object_pk": "3",
+    "object_repr": "Adjustment - Inventory Count - cup (253)",
+    "changes": {
+      "id": {
+        "to": 3,
+        "from": null
+      },
+      "notes": {
+        "to": "count variance",
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 253,
+        "from": null
+      },
+      "reference": {
+        "to": "ADJ-1",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "transaction_type": {
+        "to": "ADJUSTMENT",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-06-30T21:40:15.294Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 68,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.Purchase",
+    "object_pk": "2",
+    "object_repr": "PO-2026-07-001 - homecity",
+    "changes": {
+      "id": {
+        "to": 2,
+        "from": null
+      },
+      "notes": {
+        "to": "new order",
+        "from": null
+      },
+      "status": {
+        "to": "RECEIVED",
+        "from": null
+      },
+      "supplier": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "PO-2026-07-001",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "delivery_date": {
+        "to": "2026-07-01",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-01T14:03:11.988Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 69,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.PurchaseItem",
+    "object_pk": "3",
+    "object_repr": "p36 lcd x 10 @ 7.00",
+    "changes": {
+      "id": {
+        "to": 3,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "purchase": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 10,
+        "from": null
+      },
+      "cost_price": {
+        "to": "7.00",
+        "from": null
+      },
+      "received_quantity": {
+        "to": 10,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-01T14:03:12.022Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 70,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.PurchaseItem",
+    "object_pk": "4",
+    "object_repr": "cup x 100 @ 1.00",
+    "changes": {
+      "id": {
+        "to": 4,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "purchase": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 100,
+        "from": null
+      },
+      "cost_price": {
+        "to": "1.00",
+        "from": null
+      },
+      "received_quantity": {
+        "to": 100,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-01T14:03:12.022Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 71,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (F(quantity) + Value(10) - Value(0) available)",
+    "changes": {
+      "quantity": {
+        "to": "F(quantity) + Value(10)",
+        "from": 6
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-01T14:03:12.055Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 72,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.StockTransaction",
+    "object_pk": "4",
+    "object_repr": "Stock In - Purchase Receipt - p36 lcd (10)",
+    "changes": {
+      "id": {
+        "to": 4,
+        "from": null
+      },
+      "notes": {
+        "to": "Purchase from homecity",
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 10,
+        "from": null
+      },
+      "reference": {
+        "to": "PO-2026-07-001",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "transaction_type": {
+        "to": "IN",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-01T14:03:12.055Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 73,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (F(quantity) + Value(100) - Value(0) available)",
+    "changes": {
+      "quantity": {
+        "to": "F(quantity) + Value(100)",
+        "from": 300
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-01T14:03:12.071Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 74,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Inventory.StockTransaction",
+    "object_pk": "5",
+    "object_repr": "Stock In - Purchase Receipt - cup (100)",
+    "changes": {
+      "id": {
+        "to": 5,
+        "from": null
+      },
+      "notes": {
+        "to": "Purchase from homecity",
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "location": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 100,
+        "from": null
+      },
+      "reference": {
+        "to": "PO-2026-07-001",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "transaction_type": {
+        "to": "IN",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-01T14:03:12.071Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 75,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "6",
+    "object_repr": "Sale SALE-20260703091329-F61B - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 6,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260703091329-F61B",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T09:13:29.825Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 76,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "8",
+    "object_repr": "p36 lcd x 1",
+    "changes": {
+      "id": {
+        "to": 8,
+        "from": null
+      },
+      "sale": {
+        "to": 6,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T09:13:29.953Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 77,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "9",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 9,
+        "from": null
+      },
+      "sale": {
+        "to": 6,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T09:13:29.969Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 78,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "6",
+    "object_repr": "Sale SALE-20260703091329-F61B - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 100,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T09:13:30.232Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 79,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "6",
+    "object_repr": "Sale SALE-20260703091329-F61B - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 100,
+        "from": "100.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T09:13:35.023Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 80,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (15 available)",
+    "changes": {
+      "quantity": {
+        "to": 15,
+        "from": 16
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T09:13:35.100Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 81,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (399 available)",
+    "changes": {
+      "quantity": {
+        "to": 399,
+        "from": 400
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T09:13:35.680Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 82,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "6",
+    "object_repr": "Sale SALE-20260703091329-F61B - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T09:13:35.720Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 83,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "6",
+    "object_repr": "Sale SALE-20260703091329-F61B - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 100,
+        "from": "100.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T09:13:35.753Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 84,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "7",
+    "object_repr": "Sale SALE-20260703102322-1DA1 - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 7,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260703102322-1DA1",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:23:22.962Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 85,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "10",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 10,
+        "from": null
+      },
+      "sale": {
+        "to": 7,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T10:23:23.005Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 86,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "7",
+    "object_repr": "Sale SALE-20260703102322-1DA1 - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:23:23.115Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 87,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "7",
+    "object_repr": "Sale SALE-20260703102322-1DA1 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:23:27.192Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 88,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (398 available)",
+    "changes": {
+      "quantity": {
+        "to": 398,
+        "from": 399
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T10:23:27.233Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 89,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "7",
+    "object_repr": "Sale SALE-20260703102322-1DA1 - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:23:27.249Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 90,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "7",
+    "object_repr": "Sale SALE-20260703102322-1DA1 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:23:27.260Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 91,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "8",
+    "object_repr": "Sale SALE-20260703103848-BFB8 - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 8,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260703103848-BFB8",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:38:48.964Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 92,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "11",
+    "object_repr": "p36 lcd x 1",
+    "changes": {
+      "id": {
+        "to": 11,
+        "from": null
+      },
+      "sale": {
+        "to": 8,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T10:38:49.026Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 93,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "12",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 12,
+        "from": null
+      },
+      "sale": {
+        "to": 8,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T10:38:49.034Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 94,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "8",
+    "object_repr": "Sale SALE-20260703103848-BFB8 - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:38:49.160Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 95,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "8",
+    "object_repr": "Sale SALE-20260703103848-BFB8 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:38:53.261Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 96,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (14 available)",
+    "changes": {
+      "quantity": {
+        "to": 14,
+        "from": 15
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T10:38:53.306Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 97,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (397 available)",
+    "changes": {
+      "quantity": {
+        "to": 397,
+        "from": 398
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T10:38:53.337Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 98,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "8",
+    "object_repr": "Sale SALE-20260703103848-BFB8 - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:38:53.353Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 99,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "8",
+    "object_repr": "Sale SALE-20260703103848-BFB8 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T10:38:53.364Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 100,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "9",
+    "object_repr": "Sale SALE-20260703110231-1640 - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 9,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260703110231-1640",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:02:31.723Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 101,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "13",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 13,
+        "from": null
+      },
+      "sale": {
+        "to": 9,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:02:31.766Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 102,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "9",
+    "object_repr": "Sale SALE-20260703110231-1640 - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:02:31.876Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 103,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "9",
+    "object_repr": "Sale SALE-20260703110231-1640 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:02:35.938Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 104,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (396 available)",
+    "changes": {
+      "quantity": {
+        "to": 396,
+        "from": 397
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:02:35.977Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 105,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "9",
+    "object_repr": "Sale SALE-20260703110231-1640 - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:02:35.992Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 106,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "9",
+    "object_repr": "Sale SALE-20260703110231-1640 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:02:36.003Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 107,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "10",
+    "object_repr": "Sale SALE-20260703111805-EF21 - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 10,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260703111805-EF21",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:05.325Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 108,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "14",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 14,
+        "from": null
+      },
+      "sale": {
+        "to": 10,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:18:05.374Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 109,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "10",
+    "object_repr": "Sale SALE-20260703111805-EF21 - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:05.494Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 110,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "10",
+    "object_repr": "Sale SALE-20260703111805-EF21 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:09.589Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 111,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (395 available)",
+    "changes": {
+      "quantity": {
+        "to": 395,
+        "from": 396
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:18:09.630Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 112,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "10",
+    "object_repr": "Sale SALE-20260703111805-EF21 - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:09.647Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 113,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "10",
+    "object_repr": "Sale SALE-20260703111805-EF21 - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:09.658Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 114,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "11",
+    "object_repr": "Sale SALE-20260703111848-E1FE - Cash Sale",
+    "changes": {
+      "id": {
+        "to": 11,
+        "from": null
+      },
+      "status": {
+        "to": "PENDING",
+        "from": null
+      },
+      "sold_by": {
+        "to": 1,
+        "from": null
+      },
+      "reference": {
+        "to": "SALE-20260703111848-E1FE",
+        "from": null
+      },
+      "created_by": {
+        "to": 1,
+        "from": null
+      },
+      "updated_by": {
+        "to": 1,
+        "from": null
+      },
+      "change_amount": {
+        "to": 0,
+        "from": null
+      },
+      "inventory_completed": {
+        "to": false,
+        "from": null
+      },
+      "inventory_sync_status": {
+        "to": "PENDING",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:48.293Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 115,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "15",
+    "object_repr": "p36 lcd x 1",
+    "changes": {
+      "id": {
+        "to": 15,
+        "from": null
+      },
+      "sale": {
+        "to": 11,
+        "from": null
+      },
+      "product": {
+        "to": 2,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "10.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:18:48.343Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 116,
+  "fields": {
+    "action": "CREATE",
+    "model_label": "Sales.SaleItem",
+    "object_pk": "16",
+    "object_repr": "cup x 1",
+    "changes": {
+      "id": {
+        "to": 16,
+        "from": null
+      },
+      "sale": {
+        "to": 11,
+        "from": null
+      },
+      "product": {
+        "to": 1,
+        "from": null
+      },
+      "quantity": {
+        "to": 1,
+        "from": null
+      },
+      "unit_price": {
+        "to": "2.00",
+        "from": null
+      },
+      "discount_amount": {
+        "to": 0,
+        "from": null
+      },
+      "discount_percentage": {
+        "to": 0,
+        "from": null
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:18:48.350Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 117,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "11",
+    "object_repr": "Sale SALE-20260703111848-E1FE - Cash Sale",
+    "changes": {
+      "status": {
+        "to": "COMPLETED",
+        "from": "PENDING"
+      },
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "payment_method": {
+        "to": "cash",
+        "from": null
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:48.466Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 118,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "11",
+    "object_repr": "Sale SALE-20260703111848-E1FE - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "FAILED",
+        "from": "PENDING"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:52.580Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 119,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "1",
+    "object_repr": "p36 lcd @ Main Warehouse (13 available)",
+    "changes": {
+      "quantity": {
+        "to": 13,
+        "from": 14
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:18:52.617Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 120,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Inventory.Stock",
+    "object_pk": "2",
+    "object_repr": "cup @ Main Warehouse (394 available)",
+    "changes": {
+      "quantity": {
+        "to": 394,
+        "from": 395
+      }
+    },
+    "actor": null,
+    "branch": null,
+    "created_at": "2026-07-03T11:18:52.647Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 121,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "11",
+    "object_repr": "Sale SALE-20260703111848-E1FE - Cash Sale",
+    "changes": {
+      "inventory_completed": {
+        "to": true,
+        "from": false
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:52.664Z"
+  }
+},
+{
+  "model": "Core.auditlog",
+  "pk": 122,
+  "fields": {
+    "action": "UPDATE",
+    "model_label": "Sales.Sale",
+    "object_pk": "11",
+    "object_repr": "Sale SALE-20260703111848-E1FE - Cash Sale",
+    "changes": {
+      "change_amount": {
+        "to": 0,
+        "from": "0.00"
+      },
+      "inventory_sync_status": {
+        "to": "SUCCESS",
+        "from": "FAILED"
+      }
+    },
+    "actor": [
+      "willy@pos.com"
+    ],
+    "branch": null,
+    "created_at": "2026-07-03T11:18:52.676Z"
+  }
+}
+]

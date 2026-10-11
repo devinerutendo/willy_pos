@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "automatic": false,
+  "frequency": "daily",
+  "time": "02:00",
+  "retain_count": 14,
+  "last_backup_at": "2026-07-09T20:23:05.627117+00:00",
+  "next_backup_at": null
+}

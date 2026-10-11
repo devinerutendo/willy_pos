@@ -1,0 +1,72 @@
+INFO 2026-09-07 09:22:15 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'A', 'description': '', 'category_id': 1, 'cost_price': '1', 'selling_price': '2', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-07 09:22:15 Inventory.serializers | Validating name: 'A' (type: str)
+DEBUG 2026-09-07 09:22:15 Inventory.serializers | Validating reorder_level: 5 (type: int)
+INFO 2026-09-07 09:28:43 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'Bluetooth Speaker', 'description': 'desc', 'category_id': 3, 'cost_price': '120.00', 'selling_price': '150.00', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-07 09:28:43 Inventory.serializers | Validating name: 'Bluetooth Speaker' (type: str)
+DEBUG 2026-09-07 09:28:43 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-07 09:28:43 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'Bluetooth Speaker'), ('description', 'desc'), ('cost_price', Decimal('120.00')), ('selling_price', Decimal('150.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: TestCat>)])
+INFO 2026-09-07 09:32:19 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'X', 'category_id': 4, 'cost_price': '10.00', 'selling_price': '15.00', 'reorder_level': 1, 'bundle_quantity': '', 'bundle_price': ''}
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating name: 'X' (type: str)
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating reorder_level: 1 (type: int)
+INFO 2026-09-07 09:32:19 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'X', 'category_id': 4, 'cost_price': '10.00', 'selling_price': '15.00', 'reorder_level': 1, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating name: 'X' (type: str)
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating reorder_level: 1 (type: int)
+INFO 2026-09-07 09:32:19 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'X', 'category_id': 4, 'cost_price': '10.00', 'selling_price': '15.00', 'reorder_level': 1, 'bundle_quantity': '', 'bundle_price': None}
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating name: 'X' (type: str)
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating reorder_level: 1 (type: int)
+INFO 2026-09-07 09:32:19 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'X', 'category_id': 4, 'cost_price': '10.00', 'selling_price': '15.00', 'reorder_level': 1, 'bundle_quantity': None, 'bundle_price': ''}
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating name: 'X' (type: str)
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating reorder_level: 1 (type: int)
+INFO 2026-09-07 09:32:19 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'X', 'category_id': 4, 'cost_price': '10.00', 'selling_price': '15.00', 'reorder_level': 1, 'bundle_quantity': '6', 'bundle_price': '40.00'}
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating name: 'X' (type: str)
+DEBUG 2026-09-07 09:32:19 Inventory.serializers | Validating reorder_level: 1 (type: int)
+INFO 2026-09-07 09:34:22 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'Desk Organizer', 'category_id': 2, 'cost_price': '20.00', 'selling_price': '35.00', 'reorder_level': 3, 'barcode': '', 'bundle_quantity': '', 'bundle_price': ''}
+DEBUG 2026-09-07 09:34:22 Inventory.serializers | Validating name: 'Desk Organizer' (type: str)
+DEBUG 2026-09-07 09:34:22 Inventory.serializers | Validating barcode: None (type: NoneType)
+DEBUG 2026-09-07 09:34:22 Inventory.serializers | Validating reorder_level: 3 (type: int)
+DEBUG 2026-09-07 09:34:22 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'Desk Organizer'), ('barcode', None), ('cost_price', Decimal('20.00')), ('selling_price', Decimal('35.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 3), ('category', <Category: Office Supplies>)])
+INFO 2026-09-07 09:35:15 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'A', 'description': '', 'category_id': 1, 'cost_price': '1', 'selling_price': '2', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-07 09:35:15 Inventory.serializers | Validating name: 'A' (type: str)
+DEBUG 2026-09-07 09:35:15 Inventory.serializers | Validating reorder_level: 5 (type: int)
+INFO 2026-09-07 09:40:16 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'A', 'description': '', 'category_id': 1, 'cost_price': '1', 'selling_price': '2', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-07 09:40:16 Inventory.serializers | Validating name: 'A' (type: str)
+DEBUG 2026-09-07 09:40:16 Inventory.serializers | Validating reorder_level: 5 (type: int)
+INFO 2026-09-07 10:10:14 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'Desk Organizer', 'category_id': 2, 'cost_price': '20.00', 'selling_price': '35.00', 'reorder_level': 3, 'barcode': '', 'bundle_quantity': '', 'bundle_price': ''}
+DEBUG 2026-09-07 10:10:14 Inventory.serializers | Validating name: 'Desk Organizer' (type: str)
+DEBUG 2026-09-07 10:10:14 Inventory.serializers | Validating barcode: None (type: NoneType)
+DEBUG 2026-09-07 10:10:14 Inventory.serializers | Validating reorder_level: 3 (type: int)
+DEBUG 2026-09-07 10:10:14 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'Desk Organizer'), ('barcode', None), ('cost_price', Decimal('20.00')), ('selling_price', Decimal('35.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 3), ('category', <Category: Office Supplies>)])
+INFO 2026-09-07 10:16:03 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'A', 'description': '', 'category_id': 1, 'cost_price': '1', 'selling_price': '2', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-07 10:16:03 Inventory.serializers | Validating name: 'A' (type: str)
+DEBUG 2026-09-07 10:16:03 Inventory.serializers | Validating reorder_level: 5 (type: int)
+INFO 2026-09-07 15:41:05 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'plate', 'description': '', 'category_id': 1, 'cost_price': '1', 'selling_price': '2', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-07 15:41:05 Inventory.serializers | Validating name: 'plate' (type: str)
+DEBUG 2026-09-07 15:41:05 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-07 15:41:05 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'plate'), ('description', ''), ('cost_price', Decimal('1.00')), ('selling_price', Decimal('2.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: Kitcheware>)])
+INFO 2026-09-08 08:57:42 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'Plate', 'description': 'Nice plate', 'category_id': 1, 'cost_price': '1', 'selling_price': '2', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-08 08:57:42 Inventory.serializers | Validating name: 'Plate' (type: str)
+DEBUG 2026-09-08 08:57:42 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-08 08:57:42 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'Plate'), ('description', 'Nice plate'), ('cost_price', Decimal('1.00')), ('selling_price', Decimal('2.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: Kitcheware>)])
+INFO 2026-09-08 09:07:56 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'Cup', 'description': '', 'category_id': 1, 'cost_price': '0.5', 'selling_price': '1', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-08 09:07:56 Inventory.serializers | Validating name: 'Cup' (type: str)
+DEBUG 2026-09-08 09:07:56 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-08 09:07:56 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'Cup'), ('description', ''), ('cost_price', Decimal('0.50')), ('selling_price', Decimal('1.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: Kitcheware>)])
+INFO 2026-09-08 09:19:04 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'Bowl', 'description': '', 'category_id': 1, 'cost_price': '1', 'selling_price': '3', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-08 09:19:04 Inventory.serializers | Validating name: 'Bowl' (type: str)
+DEBUG 2026-09-08 09:19:04 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-08 09:19:04 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'Bowl'), ('description', ''), ('cost_price', Decimal('1.00')), ('selling_price', Decimal('3.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: Kitcheware>)])
+INFO 2026-09-08 09:21:42 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'Flask', 'description': '', 'category_id': 1, 'cost_price': '5', 'selling_price': '8', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-08 09:21:42 Inventory.serializers | Validating name: 'Flask' (type: str)
+DEBUG 2026-09-08 09:21:42 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-08 09:21:42 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'Flask'), ('description', ''), ('cost_price', Decimal('5.00')), ('selling_price', Decimal('8.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: Kitcheware>)])
+INFO 2026-09-08 09:42:35 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'TV', 'description': '', 'category_id': 5, 'cost_price': '20', 'selling_price': '50', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-08 09:42:35 Inventory.serializers | Validating name: 'TV' (type: str)
+DEBUG 2026-09-08 09:42:35 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-08 09:42:35 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'TV'), ('description', ''), ('cost_price', Decimal('20.00')), ('selling_price', Decimal('50.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: Electrical>)])
+INFO 2026-09-08 11:04:48 Inventory.serializers | ProductSerializer.to_internal_value() received: {'name': 'bt speaker', 'description': '', 'category_id': 5, 'cost_price': '5', 'selling_price': '10', 'reorder_level': 5, 'is_active': True, 'bundle_quantity': None, 'bundle_price': None}
+DEBUG 2026-09-08 11:04:48 Inventory.serializers | Validating name: 'bt speaker' (type: str)
+DEBUG 2026-09-08 11:04:48 Inventory.serializers | Validating reorder_level: 5 (type: int)
+DEBUG 2026-09-08 11:04:48 Inventory.serializers | Running final validation on data: OrderedDict([('name', 'bt speaker'), ('description', ''), ('cost_price', Decimal('5.00')), ('selling_price', Decimal('10.00')), ('bundle_quantity', None), ('bundle_price', None), ('reorder_level', 5), ('is_active', True), ('category', <Category: Electrical>)])
+INFO 2026-09-08 11:51:29 Inventory.signals | Created stock alert notification 1 for stock 1
+INFO 2026-09-08 11:51:29 Inventory.signals | Created stock alert notification 2 for stock 2
+INFO 2026-09-08 11:51:29 Inventory.signals | Created stock alert notification 3 for stock 3
