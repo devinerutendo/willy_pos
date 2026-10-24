@@ -35,10 +35,14 @@ def _has_existing_alert(notification_type, related_object_type, related_object_i
 
 
 def _dispatch_if_needed(notification):
+    """Enqueue delivery; returns False when the notification was suppressed by user preferences."""
+    if notification is None:
+        return False
     try:
         dispatch_notification_task.delay(notification.id)
     except Exception:
         logger.exception('Failed to enqueue dispatch for notification %s', notification.id)
+    return True
 
 
 def _build_stock_notification_message(stock, notification_type):
@@ -93,8 +97,8 @@ def generate_stock_level_alerts(self) -> dict:
                 related_object_type='Stock',
                 related_object_id=stock.id,
             )
-            _dispatch_if_needed(notification)
-            created_count += 1
+            if _dispatch_if_needed(notification):
+                created_count += 1
 
     return {'success': True, 'notifications_created': created_count}
 
@@ -237,8 +241,8 @@ def layby_payment_due_reminder_task(self, reminder_days=None) -> dict:
                 related_object_type='Layby',
                 related_object_id=layby.id,
             )
-            _dispatch_if_needed(notification)
-            count += 1
+            if _dispatch_if_needed(notification):
+                count += 1
 
     return {'success': True, 'reminder_days': reminder_days, 'notifications_created': count}
 
@@ -278,8 +282,8 @@ def layby_overdue_alert_task(self) -> dict:
                 related_object_type='Layby',
                 related_object_id=layby.id,
             )
-            _dispatch_if_needed(notification)
-            count += 1
+            if _dispatch_if_needed(notification):
+                count += 1
 
     return {'success': True, 'notifications_created': count}
 
@@ -331,7 +335,7 @@ def cash_mismatch_alert_task(self, threshold=None) -> dict:
                 related_object_type='DailyReconciliation',
                 related_object_id=reconciliation.id,
             )
-            _dispatch_if_needed(notification)
-            count += 1
+            if _dispatch_if_needed(notification):
+                count += 1
 
     return {'success': True, 'threshold': str(threshold), 'notifications_created': count}

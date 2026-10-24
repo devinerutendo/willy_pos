@@ -24,6 +24,13 @@ from .serializers import (
     DailyReconciliationSerializer, ReturnSerializer, ReturnItemSerializer
 )
 from .return_processor import ReturnProcessor, ReturnProcessingError
+from .reporting import build_sales_report
+from .conversion import QuotationConversionError, convert_quotation_to_invoice
+from .invoice_serializers import (
+    InvoiceItemInputSerializer, InvoiceSerializer, InvoiceStatusHistorySerializer,
+)
+from . import invoicing
+from .models import Invoice
 from .tasks import complete_sale_inventory_task, _complete_sale_inventory
 
 
@@ -113,7 +120,9 @@ class QuotationViewSet(BaseViewSet):
             'branch',
             'pos_terminal',
             'created_by',
-            'updated_by'
+            'updated_by',
+            'invoice',
+            'converted_by',
         ).prefetch_related('items__product').order_by('-created_at')
         queryset = branch_scoped_queryset(queryset, self.request.user)
         
@@ -160,10 +169,68 @@ class QuotationViewSet(BaseViewSet):
             updated_by=self.request.user,
         )
     
+    @staticmethod
+    def _converted_conflict(quotation):
+        return Response(
+            {
+                'code': 'already_converted',
+                'detail': (
+                    f'Quotation {quotation.reference} has been converted to invoice '
+                    f'{quotation.invoice.reference} and can no longer be changed.'
+                ),
+            },
+            status=status.HTTP_409_CONFLICT,
+        )
+
+    def update(self, request, *args, **kwargs):
+        quotation = self.get_object()
+        if quotation.is_converted:
+            return self._converted_conflict(quotation)
+        return super().update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        quotation = self.get_object()
+        if quotation.is_converted:
+            return self._converted_conflict(quotation)
+        return super().destroy(request, *args, **kwargs)
+
+    @action(detail=True, methods=['post'])
+    def convert(self, request, pk=None):
+        """Convert an accepted quotation into a pending sales invoice.
+
+        Requires the same ``sales`` write permission as creating a sale. Repeated
+        requests return the existing invoice (HTTP 200, ``created: false``).
+        """
+        quotation = self.get_object()  # enforces branch scoping and permissions
+        try:
+            invoice, created = convert_quotation_to_invoice(quotation.pk, request.user)
+        except QuotationConversionError as exc:
+            return Response(exc.as_payload(), status=exc.status_code)
+
+        invoice = invoice_queryset().get(pk=invoice.pk)
+        quotation = self.get_queryset().get(pk=quotation.pk)
+        message = (
+            f'Quotation {quotation.reference} converted to invoice {invoice.reference}. '
+            'It is pending approval; stock is deducted only when it is approved.'
+            if created else
+            f'Quotation {quotation.reference} was already converted to invoice {invoice.reference}.'
+        )
+        return Response(
+            {
+                'created': created,
+                'detail': message,
+                'invoice': InvoiceSerializer(invoice, context=self.get_serializer_context()).data,
+                'quotation': self.get_serializer(quotation).data,
+            },
+            status=status.HTTP_201_CREATED if created else status.HTTP_200_OK,
+        )
+
     @action(detail=True, methods=['post'])
     def accept(self, request, pk=None):
         """Accept a quotation."""
         quotation = self.get_object()
+        if quotation.is_converted:
+            raise ValidationError('This quotation has already been converted to an invoice.')
         if quotation.status == Quotation.ACCEPTED:
             raise ValidationError('This quotation has already been accepted.')
         if quotation.status == Quotation.REJECTED:
@@ -182,6 +249,8 @@ class QuotationViewSet(BaseViewSet):
     def reject(self, request, pk=None):
         """Reject a quotation."""
         quotation = self.get_object()
+        if quotation.is_converted:
+            raise ValidationError('This quotation has already been converted to an invoice.')
         if quotation.status == Quotation.REJECTED:
             raise ValidationError('This quotation is already rejected.')
         if quotation.status == Quotation.ACCEPTED:
@@ -212,6 +281,26 @@ class QuotationItemViewSet(BaseViewSet):
         
         return queryset
 
+    @staticmethod
+    def _ensure_quotation_editable(quotation):
+        if quotation.is_converted:
+            raise ValidationError(
+                f'Quotation {quotation.reference} has been converted to an invoice and its items can no longer be changed.'
+            )
+
+    def perform_create(self, serializer):
+        self._ensure_quotation_editable(serializer.validated_data['quotation'])
+        super().perform_create(serializer)
+
+    def perform_update(self, serializer):
+        self._ensure_quotation_editable(serializer.instance.quotation)
+        self._ensure_quotation_editable(serializer.validated_data.get('quotation', serializer.instance.quotation))
+        super().perform_update(serializer)
+
+    def perform_destroy(self, instance):
+        self._ensure_quotation_editable(instance.quotation)
+        super().perform_destroy(instance)
+
 
 class SaleViewSet(BaseViewSet):
     serializer_class = SaleSerializer
@@ -224,7 +313,9 @@ class SaleViewSet(BaseViewSet):
             'branch',
             'pos_terminal',
             'created_by',
-            'updated_by'
+            'updated_by',
+            'source_invoice',
+            'legacy_source_quotation',
         ).prefetch_related('items__product').order_by('-created_at')
         queryset = branch_scoped_queryset(queryset, self.request.user)
         
@@ -271,9 +362,7 @@ class SaleViewSet(BaseViewSet):
         # Generate reference if not provided
         reference = serializer.validated_data.get('reference')
         if not reference:
-            timestamp = timezone.now().strftime('%Y%m%d%H%M%S')
-            unique_id = str(uuid.uuid4())[:4].upper()
-            reference = f"SALE-{timestamp}-{unique_id}"
+            reference = Sale.generate_reference()
         
         # Save sale with auto-assigned fields as PENDING status
         branch = serializer.validated_data.get('branch') or getattr(self.request.user, 'branch', None)
@@ -293,6 +382,43 @@ class SaleViewSet(BaseViewSet):
             updated_by=self.request.user,
             status=Sale.PENDING  # Create as PENDING, require explicit confirmation
         )
+
+    def destroy(self, request, *args, **kwargs):
+        sale = self.get_object()
+        invoice = Invoice.objects.filter(sale=sale).first()
+        if invoice:
+            return Response(
+                {
+                    'code': 'sale_linked_to_invoice',
+                    'detail': (
+                        f'Sale {sale.reference} was created by approving invoice {invoice.reference} '
+                        'and cannot be deleted.'
+                    ),
+                },
+                status=status.HTTP_409_CONFLICT,
+            )
+        quotation = Quotation.objects.filter(legacy_sale=sale).first()
+        if quotation:
+            return Response(
+                {
+                    'code': 'invoice_linked_to_quotation',
+                    'detail': (
+                        f'Invoice {sale.reference} was created from quotation {quotation.reference} '
+                        'and cannot be deleted. Cancel it instead.'
+                    ),
+                },
+                status=status.HTTP_409_CONFLICT,
+            )
+        return super().destroy(request, *args, **kwargs)
+
+    @action(detail=False, methods=['get'])
+    def report(self, request):
+        """Aggregated sales report: summary, trend, previous period and transaction rows.
+
+        Query params: start_date, end_date (YYYY-MM-DD), status, payment_method,
+        sold_by, branch, search.
+        """
+        return Response(build_sales_report(request.user, request.query_params))
     
     @action(detail=True, methods=['post'])
     def confirm(self, request, pk=None):
@@ -376,6 +502,7 @@ class SaleViewSet(BaseViewSet):
                 
                 # Mark sale as COMPLETED and save payment info
                 sale.status = Sale.COMPLETED
+                sale.payment_status = Sale.PAID
                 sale.inventory_sync_status = 'PENDING'
                 sale.inventory_completed = False
                 sale.updated_by = request.user
@@ -1403,3 +1530,173 @@ class ReturnItemViewSet(viewsets.ModelViewSet):
     search_fields = ['product__name', 'product__sku']
     ordering = ['-return_record__created_at']
 
+
+
+def invoice_queryset():
+    return Invoice.objects.select_related(
+        'customer', 'branch', 'pos_terminal', 'sale', 'created_by',
+        'approved_by', 'rejected_by', 'cancelled_by', 'source_quotation',
+    ).prefetch_related('items__product')
+
+
+class InvoiceViewSet(BaseViewSet):
+    """Invoices awaiting (or past) approval.
+
+    An invoice is not a sale. ``approve`` is the only action that creates a
+    confirmed sale and deducts stock; it is restricted to roles holding the
+    ``invoice_approval`` permission and enforced here, not only in the UI.
+    """
+    serializer_class = InvoiceSerializer
+    http_method_names = ['get', 'post', 'patch', 'head', 'options']
+
+    def get_queryset(self):
+        queryset = branch_scoped_queryset(invoice_queryset(), self.request.user)
+        params = self.request.query_params
+
+        status_filter = params.get('status')
+        if status_filter:
+            statuses = [s.strip().upper() for s in status_filter.split(',') if s.strip()]
+            queryset = queryset.filter(status__in=statuses)
+        if params.get('customer'):
+            queryset = queryset.filter(customer_id=params['customer'])
+        if params.get('branch'):
+            queryset = queryset.filter(branch_id=params['branch'])
+        search = params.get('search')
+        if search:
+            queryset = queryset.filter(
+                Q(reference__icontains=search)
+                | Q(customer__name__icontains=search)
+                | Q(sale__reference__icontains=search)
+            )
+        if params.get('start_date'):
+            queryset = queryset.filter(created_at__date__gte=params['start_date'])
+        if params.get('end_date'):
+            queryset = queryset.filter(created_at__date__lte=params['end_date'])
+        return queryset
+
+    @staticmethod
+    def _error(exc):
+        return Response(exc.as_payload(), status=exc.status_code)
+
+    def _respond(self, invoice, extra=None, http_status=status.HTTP_200_OK):
+        invoice = invoice_queryset().get(pk=invoice.pk)
+        data = self.get_serializer(invoice).data
+        if extra:
+            data = {**extra, 'invoice': data}
+        return Response(data, status=http_status)
+
+    def _parse_items(self, raw):
+        if not isinstance(raw, list) or not raw:
+            raise ValidationError({'items': ['At least one item is required']})
+        serializer = InvoiceItemInputSerializer(
+            data=raw, many=True, context={'request': self.request},
+        )
+        serializer.is_valid(raise_exception=True)
+        return [dict(item) for item in serializer.validated_data]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        items = self._parse_items(request.data.get('items'))
+        data = serializer.validated_data
+        branch = getattr(request.user, 'branch', None)
+        pos_terminal = data.get('pos_terminal')
+        if pos_terminal and branch and pos_terminal.branch_id != branch.id:
+            raise ValidationError({'pos_terminal': 'Selected POS terminal does not belong to your branch.'})
+        submit = request.data.get('submit', True)
+        submit = submit if isinstance(submit, bool) else str(submit).lower() != 'false'
+        try:
+            invoice = invoicing.create_invoice(
+                customer=data['customer'], items=items, user=request.user,
+                branch=branch, pos_terminal=pos_terminal,
+                notes=data.get('notes', ''), submit=submit,
+            )
+        except invoicing.InvoiceWorkflowError as exc:
+            return self._error(exc)
+        return self._respond(invoice, http_status=status.HTTP_201_CREATED)
+
+    def partial_update(self, request, *args, **kwargs):
+        invoice = self.get_object()
+        items = self._parse_items(request.data['items']) if 'items' in request.data else None
+        customer = None
+        if 'customer' in request.data:
+            serializer = self.get_serializer(invoice, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            customer = serializer.validated_data.get('customer')
+        try:
+            invoice = invoicing.update_invoice(
+                invoice.pk, request.user, customer=customer, items=items,
+                notes=request.data.get('notes'),
+            )
+        except invoicing.InvoiceWorkflowError as exc:
+            return self._error(exc)
+        return self._respond(invoice)
+
+    @action(detail=True, methods=['post'])
+    def submit(self, request, pk=None):
+        invoice = self.get_object()
+        try:
+            invoice = invoicing.submit_invoice(invoice.pk, request.user)
+        except invoicing.InvoiceWorkflowError as exc:
+            return self._error(exc)
+        return self._respond(invoice)
+
+    @action(detail=True, methods=['post'])
+    def approve(self, request, pk=None):
+        """Approve: create exactly one confirmed sale and deduct stock once.
+
+        Repeats return the existing sale (HTTP 200, ``created: false``).
+        """
+        invoice = self.get_object()  # branch scoping
+        try:
+            invoice, sale, created = invoicing.approve_invoice(invoice.pk, request.user)
+        except invoicing.InvoiceWorkflowError as exc:
+            return self._error(exc)
+        message = (
+            f'Invoice {invoice.reference} approved. Sale {sale.reference} confirmed.'
+            if created else
+            f'Invoice {invoice.reference} was already approved as sale {sale.reference}.'
+        )
+        return self._respond(
+            invoice,
+            extra={'created': created, 'detail': message, 'sale_id': sale.pk, 'sale_reference': sale.reference},
+            http_status=status.HTTP_200_OK,
+        )
+
+    @action(detail=True, methods=['post'])
+    def reject(self, request, pk=None):
+        invoice = self.get_object()
+        try:
+            invoice = invoicing.reject_invoice(invoice.pk, request.user, request.data.get('reason'))
+        except invoicing.InvoiceWorkflowError as exc:
+            return self._error(exc)
+        return self._respond(invoice)
+
+    @action(detail=True, methods=['post'])
+    def cancel(self, request, pk=None):
+        invoice = self.get_object()
+        try:
+            invoice = invoicing.cancel_invoice(invoice.pk, request.user, request.data.get('reason', ''))
+        except invoicing.InvoiceWorkflowError as exc:
+            return self._error(exc)
+        return self._respond(invoice)
+
+    @action(detail=True, methods=['post'], url_path='mark-paid')
+    def mark_paid(self, request, pk=None):
+        invoice = self.get_object()
+        if not invoice.sale_id:
+            return Response(
+                {'code': 'sale_not_confirmed', 'detail': 'Only approved invoices can be marked as paid.'},
+                status=status.HTTP_409_CONFLICT,
+            )
+        try:
+            invoicing.mark_sale_paid(invoice.sale_id, request.user)
+        except invoicing.InvoiceWorkflowError as exc:
+            return self._error(exc)
+        return self._respond(invoice)
+
+    @action(detail=True, methods=['get'])
+    def history(self, request, pk=None):
+        invoice = self.get_object()
+        entries = invoice.history.select_related('actor', 'sale')
+        return Response(InvoiceStatusHistorySerializer(entries, many=True).data)

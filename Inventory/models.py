@@ -292,6 +292,40 @@ class Location(BaseSyncModel):
             models.UniqueConstraint(fields=['branch', 'name'], name='unique_location_name_per_branch'),
         ]
 
+    @classmethod
+    def resolve_default(cls, branch=None, product=None, user=None):
+        """
+        Pick a sensible storage location when the caller did not supply one.
+
+        Preference order (restricted to ``branch`` when given):
+        1. The active location already holding the most stock of ``product``.
+        2. The first active location.
+        3. A freshly created "Main Warehouse".
+        """
+        candidates = cls.objects.filter(is_active=True)
+        if branch is not None:
+            candidates = candidates.filter(branch=branch)
+
+        if product is not None:
+            stocked = (
+                candidates.filter(stock_levels__product=product)
+                .order_by('-stock_levels__quantity', 'id')
+                .first()
+            )
+            if stocked:
+                return stocked
+
+        location = candidates.order_by('id').first()
+        if location:
+            return location
+
+        location, _ = cls.objects.get_or_create(
+            branch=branch,
+            name="Main Warehouse",
+            defaults={"is_active": True, "created_by": user, "updated_by": user},
+        )
+        return location
+
     def __str__(self):
         if self.branch:
             return f"{self.branch.code} - {self.name}"

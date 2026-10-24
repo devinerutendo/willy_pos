@@ -4,13 +4,14 @@ from .views import (
     CustomerViewSet, QuotationViewSet, QuotationItemViewSet,
     SaleViewSet, SaleItemViewSet,
     LaybyViewSet, LaybyItemViewSet, LaybyPaymentViewSet, LaybyRefundViewSet,
-    DailyReconciliationViewSet, ReturnViewSet, ReturnItemViewSet
+    DailyReconciliationViewSet, ReturnViewSet, ReturnItemViewSet, InvoiceViewSet
 )
 
 router = DefaultRouter()
 router.register(r'customers', CustomerViewSet, basename='customer')
 router.register(r'quotations', QuotationViewSet, basename='quotation')
 router.register(r'quotation-items', QuotationItemViewSet, basename='quotation-item')
+router.register(r'invoices', InvoiceViewSet, basename='invoice')
 router.register(r'sales', SaleViewSet, basename='sale')
 router.register(r'sale-items', SaleItemViewSet, basename='sale-item')
 router.register(r'laybys', LaybyViewSet, basename='layby')

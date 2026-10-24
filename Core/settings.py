@@ -206,15 +206,22 @@ AUTH_USER_MODEL = 'Accounts.User'
 
 # REST Framework settings
 REST_FRAMEWORK = {
+    # The token authenticator must come first: DRF answers 401 (instead of 403)
+    # only when the first authenticator defines a WWW-Authenticate header, and
+    # clients rely on 401 to detect an expired or revoked session.
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'Accounts.authentication.ActivityTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_THROTTLE_RATES': {
+        # Limits password / one-time-code guessing against the login endpoint.
+        'login': os.environ.get('LOGIN_THROTTLE_RATE', '30/min'),
+    },
     'PAGE_SIZE': 50,
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',

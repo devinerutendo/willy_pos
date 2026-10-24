@@ -4,16 +4,33 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.exceptions import PermissionDenied
+from rest_framework.throttling import ScopedRateThrottle
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
+from django.db import transaction
+from django.utils import timezone
 from Core.access import branch_scoped_queryset
 from Core.permissions import ScopePermission
-from .models import User
+from .models import User, UserSecurity
+from .security import (
+    encrypt_secret,
+    generate_recovery_codes,
+    generate_totp_secret,
+    hash_recovery_code,
+    provisioning_uri,
+    verify_second_factor,
+    verify_totp,
+    decrypt_secret,
+)
 from .serializers import (
     UserSerializer,
     RegistrationSerializer,
     ChangePasswordSerializer,
     AdminResetPasswordSerializer,
+    SecuritySettingsSerializer,
+    OtpCodeSerializer,
+    PasswordConfirmSerializer,
+    DisableTwoFactorSerializer,
 )
 
 User = get_user_model()
@@ -136,10 +153,13 @@ class LoginView(APIView):
     Custom login view that accepts email instead of username
     """
     permission_classes = [permissions.AllowAny]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = 'login'
 
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
+        otp = request.data.get('otp')
 
         if not email or not password:
             return Response(
@@ -170,9 +190,28 @@ class LoginView(APIView):
                 status=status.HTTP_401_UNAUTHORIZED
             )
 
+        # Second factor (only reached once the password is correct).
+        security = UserSecurity.objects.filter(user=user, two_factor_enabled=True).first()
+        if security:
+            if not otp:
+                return Response(
+                    {'error': 'Enter the 6-digit code from your authenticator app.', 'code': 'two_factor_required'},
+                    status=status.HTTP_401_UNAUTHORIZED,
+                )
+            with transaction.atomic():
+                # Lock the row so one code cannot be accepted by two concurrent logins.
+                locked = UserSecurity.objects.select_for_update().get(pk=security.pk)
+                valid = verify_second_factor(locked, str(otp))
+            if not valid:
+                return Response(
+                    {'error': 'Invalid or expired authentication code.', 'code': 'two_factor_invalid'},
+                    status=status.HTTP_401_UNAUTHORIZED,
+                )
+
         # Enforce one active session per user by rotating the token on each login.
         Token.objects.filter(user=user).delete()
         token = Token.objects.create(user=user)
+        _reset_session_activity(user)
 
         return Response({
             'token': token.key,
@@ -232,6 +271,7 @@ class ChangePasswordView(APIView):
 
         Token.objects.filter(user=request.user).delete()
         token = Token.objects.create(user=request.user)
+        _reset_session_activity(request.user)
 
         return Response(
             {
@@ -240,3 +280,140 @@ class ChangePasswordView(APIView):
             },
             status=status.HTTP_200_OK,
         )
+
+
+def _reset_session_activity(user):
+    """A freshly issued token starts a new idle period."""
+    UserSecurity.objects.filter(user=user).update(last_activity_at=timezone.now())
+
+
+def _get_security(user) -> UserSecurity:
+    security, _ = UserSecurity.objects.get_or_create(user=user)
+    return security
+
+
+class SecuritySettingsView(APIView):
+    """Read and update the caller's security preferences."""
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        return Response(SecuritySettingsSerializer(_get_security(request.user)).data)
+
+    def patch(self, request):
+        security = _get_security(request.user)
+        serializer = SecuritySettingsSerializer(security, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
+
+class _PasswordProtectedView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    @staticmethod
+    def _bad_password():
+        return Response({'error': 'Current password is incorrect.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TwoFactorSetupView(_PasswordProtectedView):
+    """Start enrolment: generate a pending secret and return it for the authenticator app."""
+
+    def post(self, request):
+        serializer = PasswordConfirmSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        if not request.user.check_password(serializer.validated_data['password']):
+            return self._bad_password()
+
+        security = _get_security(request.user)
+        if security.two_factor_enabled:
+            return Response(
+                {'error': 'Two-factor authentication is already enabled.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        secret = generate_totp_secret()
+        security.pending_totp_secret = encrypt_secret(secret)
+        security.save(update_fields=['pending_totp_secret'])
+        return Response(
+            {
+                'secret': secret,
+                'otpauth_uri': provisioning_uri(secret, request.user.email),
+            }
+        )
+
+
+class TwoFactorEnableView(_PasswordProtectedView):
+    """Finish enrolment by proving the authenticator app produces valid codes."""
+
+    def post(self, request):
+        serializer = OtpCodeSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        with transaction.atomic():
+            security = UserSecurity.objects.select_for_update().get_or_create(user=request.user)[0]
+            if security.two_factor_enabled:
+                return Response(
+                    {'error': 'Two-factor authentication is already enabled.'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            if not security.pending_totp_secret:
+                return Response(
+                    {'error': 'Start setup first.'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            step = verify_totp(
+                decrypt_secret(security.pending_totp_secret),
+                serializer.validated_data['code'],
+            )
+            if step is None:
+                return Response(
+                    {'error': 'Invalid or expired authentication code.'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            recovery_codes = generate_recovery_codes()
+            security.totp_secret = security.pending_totp_secret
+            security.pending_totp_secret = ''
+            security.two_factor_enabled = True
+            security.last_totp_step = step
+            security.recovery_code_hashes = [hash_recovery_code(code) for code in recovery_codes]
+            security.save()
+
+        data = SecuritySettingsSerializer(security).data
+        # Shown exactly once; only hashes are kept.
+        data['recovery_codes'] = recovery_codes
+        return Response(data)
+
+
+class TwoFactorDisableView(_PasswordProtectedView):
+    """Turning 2FA off needs both the password and a current authenticator or recovery code."""
+
+    def post(self, request):
+        serializer = DisableTwoFactorSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        if not request.user.check_password(serializer.validated_data['password']):
+            return self._bad_password()
+
+        with transaction.atomic():
+            security = UserSecurity.objects.select_for_update().get_or_create(user=request.user)[0]
+            if not security.two_factor_enabled:
+                return Response(
+                    {'error': 'Two-factor authentication is not enabled.'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            if not verify_second_factor(security, serializer.validated_data['code']):
+                return Response(
+                    {'error': 'Invalid or expired authentication code.'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            security.two_factor_enabled = False
+            security.totp_secret = ''
+            security.pending_totp_secret = ''
+            security.last_totp_step = 0
+            security.recovery_code_hashes = []
+            security.save()
+
+        return Response(SecuritySettingsSerializer(security).data)

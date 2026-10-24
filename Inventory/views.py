@@ -2,7 +2,7 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
-from django.db.models import F, Q, Sum, Prefetch
+from django.db.models import Count, F, Q, Sum, Prefetch
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
@@ -15,7 +15,7 @@ from .serializers import (
     SupplierSerializer, PurchaseSerializer, PurchaseItemSerializer, PurchaseCreateUpdateSerializer
 )
 from django.db import IntegrityError
-
+from django.db.models import ProtectedError
 
 class BaseViewSet(viewsets.ModelViewSet):
     """Base viewset with common functionality for all views."""
@@ -53,12 +53,41 @@ class CategoryViewSet(BaseViewSet):
     serializer_class = CategorySerializer
     
     def get_queryset(self):
-        """Filter active/inactive categories."""
-        queryset = super().get_queryset()
+        """Annotate product counts; filter by active state and search text."""
+        queryset = super().get_queryset().annotate(
+            product_count_annotated=Count('products', distinct=True)
+        )
         is_active = self.request.query_params.get('is_active')
         if is_active is not None:
             queryset = queryset.filter(is_active=is_active.lower() == 'true')
+        search = self.request.query_params.get('search')
+        if search:
+            queryset = queryset.filter(name__icontains=search.strip())
         return queryset
+
+    def destroy(self, request, *args, **kwargs):
+        """Refuse to delete a category that still has products assigned."""
+        category = self.get_object()
+        count = category.products.count()
+        if count:
+            noun = 'product is' if count == 1 else 'products are'
+            return Response(
+                {
+                    'detail': (
+                        f'"{category.name}" cannot be deleted because {count} {noun} still assigned to it. '
+                        'Reassign the products or deactivate the category instead.'
+                    )
+                },
+                status=status.HTTP_409_CONFLICT,
+            )
+        try:
+            self.perform_destroy(category)
+        except ProtectedError:
+            return Response(
+                {'detail': f'"{category.name}" is in use and cannot be deleted. Deactivate it instead.'},
+                status=status.HTTP_409_CONFLICT,
+            )
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class ProductViewSet(BaseViewSet):
@@ -121,6 +150,23 @@ class ProductViewSet(BaseViewSet):
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def destroy(self, request, *args, **kwargs):
+        """Delete a product, returning a clear error if it has related history."""
+        product = self.get_object()
+        try:
+            self.perform_destroy(product)
+        except ProtectedError:
+            return Response(
+                {
+                    'detail': (
+                        f'"{product.name}" has stock or transaction history and cannot be deleted. '
+                        'Deactivate it instead.'
+                    )
+                },
+                status=status.HTTP_409_CONFLICT,
+            )
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
     @action(detail=False, methods=['get'])
     def low_stock(self, request):

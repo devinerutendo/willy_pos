@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from Core.models import Branch
-from .models import User
+from .models import User, UserSecurity
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -18,15 +18,16 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'username', 'email', 'phone', 'first_name', 
             'last_name', 'role', 'branch', 'branch_name', 'profile_image', 'permissions', 'is_active', 'is_staff', 
-            'date_joined', 'last_login', 'password'
+            'is_superuser', 'date_joined', 'last_login', 'password'
         ]
         extra_kwargs = {
             'password': {'write_only': True},
             'is_staff': {'read_only': True},
+            'is_superuser': {'read_only': True},
             'date_joined': {'read_only': True},
             'last_login': {'read_only': True},
         }
-        read_only_fields = ['is_staff', 'date_joined', 'last_login']
+        read_only_fields = ['is_staff', 'is_superuser', 'date_joined', 'last_login']
 
     def get_permissions(self, obj):
         return obj.permission_matrix
@@ -106,3 +107,45 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 class AdminResetPasswordSerializer(serializers.Serializer):
     reason = serializers.CharField(required=False, allow_blank=True, max_length=255)
+
+
+class SecuritySettingsSerializer(serializers.ModelSerializer):
+    """
+    Caller's security preferences. ``session_timeout_minutes`` of ``null`` turns
+    the idle timeout off. Secrets and recovery-code hashes are never exposed.
+    """
+    session_timeout_minutes = serializers.IntegerField(
+        min_value=UserSecurity.MIN_TIMEOUT_MINUTES,
+        max_value=UserSecurity.MAX_TIMEOUT_MINUTES,
+        required=False,
+        allow_null=True,
+    )
+    session_timeout_enabled = serializers.BooleanField(read_only=True)
+    recovery_codes_remaining = serializers.SerializerMethodField()
+
+    class Meta:
+        model = UserSecurity
+        fields = [
+            'two_factor_enabled',
+            'recovery_codes_remaining',
+            'session_timeout_enabled',
+            'session_timeout_minutes',
+            'last_activity_at',
+        ]
+        read_only_fields = ['two_factor_enabled', 'last_activity_at']
+
+    def get_recovery_codes_remaining(self, obj):
+        return len(obj.recovery_code_hashes or [])
+
+
+class OtpCodeSerializer(serializers.Serializer):
+    code = serializers.CharField(max_length=12)
+
+
+class PasswordConfirmSerializer(serializers.Serializer):
+    password = serializers.CharField(write_only=True)
+
+
+class DisableTwoFactorSerializer(serializers.Serializer):
+    password = serializers.CharField(write_only=True)
+    code = serializers.CharField(max_length=12)

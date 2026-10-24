@@ -244,6 +244,29 @@ class LaybyBranchAndPOSTests(TestCase):
 		self.assertEqual(layby.branch, self.branch)
 		self.assertEqual(layby.pos_terminal, self.terminal)
 
+	def test_layby_create_without_reference_generates_one(self):
+		request = self.factory.post(
+			'/api/sales/laybys/',
+			{
+				'customer': self.customer.id,
+				'due_date': '2099-12-31',
+				'items': [
+					{'product': self.product.id, 'quantity': 1, 'unit_price': '15.00'},
+					{'product': self.product.id, 'quantity': 2, 'unit_price': '15.00'},
+				],
+			},
+			format='json',
+		)
+		force_authenticate(request, user=self.user)
+
+		response = LaybyViewSet.as_view({'post': 'create'})(request)
+
+		self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.data)
+		layby = Layby.objects.get(id=response.data['id'])
+		self.assertTrue(layby.reference.startswith('LB-'))
+		self.assertEqual(layby.total_amount, Decimal('45.00'))
+		self.assertEqual(layby.items.count(), 1)
+
 	def test_layby_payment_uses_branch_and_pos_terminal(self):
 		layby = Layby.objects.create(
 			customer=self.customer,
@@ -361,6 +384,26 @@ class QuotationAndReturnBranchScopeTests(TestCase):
 		quotation = Quotation.objects.get(id=response.data['id'])
 		self.assertEqual(quotation.branch, self.branch)
 		self.assertEqual(quotation.pos_terminal, self.terminal)
+
+	def test_quotation_exposes_customer_contact_details_for_documents(self):
+		quotation = Quotation.objects.create(
+			customer=self.customer,
+			branch=self.branch,
+			created_by=self.user,
+			updated_by=self.user,
+			reference='QT-CONTACT-001',
+			valid_until='2099-12-31',
+		)
+		request = self.factory.get(f'/api/sales/quotations/{quotation.id}/')
+		force_authenticate(request, user=self.user)
+
+		response = QuotationViewSet.as_view({'get': 'retrieve'})(request, pk=quotation.id)
+
+		self.assertEqual(response.status_code, status.HTTP_200_OK)
+		self.assertEqual(response.data['customer_phone'], '5551234567')
+		self.assertEqual(response.data['customer_email'], 'scope.customer@example.com')
+		self.assertEqual(response.data['customer_address'], '456 Market Street')
+		self.assertEqual(response.data['customer_city'], '')
 
 	def test_return_create_derives_branch_and_pos_terminal_from_sale(self):
 		sale = Sale.objects.create(

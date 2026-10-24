@@ -1,5 +1,29 @@
 from rest_framework import serializers
 from .models import Notification, NotificationPreference, NotificationLog, NotificationType
+from .services import PREFERENCE_CATEGORIES, sms_delivery_available
+
+
+def _boolean_object_serializer(field_names):
+    """Build a serializer of optional booleans (omitted keys keep their value)."""
+    return type(
+        'BooleanMap',
+        (serializers.Serializer,),
+        {name: serializers.BooleanField(required=False) for name in field_names},
+    )
+
+
+CategoryStateSerializer = _boolean_object_serializer(PREFERENCE_CATEGORIES.keys())
+ChannelStateSerializer = _boolean_object_serializer(['email', 'sms'])
+
+
+class NotificationSettingsInputSerializer(serializers.Serializer):
+    categories = CategoryStateSerializer(required=False)
+    channels = ChannelStateSerializer(required=False)
+
+    def validate_channels(self, value):
+        if value.get('sms') and not sms_delivery_available():
+            raise serializers.ValidationError({'sms': 'SMS delivery is not available on this server.'})
+        return value
 
 
 class NotificationSerializer(serializers.ModelSerializer):

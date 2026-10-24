@@ -114,6 +114,7 @@ class SyncProcessor:
                 'change_amount': amount_received - total_amount if amount_received > total_amount else Decimal('0.00'),
                 'payment_method': payload.get('payment_method', 'CASH').upper(),
                 'status': 'COMPLETED',
+                'payment_status': 'PAID',
                 'device_id': op.device_id,
                 'source_device': 'mobile-pos',
                 'is_synced': True,

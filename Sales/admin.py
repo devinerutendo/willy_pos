@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (
     Customer, Quotation, QuotationItem, Sale, SaleItem,
-    Layby, LaybyItem, LaybyPayment, LaybyRefund
+    Layby, LaybyItem, LaybyPayment, LaybyRefund,
+    Invoice, InvoiceItem, InvoiceStatusHistory,
 )
 
 
@@ -76,3 +77,51 @@ class LaybyRefundAdmin(admin.ModelAdmin):
     list_filter = ('created_at',)
     search_fields = ('layby__reference',)
     readonly_fields = ('created_at', 'updated_at', 'created_by', 'updated_by')
+
+
+class InvoiceItemInline(admin.TabularInline):
+    model = InvoiceItem
+    extra = 0
+    can_delete = False
+    readonly_fields = ('product', 'quantity', 'unit_price', 'discount_percentage', 'discount_amount')
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(Invoice)
+class InvoiceAdmin(admin.ModelAdmin):
+    """Read-only: status changes must go through the approval workflow."""
+    list_display = ('reference', 'customer', 'status', 'sale', 'approved_by', 'approved_at', 'created_at')
+    list_filter = ('status', 'created_at')
+    search_fields = ('reference', 'customer__name', 'sale__reference')
+    inlines = [InvoiceItemInline]
+
+    def get_readonly_fields(self, request, obj=None):
+        return [f.name for f in self.model._meta.fields]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(InvoiceStatusHistory)
+class InvoiceStatusHistoryAdmin(admin.ModelAdmin):
+    """Append-only audit trail: view only."""
+    list_display = ('invoice', 'action', 'from_status', 'to_status', 'actor', 'created_at')
+    list_filter = ('action', 'created_at')
+    search_fields = ('invoice__reference',)
+
+    def get_readonly_fields(self, request, obj=None):
+        return [f.name for f in self.model._meta.fields]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False

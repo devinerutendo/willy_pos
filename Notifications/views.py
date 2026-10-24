@@ -1,8 +1,15 @@
 from rest_framework import viewsets, permissions, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import Notification, NotificationPreference, NotificationLog
-from .serializers import NotificationSerializer, NotificationPreferenceSerializer, NotificationLogSerializer
+from .serializers import (
+    NotificationSerializer,
+    NotificationPreferenceSerializer,
+    NotificationLogSerializer,
+    NotificationSettingsInputSerializer,
+)
+from .services import get_preference_settings, save_preference_settings
 
 
 class NotificationViewSet(viewsets.ModelViewSet):
@@ -36,6 +43,25 @@ class NotificationPreferenceViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    @action(detail=False, methods=['get', 'put', 'patch'], url_path='settings')
+    def preference_settings(self, request):
+        """
+        GET returns the caller's notification switches; PUT/PATCH update them.
+        Only the keys supplied are changed.
+        """
+        if request.method == 'GET':
+            return Response(get_preference_settings(request.user))
+
+        serializer = NotificationSettingsInputSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+        result = save_preference_settings(
+            request.user,
+            categories=dict(data.get('categories', {})),
+            channels=dict(data.get('channels', {})),
+        )
+        return Response(result)
 
 
 class NotificationLogViewSet(viewsets.ReadOnlyModelViewSet):

@@ -1,4 +1,7 @@
+import uuid
 from rest_framework import serializers
+from django.core.exceptions import ObjectDoesNotExist
+from django.db import transaction
 from django.utils import timezone
 from decimal import Decimal
 from Inventory.models import Product, Stock, Location
@@ -7,6 +10,7 @@ from .models import (
     Layby, LaybyItem, LaybyPayment, LaybyRefund, DailyReconciliation,
     Return, ReturnItem
 )
+from .pricing import validate_sale_prices, record_price_override
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -130,6 +134,10 @@ class QuotationItemSerializer(serializers.ModelSerializer):
 
 class QuotationSerializer(serializers.ModelSerializer):
     customer_name = serializers.CharField(source='customer.name', read_only=True)
+    customer_phone = serializers.CharField(source='customer.phone', read_only=True)
+    customer_email = serializers.CharField(source='customer.email', read_only=True)
+    customer_address = serializers.CharField(source='customer.address', read_only=True)
+    customer_city = serializers.CharField(source='customer.city', read_only=True)
     branch_name = serializers.CharField(source='branch.name', read_only=True, allow_null=True)
     pos_terminal_name = serializers.CharField(source='pos_terminal.name', read_only=True, allow_null=True)
     items = serializers.SerializerMethodField(read_only=True)
@@ -138,16 +146,45 @@ class QuotationSerializer(serializers.ModelSerializer):
     created_by = serializers.PrimaryKeyRelatedField(read_only=True)
     created_by_username = serializers.SerializerMethodField(read_only=True)
     updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
+    invoice_reference = serializers.CharField(source='invoice.reference', read_only=True, allow_null=True)
+    invoice_status = serializers.CharField(source='invoice.status', read_only=True, allow_null=True)
+    converted_by_username = serializers.SerializerMethodField(read_only=True)
+    can_convert = serializers.SerializerMethodField(read_only=True)
+    conversion_blocked_reason = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Quotation
         fields = [
-            'id', 'customer', 'customer_name', 'reference', 'status',
+            'id', 'customer', 'customer_name', 'customer_phone', 'customer_email',
+            'customer_address', 'customer_city', 'reference', 'status',
             'branch', 'branch_name', 'pos_terminal', 'pos_terminal_name',
             'items', 'total_amount', 'valid_until', 'is_expired',
-            'notes', 'created_at', 'updated_at', 'created_by', 'created_by_username', 'updated_by'
+            'notes', 'created_at', 'updated_at', 'created_by', 'created_by_username', 'updated_by',
+            'is_converted', 'invoice', 'invoice_reference', 'invoice_status',
+            'converted_at', 'converted_by', 'converted_by_username',
+            'can_convert', 'conversion_blocked_reason',
         ]
-        read_only_fields = ['id', 'reference', 'status', 'created_at', 'updated_at', 'total_amount', 'is_expired', 'created_by', 'updated_by']
+        read_only_fields = [
+            'id', 'reference', 'status', 'created_at', 'updated_at', 'total_amount', 'is_expired',
+            'created_by', 'updated_by', 'is_converted', 'invoice', 'invoice_reference',
+            'invoice_status', 'converted_at', 'converted_by', 'converted_by_username',
+            'can_convert', 'conversion_blocked_reason',
+        ]
+
+    def get_converted_by_username(self, obj):
+        user = obj.converted_by
+        if not user:
+            return None
+        return f"{user.first_name} {user.last_name}".strip() or user.username or user.email
+
+    def get_can_convert(self, obj):
+        from .conversion import get_conversion_block
+        return get_conversion_block(obj) is None
+
+    def get_conversion_blocked_reason(self, obj):
+        from .conversion import get_conversion_block
+        block = get_conversion_block(obj)
+        return block[1] if block else None
 
     def get_created_by_username(self, obj):
         """Get creator's display name with intelligent fallback."""
@@ -206,49 +243,65 @@ class QuotationSerializer(serializers.ModelSerializer):
             )
         return data
 
-    def create(self, validated_data):
-        """Handle nested items creation during quotation creation."""
-        items_data = self.initial_data.get('items', [])
-        
-        # Validate items exist and are valid
-        if not items_data:
+    @staticmethod
+    def _flatten_errors(errors):
+        """Collapse DRF error structures into a single readable sentence."""
+        if isinstance(errors, dict):
+            return '; '.join(
+                f"{field}: {QuotationSerializer._flatten_errors(messages)}"
+                for field, messages in errors.items()
+            )
+        if isinstance(errors, (list, tuple)):
+            return ' '.join(QuotationSerializer._flatten_errors(e) for e in errors)
+        return str(errors)
+
+    def _validated_items(self):
+        """Validate every raw line item and return clean values.
+
+        All checks run before anything is written, so a bad line can never
+        leave a half-created quotation behind.
+        """
+        raw_items = self.initial_data.get('items') or []
+        if not isinstance(raw_items, (list, tuple)) or not raw_items:
             raise serializers.ValidationError({"items": ["At least one item is required"]})
-        
-        # Create quotation without items
-        quotation = Quotation.objects.create(**validated_data)
-        
-        # Create associated items with proper validation
-        for i, item_data in enumerate(items_data):
-            try:
-                # Validate item data
-                product_id = item_data.get('product')
-                quantity = item_data.get('quantity')
-                unit_price = item_data.get('unit_price')
-                discount_percentage = item_data.get('discount_percentage', 0)
-                discount_amount = item_data.get('discount_amount', 0)
-                
-                # Validate using the input serializer with request context
-                item_serializer = QuotationItemInputSerializer(
-                    data=item_data,
-                    context={'request': self.context.get('request')}
+
+        clean_items = []
+        seen_products = set()
+        for index, raw in enumerate(raw_items, start=1):
+            item_serializer = QuotationItemInputSerializer(
+                data=raw,
+                context={'request': self.context.get('request')},
+            )
+            if not item_serializer.is_valid():
+                raise serializers.ValidationError(
+                    {"items": [f"Item {index}: {self._flatten_errors(item_serializer.errors)}"]}
                 )
-                if not item_serializer.is_valid():
-                    raise serializers.ValidationError({"items": [f"Item {i+1}: {item_serializer.errors}"]})
-                
-                # Create the item
-                QuotationItem.objects.create(
+            data = item_serializer.validated_data
+            if data['product'] in seen_products:
+                raise serializers.ValidationError(
+                    {"items": [f"Item {index}: product appears more than once; combine the quantities into one line."]}
+                )
+            seen_products.add(data['product'])
+            clean_items.append(data)
+        return clean_items
+
+    def create(self, validated_data):
+        """Create the quotation and its line items in a single transaction."""
+        items = self._validated_items()
+
+        with transaction.atomic():
+            quotation = Quotation.objects.create(**validated_data)
+            QuotationItem.objects.bulk_create([
+                QuotationItem(
                     quotation=quotation,
-                    product_id=product_id,
-                    quantity=quantity,
-                    unit_price=unit_price,
-                    discount_percentage=discount_percentage,
-                    discount_amount=discount_amount
+                    product_id=item['product'],
+                    quantity=item['quantity'],
+                    unit_price=item['unit_price'],
+                    discount_percentage=item.get('discount_percentage', 0),
+                    discount_amount=item.get('discount_amount', 0),
                 )
-            except Exception as e:
-                # Clean up quotation if item creation fails
-                quotation.delete()
-                raise serializers.ValidationError({"items": [f"Item {i+1}: {str(e)}"]})
-        
+                for item in items
+            ])
         return quotation
 
     def get_total_amount(self, obj):
@@ -314,6 +367,8 @@ class SaleItemSerializer(serializers.ModelSerializer):
     total_price = serializers.SerializerMethodField(read_only=True)
     bundle_applied = serializers.SerializerMethodField(read_only=True)
     effective_unit_price = serializers.SerializerMethodField(read_only=True)
+    list_total_price = serializers.SerializerMethodField(read_only=True)
+    price_discount = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = SaleItem
@@ -321,13 +376,20 @@ class SaleItemSerializer(serializers.ModelSerializer):
             'id', 'sale', 'product_id', 'product_name', 'product_sku',
             'quantity', 'unit_price', 'discount_percentage', 'discount_amount',
             'effective_unit_price', 'bundle_quantity', 'bundle_price',
-            'bundle_applied', 'total_price'
+            'bundle_applied', 'total_price',
+            'list_price', 'list_total_price', 'price_discount',
         ]
         read_only_fields = [
             'id', 'sale', 'product_id', 'product_name', 'product_sku',
             'bundle_quantity', 'bundle_price', 'bundle_applied', 'total_price',
-            'effective_unit_price'
+            'effective_unit_price', 'list_price', 'list_total_price', 'price_discount',
         ]
+
+    def get_list_total_price(self, obj):
+        return str(obj.list_line_total.quantize(Decimal('0.01')))
+
+    def get_price_discount(self, obj):
+        return str(obj.price_discount.quantize(Decimal('0.01')))
 
     def get_total_price(self, obj):
         """Calculate line total with discounts."""
@@ -341,6 +403,13 @@ class SaleItemSerializer(serializers.ModelSerializer):
         return bool(obj.bundle_quantity and obj.bundle_price and obj.quantity >= obj.bundle_quantity)
 
     def validate(self, data):
+        # Editing a stored line's price must obey the same rules as the cart.
+        if self.instance is not None and 'unit_price' in data and data['unit_price'] != self.instance.unit_price:
+            request = self.context.get('request')
+            validate_sale_prices(
+                [{'product': self.instance.product_id, 'unit_price': data['unit_price']}],
+                getattr(request, 'user', None),
+            )
         if data.get('quantity', 0) <= 0:
             raise serializers.ValidationError("Quantity must be greater than 0")
         if data.get('unit_price', 0) < 0:
@@ -366,27 +435,71 @@ class SaleSerializer(serializers.ModelSerializer):
     pos_terminal_name = serializers.CharField(source='pos_terminal.name', read_only=True, allow_null=True)
     items = serializers.SerializerMethodField(read_only=True)
     total_amount = serializers.SerializerMethodField(read_only=True)
+    subtotal_amount = serializers.SerializerMethodField(read_only=True)
+    discount_total = serializers.SerializerMethodField(read_only=True)
     sold_by_name = serializers.CharField(source='sold_by.full_name', read_only=True, allow_null=True)
     layby_reference = serializers.CharField(source='layby.reference', read_only=True, allow_null=True)
     notes = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     created_by = serializers.PrimaryKeyRelatedField(read_only=True)
     updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
+    quotation = serializers.SerializerMethodField(read_only=True)
+    quotation_reference = serializers.SerializerMethodField(read_only=True)
+    invoice = serializers.SerializerMethodField(read_only=True)
+    invoice_reference = serializers.SerializerMethodField(read_only=True)
+    approved_at = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Sale
         fields = [
-            'id', 'customer', 'customer_name', 'reference', 'status',
+            'id', 'customer', 'customer_name', 'reference', 'status', 'payment_status',
             'branch', 'branch_name', 'pos_terminal', 'pos_terminal_name',
-            'items', 'total_amount', 'notes',
+            'items', 'total_amount', 'subtotal_amount', 'discount_total', 'notes',
             'payment_method', 'layby', 'layby_reference', 'amount_received', 'change_amount',
-            'inventory_sync_status',
+            'inventory_sync_status', 'quotation', 'quotation_reference',
+            'invoice', 'invoice_reference', 'approved_at',
             'sold_by', 'sold_by_name', 'created_at', 'updated_at', 'created_by', 'updated_by'
         ]
         read_only_fields = [
-            'id', 'reference', 'status', 'created_at', 'updated_at',
-            'total_amount', 'sold_by', 'sold_by_name', 'created_by', 'updated_by',
-            'change_amount', 'inventory_sync_status', 'layby_reference'
+            'id', 'reference', 'status', 'payment_status', 'created_at', 'updated_at',
+            'total_amount', 'subtotal_amount', 'discount_total',
+            'sold_by', 'sold_by_name', 'created_by', 'updated_by',
+            'change_amount', 'inventory_sync_status', 'layby_reference',
+            'quotation', 'quotation_reference', 'invoice', 'invoice_reference', 'approved_at',
         ]
+
+    @staticmethod
+    def _related(obj, name):
+        try:
+            return getattr(obj, name)
+        except ObjectDoesNotExist:
+            return None
+
+    def _source_quotation(self, obj):
+        legacy = self._related(obj, 'legacy_source_quotation')
+        if legacy:
+            return legacy
+        invoice = self._related(obj, 'source_invoice')
+        return self._related(invoice, 'source_quotation') if invoice else None
+
+    def get_invoice(self, obj):
+        invoice = self._related(obj, 'source_invoice')
+        return invoice.id if invoice else None
+
+    def get_invoice_reference(self, obj):
+        invoice = self._related(obj, 'source_invoice')
+        return invoice.reference if invoice else None
+
+    def get_approved_at(self, obj):
+        invoice = self._related(obj, 'source_invoice')
+        return invoice.approved_at if invoice else None
+
+    def get_quotation(self, obj):
+        quotation = self._source_quotation(obj)
+        return quotation.id if quotation else None
+
+    def get_quotation_reference(self, obj):
+        quotation = self._source_quotation(obj)
+        return quotation.reference if quotation else None
 
     def get_items(self, obj):
         """Serialize sale items for output."""
@@ -416,6 +529,10 @@ class SaleSerializer(serializers.ModelSerializer):
             items = self.initial_data.get('items', [])
             if not items:
                 raise serializers.ValidationError({"items": ["At least one item is required"]})
+
+            # Authoritative selling-price rules (permission + bundle floor).
+            request = self.context.get('request')
+            validate_sale_prices(items, getattr(request, 'user', None))
         
         # Validate layby-payment method relationship
         payment_method = data.get('payment_method')
@@ -449,6 +566,7 @@ class SaleSerializer(serializers.ModelSerializer):
         sale = Sale.objects.create(**validated_data)
         
         # Create associated items with validation
+        price_overrides = []
         for i, item_data in enumerate(items_data):
             try:
                 # Validate item data
@@ -479,7 +597,7 @@ class SaleSerializer(serializers.ModelSerializer):
                     bundle_price = product.bundle_price
 
                 # Create the item
-                SaleItem.objects.create(
+                sale_item = SaleItem.objects.create(
                     sale=sale,
                     product=product,
                     quantity=quantity,
@@ -488,7 +606,10 @@ class SaleSerializer(serializers.ModelSerializer):
                     discount_amount=discount_amount,
                     bundle_quantity=bundle_quantity,
                     bundle_price=bundle_price,
+                    list_price=product.selling_price,
                 )
+                if unit_price != product.selling_price:
+                    price_overrides.append((sale_item, product.selling_price))
             except serializers.ValidationError:
                 raise
             except Exception as e:
@@ -498,6 +619,12 @@ class SaleSerializer(serializers.ModelSerializer):
         
         # Items are now created. The post_save signal fired during Sale.objects.create
         # but saw 0 items. We must manually reserve inventory now.
+        # Audit price overrides only once every line succeeded, so a rolled-back
+        # sale never leaves entries behind.
+        request = self.context.get('request')
+        actor = getattr(request, 'user', None) or sale.sold_by
+        for sale_item, catalog_price in price_overrides:
+            record_price_override(sale, sale_item, catalog_price, actor)
         if sale.status == 'PENDING':
             from .signals import _reserve_inventory, _get_or_create_location
             location = _get_or_create_location()
@@ -509,6 +636,12 @@ class SaleSerializer(serializers.ModelSerializer):
     def get_total_amount(self, obj):
         items = SaleItem.objects.filter(sale=obj)
         return sum(item.line_total for item in items)
+
+    def get_subtotal_amount(self, obj):
+        return str(obj.list_subtotal.quantize(Decimal('0.01')))
+
+    def get_discount_total(self, obj):
+        return str(obj.total_discount.quantize(Decimal('0.01')))
 
 
 class LaybyItemSerializer(serializers.ModelSerializer):
@@ -624,9 +757,19 @@ class LaybySerializer(serializers.ModelSerializer):
             'due_date', 'is_overdue', 'notes', 'created_at', 'updated_at', 'created_by', 'updated_by'
         ]
         read_only_fields = [
-            'created_at', 'updated_at', 'total_amount', 'total_paid',
+            'reference', 'created_at', 'updated_at', 'total_amount', 'total_paid',
             'balance', 'is_overdue', 'created_by', 'updated_by'
         ]
+
+    def validate_customer(self, value):
+        if not value.is_active:
+            raise serializers.ValidationError("Selected customer is inactive")
+        return value
+
+    def validate_due_date(self, value):
+        if value <= timezone.now().date():
+            raise serializers.ValidationError("Due date must be in the future")
+        return value
 
     def validate(self, data):
         """Validate layby data including items."""
@@ -653,50 +796,62 @@ class LaybySerializer(serializers.ModelSerializer):
         if not items_data:
             raise serializers.ValidationError({"items": ["At least one item is required"]})
         
-        # Calculate total_amount from items
-        total_amount = Decimal('0.00')
-        for item_data in items_data:
-            try:
-                item_serializer = QuotationItemInputSerializer(data=item_data)
-                if not item_serializer.is_valid():
-                    raise serializers.ValidationError({"items": [item_serializer.errors]})
-                quantity = Decimal(str(item_data.get('quantity', 0)))
-                unit_price = Decimal(str(item_data.get('unit_price', 0)))
-                total_amount += quantity * unit_price
-            except Exception as e:
-                raise serializers.ValidationError({"items": [str(e)]})
-        
-        # Set total_amount in validated_data
-        validated_data['total_amount'] = total_amount
-        
-        # Create layby without items
-        layby = Layby.objects.create(**validated_data)
-        
-        # Create associated items with validation
+        # Validate every line and merge duplicate products (unique per layby).
+        merged = {}
         for i, item_data in enumerate(items_data):
-            try:
-                # Validate item data
-                item_serializer = QuotationItemInputSerializer(data=item_data)
-                if not item_serializer.is_valid():
-                    # Clean up layby if validation fails
-                    layby.delete()
-                    raise serializers.ValidationError({"items": [f"Item {i+1}: {item_serializer.errors}"]})
-                
-                # Create the item
+            item_serializer = QuotationItemInputSerializer(data=item_data)
+            if not item_serializer.is_valid():
+                raise serializers.ValidationError(
+                    {"items": [f"Item {i + 1}: {item_serializer.errors}"]}
+                )
+            clean = item_serializer.validated_data
+            key = (clean['product'], clean['unit_price'])
+            if key in merged:
+                merged[key]['quantity'] += clean['quantity']
+            else:
+                merged[key] = {
+                    'product': clean['product'],
+                    'quantity': clean['quantity'],
+                    'unit_price': clean['unit_price'],
+                }
+
+        product_ids = [line['product'] for line in merged.values()]
+        if len(set(product_ids)) != len(product_ids):
+            raise serializers.ValidationError(
+                {"items": ["The same product cannot be added twice with different prices."]}
+            )
+
+        total_amount = sum(
+            (Decimal(line['quantity']) * line['unit_price'] for line in merged.values()),
+            Decimal('0.00'),
+        )
+        if total_amount <= 0:
+            raise serializers.ValidationError(
+                {"items": ["Layby total must be greater than 0"]}
+            )
+
+        validated_data['total_amount'] = total_amount
+        validated_data['reference'] = self._generate_reference()
+
+        with transaction.atomic():
+            layby = Layby.objects.create(**validated_data)
+            for line in merged.values():
                 LaybyItem.objects.create(
                     layby=layby,
-                    product_id=item_data['product'],
-                    quantity=item_data['quantity'],
-                    unit_price=item_data['unit_price']
+                    product_id=line['product'],
+                    quantity=line['quantity'],
+                    unit_price=line['unit_price'],
                 )
-            except serializers.ValidationError:
-                raise
-            except Exception as e:
-                # Clean up layby if item creation fails
-                layby.delete()
-                raise serializers.ValidationError({"items": [f"Item {i+1}: {str(e)}"]})
-        
+
         return layby
+
+    @staticmethod
+    def _generate_reference():
+        timestamp = timezone.now().strftime('%Y%m%d%H%M%S')
+        while True:
+            reference = f"LB-{timestamp}-{uuid.uuid4().hex[:4].upper()}"
+            if not Layby.objects.filter(reference=reference).exists():
+                return reference
 
     def get_total_amount(self, obj):
         items = LaybyItem.objects.filter(layby=obj)

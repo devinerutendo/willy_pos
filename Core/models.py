@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 from django.conf import settings
 
@@ -160,3 +162,82 @@ class AuditLog(models.Model):
 
     def __str__(self):
         return f"{self.action} {self.model_label}#{self.object_pk}"
+
+
+DEFAULT_COMPANY_TERMS = (
+    "• This quotation is valid until the date mentioned above\n"
+    "• Prices are subject to the stated terms and conditions\n"
+    "• Terms of payment: Net 30 days from invoice date\n"
+    "• Acceptance of quotation constitutes acceptance of our standard terms"
+)
+
+
+def company_logo_upload_to(instance, filename):
+    # A unique name per upload avoids collisions and stale browser/PDF caches.
+    extension = os.path.splitext(filename)[1].lower()
+    return f'company/logo-{uuid.uuid4().hex}{extension}'
+
+
+class CompanyProfile(models.Model):
+    """
+    Single-row table holding the business identity printed on documents.
+
+    Always access it through ``CompanyProfile.load()`` so exactly one row (pk=1) exists.
+    """
+
+    SINGLETON_PK = 1
+
+    name = models.CharField(max_length=150, default='Willy POS')
+    tagline = models.CharField(max_length=200, blank=True, default='Business Solutions')
+    terms = models.TextField(blank=True, default=DEFAULT_COMPANY_TERMS)
+    address = models.CharField(max_length=255, blank=True, default='')
+    city = models.CharField(max_length=100, blank=True, default='')
+    phone = models.CharField(max_length=40, blank=True, default='')
+    email = models.EmailField(blank=True, default='')
+    logo = models.ImageField(upload_to=company_logo_upload_to, null=True, blank=True)
+
+    # Statutory registration details. Optional: printed on quotations only
+    # when the business has provided them.
+    zimra_tin = models.CharField(
+        'TIN number (ZIMRA)', max_length=40, blank=True, default=''
+    )
+    local_authority_licence = models.CharField(
+        max_length=60, blank=True, default=''
+    )
+    praz_registration_number = models.CharField(
+        'PRAZ registration number', max_length=60, blank=True, default=''
+    )
+
+    # Where customers should pay. Optional and never given a default value.
+    payment_account_name = models.CharField(max_length=150, blank=True, default='')
+    payment_bank = models.CharField(max_length=100, blank=True, default='')
+    payment_account_number = models.CharField(max_length=50, blank=True, default='')
+    payment_phone = models.CharField(max_length=40, blank=True, default='')
+
+    updated_at = models.DateTimeField(auto_now=True)
+    updated_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='company_profile_updates',
+    )
+
+    class Meta:
+        verbose_name = 'company profile'
+        verbose_name_plural = 'company profile'
+
+    def save(self, *args, **kwargs):
+        self.pk = self.SINGLETON_PK
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        raise models.ProtectedError('The company profile cannot be deleted.', {self})
+
+    @classmethod
+    def load(cls):
+        profile, _ = cls.objects.get_or_create(pk=cls.SINGLETON_PK)
+        return profile
+
+    def __str__(self):
+        return self.name

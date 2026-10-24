@@ -106,6 +106,8 @@ def _complete_sale_inventory(sale_id: int) -> dict:
                                     related_object_type='Product',
                                     related_object_id=product_id,
                                 )
+                                if n is None:
+                                    continue
                                 try:
                                     # lazy import dispatch task to avoid circular imports
                                     from Notifications.tasks import dispatch_notification_task
@@ -135,6 +137,8 @@ def _complete_sale_inventory(sale_id: int) -> dict:
                                     related_object_type='Product',
                                     related_object_id=product_id,
                                 )
+                                if n is None:
+                                    continue
                                 try:
                                     from Notifications.tasks import dispatch_notification_task
                                     dispatch_notification_task.delay(n.id)

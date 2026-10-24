@@ -1,23 +1,40 @@
 from rest_framework import serializers
-from Core.models import POSTerminal
+from Core.models import Branch, POSTerminal
 from .models import Category, Product, Location, Stock, StockTransaction, StockAdjustment, Supplier, Purchase, PurchaseItem
 from .utils import generate_purchase_reference
-from django.db import IntegrityError
+from django.core.exceptions import ValidationError as DjangoValidationError
+from django.db import IntegrityError, transaction
 
 
 class CategorySerializer(serializers.ModelSerializer):
     created_by = serializers.PrimaryKeyRelatedField(read_only=True)
     updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
+    product_count = serializers.SerializerMethodField()
     
     class Meta:
         model = Category
-        fields = ['id', 'name', 'is_active', 'description', 'created_at', 'updated_at', 'created_by', 'updated_by']
-        read_only_fields = ['created_at', 'updated_at', 'created_by', 'updated_by']
+        fields = [
+            'id', 'name', 'is_active', 'description', 'product_count',
+            'created_at', 'updated_at', 'created_by', 'updated_by',
+        ]
+        read_only_fields = ['product_count', 'created_at', 'updated_at', 'created_by', 'updated_by']
+
+    def get_product_count(self, obj):
+        annotated = getattr(obj, 'product_count_annotated', None)
+        if annotated is not None:
+            return annotated
+        return obj.products.count()
 
     def validate_name(self, value):
-        if not value or not value.strip():
+        value = (value or '').strip()
+        if not value:
             raise serializers.ValidationError("Category name cannot be empty")
-        return value.strip()
+        duplicates = Category.objects.filter(name__iexact=value)
+        if self.instance is not None:
+            duplicates = duplicates.exclude(pk=self.instance.pk)
+        if duplicates.exists():
+            raise serializers.ValidationError(f'A category named "{value}" already exists.')
+        return value
 
 
 class ProductVariantCompatibilitySerializer(serializers.ModelSerializer):
@@ -341,17 +358,47 @@ class StockAdjustmentSerializer(serializers.ModelSerializer):
             'updated_at', 'created_by', 'updated_by', 'product_name', 'product_sku',
             'location_name', 'branch_name', 'pos_terminal_name'
         ]
+        extra_kwargs = {
+            'location': {'required': False, 'allow_null': True},
+        }
+
+    def _resolve_location(self, product):
+        """
+        Resolve the location for an adjustment submitted without one.
+
+        A location is only mandatory when the choice is genuinely ambiguous,
+        i.e. the user is not tied to a branch and several branches exist.
+        """
+        request = self.context.get('request')
+        user = getattr(request, 'user', None)
+        branch = getattr(user, 'branch', None)
+
+        if branch is None:
+            active_branches = list(Branch.objects.filter(is_active=True)[:2])
+            if len(active_branches) > 1:
+                raise serializers.ValidationError({
+                    'location': 'Location is required because there are multiple branches.'
+                })
+            branch = active_branches[0] if active_branches else None
+
+        return Location.resolve_default(branch=branch, product=product, user=user)
 
     def validate(self, data):
-        location = data.get('location')
         product = data.get('product')
+        location = data.get('location')
+        if location is None:
+            location = self._resolve_location(product)
+            data['location'] = location
         quantity_after = data.get('quantity_after')
 
         if quantity_after is None or quantity_after < 0:
             raise serializers.ValidationError({'quantity_after': 'Adjusted quantity must be zero or greater.'})
 
-        if not Stock.objects.filter(product=product, location=location).exists():
-            raise serializers.ValidationError({'location': 'No stock record exists for this product at the selected location.'})
+        # A product that has never been purchased/received has no Stock row yet;
+        # the adjustment will create it, so only the unchanged-quantity case is checked here.
+        current = Stock.objects.filter(product=product, location=location).values_list('quantity', flat=True).first()
+        if (current if current is not None else 0) == quantity_after:
+            raise serializers.ValidationError({'quantity_after': 'Adjustment must change the stock quantity.'})
 
         if data.get('pos_terminal') and data['pos_terminal'].branch_id != location.branch_id:
             raise serializers.ValidationError({'pos_terminal': 'POS terminal must belong to the same branch as the location.'})
@@ -360,17 +407,25 @@ class StockAdjustmentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         quantity_after = validated_data.pop('quantity_after')
-        stock = Stock.objects.get(product=validated_data['product'], location=validated_data['location'])
         user = self.context['request'].user
-        return StockAdjustment.apply_adjustment(
-            stock=stock,
-            new_quantity=quantity_after,
-            user=user,
-            reason=validated_data['reason'],
-            reference=validated_data.get('reference', ''),
-            notes=validated_data.get('notes', ''),
-            pos_terminal=validated_data.get('pos_terminal'),
-        )
+        try:
+            with transaction.atomic():
+                stock, _ = Stock.objects.select_for_update().get_or_create(
+                    product=validated_data['product'],
+                    location=validated_data['location'],
+                    defaults={'quantity': 0},
+                )
+                return StockAdjustment.apply_adjustment(
+                    stock=stock,
+                    new_quantity=quantity_after,
+                    user=user,
+                    reason=validated_data['reason'],
+                    reference=validated_data.get('reference', ''),
+                    notes=validated_data.get('notes', ''),
+                    pos_terminal=validated_data.get('pos_terminal'),
+                )
+        except DjangoValidationError as exc:
+            raise serializers.ValidationError({'quantity_after': exc.messages})
 
 
 class SupplierSerializer(serializers.ModelSerializer):

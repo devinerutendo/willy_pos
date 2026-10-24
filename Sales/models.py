@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils import timezone
@@ -84,12 +86,14 @@ class Quotation(BaseSyncModel):
     ACCEPTED = "ACCEPTED"
     REJECTED = "REJECTED"
     EXPIRED = "EXPIRED"
+    CONVERTED = "CONVERTED"
 
     STATUS_CHOICES = (
         (PENDING, "Awaiting Customer Decision"),
         (ACCEPTED, "Customer Accepted"),
         (REJECTED, "Customer Rejected"),
         (EXPIRED, "Quote Expired"),
+        (CONVERTED, "Converted to Invoice"),
     )
 
     customer = models.ForeignKey(
@@ -145,6 +149,39 @@ class Quotation(BaseSyncModel):
         db_index=True,
         help_text="Whether quotation was converted to sale"
     )
+    # OneToOne enforces at most one invoice per quotation (and one quotation
+    # per invoice) at database level.
+    invoice = models.OneToOneField(
+        'Sales.Invoice',
+        on_delete=models.PROTECT,
+        related_name='source_quotation',
+        null=True,
+        blank=True,
+        help_text="Invoice created from this quotation"
+    )
+    # Quotations converted before the approval workflow pointed straight at a
+    # Sale. Kept (read-only) so no history is lost.
+    legacy_sale = models.OneToOneField(
+        'Sales.Sale',
+        on_delete=models.PROTECT,
+        related_name='legacy_source_quotation',
+        null=True,
+        blank=True,
+        help_text="Sale created by the pre-approval conversion flow"
+    )
+    converted_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="When the quotation was converted to an invoice"
+    )
+    converted_by = models.ForeignKey(
+        User,
+        on_delete=models.PROTECT,
+        related_name='quotations_converted',
+        null=True,
+        blank=True,
+        help_text="User who converted the quotation to an invoice"
+    )
 
     class Meta:
         ordering = ['-created_at']
@@ -153,6 +190,16 @@ class Quotation(BaseSyncModel):
             models.Index(fields=['customer', 'status']),
             models.Index(fields=['created_at']),
             models.Index(fields=['is_converted']),
+        ]
+        constraints = [
+            models.CheckConstraint(
+                condition=(
+                    models.Q(is_converted=False, invoice__isnull=True, legacy_sale__isnull=True)
+                    | models.Q(is_converted=True, invoice__isnull=False, legacy_sale__isnull=True)
+                    | models.Q(is_converted=True, invoice__isnull=True, legacy_sale__isnull=False)
+                ),
+                name='quotation_converted_matches_invoice',
+            ),
         ]
 
     @property
@@ -275,8 +322,19 @@ class Sale(BaseSyncModel):
 
     STATUS_CHOICES = (
         (PENDING, "Awaiting Payment"),
-        (COMPLETED, "Paid & Completed"),
+        (COMPLETED, "Completed"),
         (CANCELLED, "Cancelled"),
+    )
+
+    # Payment status is independent of the sale status: a sale confirmed
+    # through invoice approval is COMPLETED but still UNPAID until paid.
+    UNPAID = "UNPAID"
+    PARTIALLY_PAID = "PARTIALLY_PAID"
+    PAID = "PAID"
+    PAYMENT_STATUS_CHOICES = (
+        (UNPAID, "Unpaid"),
+        (PARTIALLY_PAID, "Partially Paid"),
+        (PAID, "Paid"),
     )
 
     """terminal_id = models.CharField(
@@ -350,6 +408,13 @@ class Sale(BaseSyncModel):
         blank=True,
         help_text="Payment method used"
     )
+    payment_status = models.CharField(
+        max_length=20,
+        choices=PAYMENT_STATUS_CHOICES,
+        default=UNPAID,
+        db_index=True,
+        help_text="Whether the customer has paid for this sale"
+    )
     layby = models.ForeignKey(
         'Layby',
         on_delete=models.PROTECT,
@@ -411,6 +476,25 @@ class Sale(BaseSyncModel):
             Decimal(str(item.line_total))
             for item in self.items.all()
         ) or Decimal('0.00')
+
+    @property
+    def list_subtotal(self) -> Decimal:
+        """Total at catalogue prices, before edited prices and discounts."""
+        return sum(
+            (item.list_line_total for item in self.items.all()),
+            Decimal('0.00'),
+        )
+
+    @property
+    def total_discount(self) -> Decimal:
+        return self.list_subtotal - self.total_amount
+
+    @staticmethod
+    def generate_reference() -> str:
+        """Generate a sale / invoice reference (SALE-<timestamp>-<suffix>)."""
+        timestamp = timezone.now().strftime('%Y%m%d%H%M%S')
+        unique_id = str(uuid.uuid4())[:4].upper()
+        return f"SALE-{timestamp}-{unique_id}"
 
     @property
     def item_count(self) -> int:
@@ -494,6 +578,13 @@ class SaleItem(models.Model):
         blank=True,
         help_text="Bundle price snapshot applied at sale time"
     )
+    list_price = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        help_text="Catalogue selling price per unit when the sale was made (empty on older sales)"
+    )
 
     class Meta:
         indexes = [
@@ -547,21 +638,331 @@ class SaleItem(models.Model):
     @property
     def line_total(self) -> Decimal:
         """Calculate line total with discounts applied."""
-        quantity = Decimal(str(self.quantity))
-        effective_price = self.effective_unit_price
+        return self._bundle_aware_total(self.effective_unit_price)
 
+    def _bundle_aware_total(self, unit_price: Decimal) -> Decimal:
         if self.bundle_quantity and self.bundle_price and self.quantity >= self.bundle_quantity:
             bundle_count = self.quantity // self.bundle_quantity
             remainder_units = self.quantity % self.bundle_quantity
             return (
                 Decimal(str(bundle_count)) * Decimal(str(self.bundle_price))
-                + Decimal(str(remainder_units)) * effective_price
+                + Decimal(str(remainder_units)) * unit_price
             )
 
-        return quantity * effective_price
+        return Decimal(str(self.quantity)) * unit_price
+
+    @property
+    def list_unit_price(self) -> Decimal:
+        """Catalogue price per unit; the price as sold for lines saved before it was recorded."""
+        return Decimal(str(self.list_price if self.list_price is not None else self.unit_price))
+
+    @property
+    def list_line_total(self) -> Decimal:
+        """What the line would have cost at the catalogue price (bundle-aware)."""
+        return self._bundle_aware_total(self.list_unit_price)
+
+    @property
+    def price_discount(self) -> Decimal:
+        """Amount taken off the line by an edited price or discount (negative if the price was raised)."""
+        return self.list_line_total - self.line_total
 
     def __str__(self):
         return f"{self.product.name} x {self.quantity}"
+
+
+class Invoice(BaseSyncModel):
+    """
+    A request to sell goods to a customer.
+
+    An invoice is NOT a sale. Creating, submitting, editing, rejecting or
+    cancelling one never touches stock or sales reports. Only a successful
+    approval (``Sales.invoicing.approve_invoice``) creates the confirmed
+    ``Sale``, deducts inventory and makes the transaction reportable.
+    """
+    DRAFT = "DRAFT"
+    PENDING_APPROVAL = "PENDING_APPROVAL"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
+    CANCELLED = "CANCELLED"
+
+    STATUS_CHOICES = (
+        (DRAFT, "Draft"),
+        (PENDING_APPROVAL, "Pending Approval"),
+        (APPROVED, "Approved (Converted to Sale)"),
+        (REJECTED, "Rejected"),
+        (CANCELLED, "Cancelled"),
+    )
+
+    # Allowed status transitions. APPROVED, REJECTED and CANCELLED are final.
+    TRANSITIONS = {
+        DRAFT: frozenset({PENDING_APPROVAL, CANCELLED}),
+        PENDING_APPROVAL: frozenset({APPROVED, REJECTED, CANCELLED}),
+        APPROVED: frozenset(),
+        REJECTED: frozenset(),
+        CANCELLED: frozenset(),
+    }
+    EDITABLE_STATUSES = frozenset({DRAFT, PENDING_APPROVAL})
+
+    reference = models.CharField(
+        max_length=100,
+        unique=True,
+        db_index=True,
+        help_text="Invoice number"
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default=PENDING_APPROVAL,
+        db_index=True,
+        help_text="Approval workflow status"
+    )
+    customer = models.ForeignKey(
+        Customer,
+        on_delete=models.PROTECT,
+        related_name='invoices',
+        help_text="Customer being invoiced"
+    )
+    branch = models.ForeignKey(
+        'Core.Branch',
+        on_delete=models.PROTECT,
+        related_name='invoices',
+        null=True,
+        blank=True,
+        help_text="Branch the invoice belongs to"
+    )
+    pos_terminal = models.ForeignKey(
+        'Core.POSTerminal',
+        on_delete=models.SET_NULL,
+        related_name='invoices',
+        null=True,
+        blank=True,
+    )
+    notes = models.TextField(blank=True)
+    # The sale created by approval. OneToOne makes a second sale for the same
+    # invoice impossible at database level.
+    sale = models.OneToOneField(
+        Sale,
+        on_delete=models.PROTECT,
+        related_name='source_invoice',
+        null=True,
+        blank=True,
+        help_text="Confirmed sale created when the invoice was approved"
+    )
+    approved_by = models.ForeignKey(
+        User, on_delete=models.PROTECT, related_name='invoices_approved',
+        null=True, blank=True,
+    )
+    approved_at = models.DateTimeField(null=True, blank=True, db_index=True)
+    rejected_by = models.ForeignKey(
+        User, on_delete=models.PROTECT, related_name='invoices_rejected',
+        null=True, blank=True,
+    )
+    rejected_at = models.DateTimeField(null=True, blank=True)
+    rejection_reason = models.TextField(blank=True)
+    cancelled_by = models.ForeignKey(
+        User, on_delete=models.PROTECT, related_name='invoices_cancelled',
+        null=True, blank=True,
+    )
+    cancelled_at = models.DateTimeField(null=True, blank=True)
+    cancellation_reason = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ['-created_at', '-id']
+        indexes = [
+            models.Index(fields=['status', 'created_at']),
+            models.Index(fields=['branch', 'status']),
+            models.Index(fields=['customer', 'status']),
+        ]
+        constraints = [
+            models.CheckConstraint(
+                condition=(
+                    models.Q(status='APPROVED', sale__isnull=False)
+                    | (~models.Q(status='APPROVED') & models.Q(sale__isnull=True))
+                ),
+                name='invoice_sale_matches_approved_status',
+            ),
+        ]
+
+    @staticmethod
+    def generate_reference() -> str:
+        """Generate an invoice number (INV-<timestamp>-<suffix>)."""
+        timestamp = timezone.now().strftime('%Y%m%d%H%M%S')
+        unique_id = uuid.uuid4().hex[:5].upper()
+        return f"INV-{timestamp}-{unique_id}"
+
+    @property
+    def total_amount(self) -> Decimal:
+        return sum(
+            (Decimal(str(item.line_total)) for item in self.items.all()),
+            Decimal('0.00'),
+        )
+
+    @property
+    def list_subtotal(self) -> Decimal:
+        return sum(
+            (item.list_line_total for item in self.items.all()),
+            Decimal('0.00'),
+        )
+
+    @property
+    def total_discount(self) -> Decimal:
+        return self.list_subtotal - self.total_amount
+
+    @property
+    def is_editable(self) -> bool:
+        return self.status in self.EDITABLE_STATUSES
+
+    def can_transition_to(self, target: str) -> bool:
+        return target in self.TRANSITIONS.get(self.status, frozenset())
+
+    def __str__(self):
+        return f"Invoice {self.reference} - {self.customer.name}"
+
+
+class InvoiceItem(models.Model):
+    """Line item of an invoice. Prices are fixed at invoice time."""
+    invoice = models.ForeignKey(
+        Invoice,
+        on_delete=models.CASCADE,
+        related_name='items',
+    )
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.PROTECT,
+        related_name='invoice_items',
+    )
+    quantity = models.PositiveIntegerField()
+    unit_price = models.DecimalField(max_digits=12, decimal_places=2)
+    list_price = models.DecimalField(
+        max_digits=12, decimal_places=2, null=True, blank=True,
+        help_text="Catalogue selling price per unit when the invoice was made (empty on older invoices)",
+    )
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    discount_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+
+    class Meta:
+        unique_together = ("invoice", "product")
+        ordering = ['id']
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(quantity__gt=0),
+                name='invoice_item_quantity_positive',
+            ),
+            models.CheckConstraint(
+                condition=models.Q(unit_price__gte=0),
+                name='invoice_unit_price_non_negative',
+            ),
+            models.CheckConstraint(
+                condition=models.Q(discount_percentage__gte=0, discount_percentage__lte=100),
+                name='invoice_discount_percentage_valid',
+            ),
+        ]
+
+    @property
+    def effective_unit_price(self) -> Decimal:
+        base_price = Decimal(str(self.unit_price))
+        price_after_pct = base_price * (1 - Decimal(str(self.discount_percentage)) / 100)
+        return max(price_after_pct - Decimal(str(self.discount_amount)), Decimal('0'))
+
+    @property
+    def line_total(self) -> Decimal:
+        return Decimal(str(self.quantity)) * self.effective_unit_price
+
+    @property
+    def list_unit_price(self) -> Decimal:
+        return Decimal(str(self.list_price if self.list_price is not None else self.unit_price))
+
+    @property
+    def list_line_total(self) -> Decimal:
+        return Decimal(str(self.quantity)) * self.list_unit_price
+
+    @property
+    def price_discount(self) -> Decimal:
+        return self.list_line_total - self.line_total
+
+    def __str__(self):
+        return f"{self.product.name} x {self.quantity} @ {self.unit_price}"
+
+
+class AppendOnlyQuerySet(models.QuerySet):
+    """Blocks bulk updates and deletes so history rows cannot be rewritten."""
+
+    def update(self, **kwargs):
+        raise ValidationError("Invoice history is append-only and cannot be modified.")
+
+    def delete(self):
+        raise ValidationError("Invoice history is append-only and cannot be deleted.")
+
+
+class InvoiceStatusHistory(models.Model):
+    """
+    Append-only trail of everything that happened to an invoice, including
+    approval attempts that were blocked (for example by insufficient stock).
+    Rows can be added but never changed or deleted.
+    """
+    CREATED = "CREATED"
+    SUBMITTED = "SUBMITTED"
+    EDITED = "EDITED"
+    APPROVED = "APPROVED"
+    REJECTED = "REJECTED"
+    CANCELLED = "CANCELLED"
+    PAYMENT_RECORDED = "PAYMENT_RECORDED"
+    APPROVAL_FAILED = "APPROVAL_FAILED"
+
+    ACTION_CHOICES = (
+        (CREATED, "Created"),
+        (SUBMITTED, "Submitted for approval"),
+        (EDITED, "Edited"),
+        (APPROVED, "Approved"),
+        (REJECTED, "Rejected"),
+        (CANCELLED, "Cancelled"),
+        (PAYMENT_RECORDED, "Payment recorded"),
+        (APPROVAL_FAILED, "Approval failed"),
+    )
+
+    invoice = models.ForeignKey(
+        Invoice,
+        on_delete=models.PROTECT,
+        related_name='history',
+    )
+    action = models.CharField(max_length=20, choices=ACTION_CHOICES, db_index=True)
+    from_status = models.CharField(max_length=20, blank=True)
+    to_status = models.CharField(max_length=20, blank=True)
+    actor = models.ForeignKey(
+        User,
+        on_delete=models.PROTECT,
+        related_name='invoice_history_entries',
+        null=True,
+        blank=True,
+    )
+    reason = models.TextField(blank=True)
+    sale = models.ForeignKey(
+        Sale,
+        on_delete=models.PROTECT,
+        related_name='invoice_history_entries',
+        null=True,
+        blank=True,
+    )
+    # Stock movements for approvals, error code/shortages for failures, etc.
+    detail = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    objects = AppendOnlyQuerySet.as_manager()
+
+    class Meta:
+        ordering = ['created_at', 'id']
+        verbose_name_plural = 'invoice status history'
+
+    def save(self, *args, **kwargs):
+        if self.pk is not None and not self._state.adding:
+            raise ValidationError("Invoice history is append-only and cannot be modified.")
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        raise ValidationError("Invoice history is append-only and cannot be deleted.")
+
+    def __str__(self):
+        return f"{self.invoice_id}: {self.action} ({self.from_status} -> {self.to_status})"
 
 
 class Layby(BaseSyncModel):

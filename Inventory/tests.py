@@ -182,3 +182,122 @@ class StockAdjustmentTests(TestCase):
 		total_delta = sum(t.quantity for t in StockTransaction.objects.filter(stock=new_stock))
 		new_stock.refresh_from_db()
 		self.assertEqual(new_stock.quantity, total_delta)
+
+
+class StockAdjustmentOptionalLocationTests(TestCase):
+	"""Location is optional unless several branches exist and the user is not branch-bound."""
+
+	def setUp(self):
+		from types import SimpleNamespace
+
+		self.SimpleNamespace = SimpleNamespace
+		self.admin = User.objects.create_user(
+			username='admin1', email='admin1@example.com', password='secret123',
+			first_name='A', last_name='B', role=User.ADMIN,
+		)
+		self.branch = Branch.objects.create(
+			name='Main Branch', code='MAIN', created_by=self.admin, updated_by=self.admin,
+		)
+		category = Category.objects.create(
+			name='Beverages', description='Drinks', created_by=self.admin, updated_by=self.admin,
+		)
+		self.product = Product.objects.create(
+			name='Cola', category=category, cost_price=Decimal('1.00'),
+			selling_price=Decimal('2.00'), reorder_level=1, created_by=self.admin, updated_by=self.admin,
+		)
+
+	def _serializer(self, user, **extra):
+		from Inventory.serializers import StockAdjustmentSerializer
+
+		request = self.SimpleNamespace(user=user)
+		payload = {'product': self.product.id, 'quantity_after': 5, 'reason': 'Count'}
+		payload.update(extra)
+		return StockAdjustmentSerializer(data=payload, context={'request': request})
+
+	def test_location_not_required_with_single_branch(self):
+		serializer = self._serializer(self.admin)
+		self.assertTrue(serializer.is_valid(), serializer.errors)
+		adjustment = serializer.save(created_by=self.admin, updated_by=self.admin)
+		self.assertEqual(adjustment.location.branch, self.branch)
+		self.assertEqual(Stock.objects.get(product=self.product).quantity, 5)
+
+	def test_location_required_with_multiple_branches_for_unbound_user(self):
+		Branch.objects.create(name='Second', code='SEC', created_by=self.admin, updated_by=self.admin)
+		serializer = self._serializer(self.admin)
+		self.assertFalse(serializer.is_valid())
+		self.assertIn('location', serializer.errors)
+
+	def test_branch_bound_user_does_not_need_location_with_multiple_branches(self):
+		other = Branch.objects.create(name='Second', code='SEC', created_by=self.admin, updated_by=self.admin)
+		self.admin.branch = other
+		self.admin.save(update_fields=['branch'])
+		serializer = self._serializer(self.admin)
+		self.assertTrue(serializer.is_valid(), serializer.errors)
+		adjustment = serializer.save(created_by=self.admin, updated_by=self.admin)
+		self.assertEqual(adjustment.location.branch, other)
+
+	def test_default_location_prefers_location_holding_stock(self):
+		empty = Location.objects.create(branch=self.branch, name='A-Empty', created_by=self.admin, updated_by=self.admin)
+		stocked = Location.objects.create(branch=self.branch, name='B-Stocked', created_by=self.admin, updated_by=self.admin)
+		Stock.objects.create(product=self.product, location=stocked, quantity=3)
+		self.assertEqual(Location.resolve_default(branch=self.branch, product=self.product), stocked)
+		self.assertNotEqual(empty, stocked)
+
+
+class CategoryApiTests(TestCase):
+	"""Category endpoint: product counts, duplicate protection and safe deletion."""
+
+	def setUp(self):
+		from rest_framework.test import APIClient
+
+		self.admin = User.objects.create_user(
+			username='catadmin', email='catadmin@example.com', password='secret123',
+			first_name='C', last_name='A', role=User.ADMIN,
+		)
+		self.client = APIClient()
+		self.client.force_authenticate(self.admin)
+		self.url = '/api/inventory/categories/'
+		self.category = Category.objects.create(
+			name='Beverages', created_by=self.admin, updated_by=self.admin,
+		)
+		Product.objects.create(
+			name='Cola', category=self.category, cost_price=Decimal('1.00'),
+			selling_price=Decimal('2.00'), reorder_level=1, created_by=self.admin, updated_by=self.admin,
+		)
+
+	def _results(self, response):
+		data = response.json()
+		return data['results'] if isinstance(data, dict) and 'results' in data else data
+
+	def test_list_includes_product_count_and_search(self):
+		Category.objects.create(name='Snacks', created_by=self.admin, updated_by=self.admin)
+		response = self.client.get(self.url)
+		self.assertEqual(response.status_code, 200)
+		counts = {c['name']: c['product_count'] for c in self._results(response)}
+		self.assertEqual(counts, {'Beverages': 1, 'Snacks': 0})
+
+		response = self.client.get(self.url, {'search': 'snack'})
+		self.assertEqual([c['name'] for c in self._results(response)], ['Snacks'])
+
+	def test_duplicate_name_is_rejected_case_insensitively(self):
+		response = self.client.post(self.url, {'name': ' beverages '}, format='json')
+		self.assertEqual(response.status_code, 400)
+		self.assertIn('name', response.json())
+
+	def test_rename_to_own_name_is_allowed(self):
+		response = self.client.patch(
+			f'{self.url}{self.category.id}/', {'name': 'BEVERAGES'}, format='json',
+		)
+		self.assertEqual(response.status_code, 200, response.content)
+
+	def test_delete_blocked_while_products_assigned(self):
+		response = self.client.delete(f'{self.url}{self.category.id}/')
+		self.assertEqual(response.status_code, 409)
+		self.assertIn('1 product', response.json()['detail'])
+		self.assertTrue(Category.objects.filter(pk=self.category.pk).exists())
+
+	def test_empty_category_can_be_deleted(self):
+		empty = Category.objects.create(name='Empty', created_by=self.admin, updated_by=self.admin)
+		response = self.client.delete(f'{self.url}{empty.id}/')
+		self.assertEqual(response.status_code, 204)
+		self.assertFalse(Category.objects.filter(pk=empty.pk).exists())

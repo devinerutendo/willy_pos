@@ -33,9 +33,12 @@ class User(AbstractUser):
             'inventory': 'write',
             'stock_adjustments': 'write',
             'sales': 'write',
+            'invoice_approval': 'write',
             'audit': 'read',
+            'company': 'write',
         },
         INVENTORY: {
+            'company': 'read',
             'branches': 'read',
             'pos': 'read',
             'inventory': 'write',
@@ -44,6 +47,7 @@ class User(AbstractUser):
             'audit': 'read',
         },
         SALES: {
+            'company': 'read',
             'branches': 'read',
             'pos': 'read',
             'inventory': 'read',
@@ -52,6 +56,7 @@ class User(AbstractUser):
             'audit': 'read',
         },
         AUDITOR: {
+            'company': 'read',
             'branches': 'read',
             'pos': 'read',
             'inventory': 'read',
@@ -153,3 +158,48 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.full_name} ({self.email})"
+
+
+class UserSecurity(models.Model):
+    """
+    Per-user security preferences and state.
+
+    * Session timeout: enforced server-side by ``ActivityTokenAuthentication``.
+      ``session_timeout_minutes`` of ``None`` means the timeout is switched off.
+    * Two-factor authentication: TOTP (RFC 6238). Secrets are stored encrypted;
+      recovery codes are stored only as hashes.
+    """
+    MIN_TIMEOUT_MINUTES = 5
+    MAX_TIMEOUT_MINUTES = 1440
+    DEFAULT_TIMEOUT_MINUTES = 30
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='security',
+    )
+    session_timeout_minutes = models.PositiveSmallIntegerField(null=True, blank=True)
+    last_activity_at = models.DateTimeField(null=True, blank=True)
+
+    two_factor_enabled = models.BooleanField(default=False)
+    # Encrypted secret of the active authenticator.
+    totp_secret = models.TextField(blank=True, default='')
+    # Encrypted secret generated during enrolment, awaiting confirmation.
+    pending_totp_secret = models.TextField(blank=True, default='')
+    # Last accepted TOTP time-step, to reject replayed codes.
+    last_totp_step = models.BigIntegerField(default=0)
+    # Hashes of unused one-time recovery codes.
+    recovery_code_hashes = models.JSONField(default=list, blank=True)
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'user security settings'
+        verbose_name_plural = 'user security settings'
+
+    @property
+    def session_timeout_enabled(self) -> bool:
+        return self.session_timeout_minutes is not None
+
+    def __str__(self):
+        return f"Security settings for user {self.user_id}"
