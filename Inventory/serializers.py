@@ -2,6 +2,23 @@ from rest_framework import serializers
 from Core.models import Branch, POSTerminal
 from .models import Category, Product, Location, Stock, StockTransaction, StockAdjustment, Supplier, Purchase, PurchaseItem
 from .utils import generate_purchase_reference
+from Core.permissions import can_view_cost_data
+
+COST_FIELDS = ('cost_price', 'profit_margin')
+
+
+def strip_cost_fields(serializer, data):
+    """Drop cost/margin keys when the requesting user may not see profit data.
+
+    Only applies when a request is present in the serializer context, so
+    internal (request-less) serialization is unaffected.
+    """
+    request = serializer.context.get('request')
+    if request is None or can_view_cost_data(getattr(request, 'user', None)):
+        return data
+    for field in COST_FIELDS:
+        data.pop(field, None)
+    return data
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.db import IntegrityError, transaction
 
@@ -62,7 +79,7 @@ class ProductVariantCompatibilitySerializer(serializers.ModelSerializer):
     
     def to_representation(self, instance):
         """Custom representation to match ProductVariant interface"""
-        return {
+        return strip_cost_fields(self, {
             'id': instance.id,
             'product': instance.id,
             'name': instance.name,
@@ -74,7 +91,7 @@ class ProductVariantCompatibilitySerializer(serializers.ModelSerializer):
             'bundle_quantity': instance.bundle_quantity,
             'bundle_price': str(instance.bundle_price) if instance.bundle_price is not None else None,
             'category': instance.category.id,
-        }
+        })
     
     def to_internal_value(self, data):
         """Handle incoming data from frontend"""
@@ -109,6 +126,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_profit_margin(self, obj):
         return round(obj.profit_margin, 2)
+
+    def to_representation(self, instance):
+        return strip_cost_fields(self, super().to_representation(instance))
 
     def to_internal_value(self, data):
         """Handle category_id field and convert empty optional bundle fields to null."""

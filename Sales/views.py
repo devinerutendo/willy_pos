@@ -9,7 +9,7 @@ import logging
 import uuid
 from django.db import transaction
 from Core.access import branch_scoped_queryset
-from Core.permissions import ScopePermission
+from Core.permissions import ScopePermission, require_scope
 from .models import (
     Customer, Quotation, QuotationItem, Sale, SaleItem,
     Layby, LaybyItem, LaybyPayment, LaybyRefund, DailyReconciliation,
@@ -25,6 +25,7 @@ from .serializers import (
 )
 from .return_processor import ReturnProcessor, ReturnProcessingError
 from .reporting import build_sales_report
+from .daily_report import build_daily_sales_report
 from .conversion import QuotationConversionError, convert_quotation_to_invoice
 from .invoice_serializers import (
     InvoiceItemInputSerializer, InvoiceSerializer, InvoiceStatusHistorySerializer,
@@ -418,7 +419,18 @@ class SaleViewSet(BaseViewSet):
         Query params: start_date, end_date (YYYY-MM-DD), status, payment_method,
         sold_by, branch, search.
         """
+        require_scope(request.user, 'sales_reports')
         return Response(build_sales_report(request.user, request.query_params))
+
+    @action(detail=False, methods=['get'], url_path='daily-report')
+    def daily_report(self, request):
+        """Detailed daily sales report: summary plus a page of receipts with every line.
+
+        Query params: date (YYYY-MM-DD, default today), status, payment_method,
+        sold_by, branch, search, order (asc|desc), limit, offset.
+        """
+        require_scope(request.user, 'sales_reports')
+        return Response(build_daily_sales_report(request.user, request.query_params))
     
     @action(detail=True, methods=['post'])
     def confirm(self, request, pk=None):

@@ -681,6 +681,14 @@ class Purchase(BaseSyncModel):
         blank=True,
         help_text="Purchase notes or special conditions"
     )
+    client_request_id = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        unique=True,
+        editable=False,
+        help_text="Client-generated idempotency key; a retried create returns the same purchase"
+    )
 
     class Meta:
         ordering = ['-created_at']

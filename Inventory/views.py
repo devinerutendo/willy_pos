@@ -509,12 +509,45 @@ class SupplierViewSet(BaseViewSet):
 
 class PurchaseViewSet(BaseViewSet):
     serializer_class = PurchaseSerializer
+    permission_scope = 'purchases'
     
     def get_serializer_class(self):
         """Use different serializer for create/update operations."""
         if self.action in ['create', 'update', 'partial_update']:
             return PurchaseCreateUpdateSerializer
         return PurchaseSerializer
+
+    def create(self, request, *args, **kwargs):
+        """Create a purchase; a retry carrying the same Idempotency-Key returns the original.
+
+        Creating a purchase also books stock in, so a retry after a network
+        failure must never produce a second purchase.
+        """
+        key = (request.headers.get('Idempotency-Key') or '').strip()[:64]
+        if key:
+            existing = Purchase.objects.filter(client_request_id=key, created_by=request.user).first()
+            if existing:
+                return Response(self._read_data(existing), status=status.HTTP_200_OK)
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        save_kwargs = self._get_save_kwargs(serializer, include_created=True)
+        if key:
+            save_kwargs['client_request_id'] = key
+        try:
+            purchase = serializer.save(**save_kwargs)
+        except IntegrityError:
+            existing = Purchase.objects.filter(client_request_id=key, created_by=request.user).first() if key else None
+            if existing:
+                return Response(self._read_data(existing), status=status.HTTP_200_OK)
+            return Response(
+                {'reference': ['This purchase reference already exists.']},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        return Response(self._read_data(purchase), status=status.HTTP_201_CREATED)
+
+    def _read_data(self, purchase):
+        return PurchaseSerializer(purchase, context=self.get_serializer_context()).data
     
     def get_queryset(self):
         """Optimized query with related suppliers and items."""
@@ -589,6 +622,7 @@ class PurchaseViewSet(BaseViewSet):
 
 class PurchaseItemViewSet(BaseViewSet):
     serializer_class = PurchaseItemSerializer
+    permission_scope = 'purchases'
     
     def get_queryset(self):
         """Optimized query with related purchases and products."""

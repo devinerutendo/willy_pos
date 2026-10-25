@@ -43,13 +43,20 @@ def _parse_date(value, field):
         raise ValidationError({field: 'Use the YYYY-MM-DD format.'})
 
 
-def _apply_search(queryset, term, prefix=''):
+def _apply_search(queryset, term, prefix='', products=False):
     q = (
         Q(**{f'{prefix}reference__icontains': term})
         | Q(**{f'{prefix}customer__name__icontains': term})
     )
     if term.isdigit():
         q |= Q(**{f'{prefix}pk': int(term)})
+    if products:
+        q |= (
+            Q(**{f'{prefix}items__product__name__icontains': term})
+            | Q(**{f'{prefix}items__product__sku__icontains': term})
+            | Q(**{f'{prefix}items__product__barcode__icontains': term})
+        )
+        return queryset.filter(q).distinct()
     return queryset.filter(q)
 
 
@@ -198,13 +205,13 @@ def _trend(data, start, end, granularity):
     ]
 
 
-def build_sales_report(user, params):
-    """Return summary, trend, previous-period comparison and transaction rows."""
-    start = _parse_date(params.get('start_date'), 'start_date')
-    end = _parse_date(params.get('end_date'), 'end_date')
-    if start and end and start > end:
-        raise ValidationError({'end_date': 'End date must not be before the start date.'})
+def filtered_querysets(user, params, *, search_products=False):
+    """Branch-scoped sales plus the filtered sales / refund querysets.
 
+    Shared by the sales report and the detailed daily sales report so both apply
+    identical status, payment method, cashier, branch and search rules.
+    Returns ``(all_sales, sales_base, returns_base)``.
+    """
     status_filter = (params.get('status') or '').upper()
     payment_method = params.get('payment_method') or ''
     sold_by = params.get('sold_by') or ''
@@ -223,7 +230,7 @@ def build_sales_report(user, params):
     if sold_by:
         sales_base = sales_base.filter(sold_by_id=sold_by)
     if search:
-        sales_base = _apply_search(sales_base, search)
+        sales_base = _apply_search(sales_base, search, products=search_products)
 
     # Refunds only make sense when completed sales are part of the view.
     returns_base = Return.objects.none()
@@ -241,7 +248,30 @@ def build_sales_report(user, params):
         if sold_by:
             returns_base = returns_base.filter(sale__sold_by_id=sold_by)
         if search:
-            returns_base = _apply_search(returns_base, search, prefix='sale__')
+            returns_base = _apply_search(
+                returns_base, search, prefix='sale__', products=search_products,
+            )
+
+    return all_sales, sales_base, returns_base
+
+
+def cashier_options(all_sales):
+    """Cashiers who have sales in ``all_sales``, as ``[{id, name}]`` sorted by name."""
+    cashiers = {}
+    for row in all_sales.values('sold_by', 'sold_by__first_name', 'sold_by__last_name', 'sold_by__username').distinct():
+        name = f"{row['sold_by__first_name']} {row['sold_by__last_name']}".strip() or row['sold_by__username']
+        cashiers[row['sold_by']] = name
+    return [{'id': pk, 'name': name} for pk, name in sorted(cashiers.items(), key=lambda i: i[1].lower())]
+
+
+def build_sales_report(user, params):
+    """Return summary, trend, previous-period comparison and transaction rows."""
+    start = _parse_date(params.get('start_date'), 'start_date')
+    end = _parse_date(params.get('end_date'), 'end_date')
+    if start and end and start > end:
+        raise ValidationError({'end_date': 'End date must not be before the start date.'})
+
+    all_sales, sales_base, returns_base = filtered_querysets(user, params)
 
     # Resolve open-ended ranges ("All time") from the data itself.
     today = timezone.localdate()
@@ -285,11 +315,6 @@ def build_sales_report(user, params):
             'total': _money(figures['net']),
         })
 
-    cashiers = {}
-    for row in all_sales.values('sold_by', 'sold_by__first_name', 'sold_by__last_name', 'sold_by__username').distinct():
-        name = f"{row['sold_by__first_name']} {row['sold_by__last_name']}".strip() or row['sold_by__username']
-        cashiers[row['sold_by']] = name
-
     return {
         'period': {
             'start': start.isoformat(),
@@ -302,7 +327,7 @@ def build_sales_report(user, params):
         'rows': rows,
         'row_count': len(current['sales']),
         'rows_truncated': len(current['sales']) > MAX_ROWS,
-        'cashiers': [{'id': pk, 'name': name} for pk, name in sorted(cashiers.items(), key=lambda i: i[1].lower())],
+        'cashiers': cashier_options(all_sales),
         'payment_methods': [{'value': value, 'label': label} for value, label in Sale.PAYMENT_METHODS],
         'definitions': {
             'scope': 'Only completed sales are counted. Pending and cancelled sales are listed but excluded from totals.',

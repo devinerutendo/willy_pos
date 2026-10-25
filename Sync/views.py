@@ -8,6 +8,7 @@ from .serializers import SyncOperationSerializer
 from .processor import SyncProcessor
 from Inventory.models import Product, Stock
 from Sales.models import Customer
+from Core.permissions import can_view_cost_data
 import json
 
 class SyncPushView(APIView):
@@ -64,21 +65,24 @@ class SyncPullView(APIView):
         if updated_after:
             products_qs = products_qs.filter(updated_at__gt=updated_after)
             
+        show_cost = can_view_cost_data(request.user)
         products_data = []
         for p in products_qs:
-            products_data.append({
+            entry = {
                 'id': p.id,
                 'client_id': str(p.client_id) if hasattr(p, 'client_id') else None,
                 'name': p.name,
                 'sku': p.sku,
                 'category': p.category.name if p.category else 'General',
                 'selling_price': str(p.selling_price),
-                'cost_price': str(p.cost_price),
                 'barcode': p.barcode,
                 'reorder_level': p.reorder_level,
                 'is_active': p.is_active,
                 'updated_at': p.updated_at.isoformat() if p.updated_at else None
-            })
+            }
+            if show_cost:
+                entry['cost_price'] = str(p.cost_price)
+            products_data.append(entry)
             
         # Fetch Stock Levels (full dump for simplicity since stock is constantly changing)
         stock_qs = Stock.objects.select_related('product', 'location')

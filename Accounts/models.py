@@ -13,6 +13,7 @@ class User(AbstractUser):
     INVENTORY = "INVENTORY"
     SALES = "SALES"
     AUDITOR = "AUDITOR"
+    CASHIER = "CASHIER"
 
     ROLE_CHOICES = (
         (ADMIN, "Administrator - Full Platform Access"),
@@ -20,8 +21,15 @@ class User(AbstractUser):
         (INVENTORY, "Inventory Controller - Stock & Procurement Rights"),
         (SALES, "Salesperson - POS & Transaction Rights"),
         (AUDITOR, "Auditor - Read-only Audit Access"),
+        (CASHIER, "Cashier - POS & Checkout Only"),
     )
 
+    # Scopes beyond the operational ones, kept explicit per role (MANAGER has no
+    # '*' wildcard, so every scope must be listed):
+    #   purchases          procurement documents and their unit costs
+    #   sales_reports      business-wide sales reports and summaries
+    #   financial_reports  profit data: cost prices, margins, profit & loss
+    # Cashiers are deliberately absent from all three.
     ROLE_PERMISSION_MATRIX = {
         ADMIN: {
             '*': 'write',
@@ -36,6 +44,9 @@ class User(AbstractUser):
             'invoice_approval': 'write',
             'audit': 'read',
             'company': 'write',
+            'purchases': 'write',
+            'sales_reports': 'read',
+            'financial_reports': 'read',
         },
         INVENTORY: {
             'company': 'read',
@@ -45,6 +56,8 @@ class User(AbstractUser):
             'stock_adjustments': 'write',
             'sales': 'read',
             'audit': 'read',
+            'purchases': 'write',
+            'sales_reports': 'read',
         },
         SALES: {
             'company': 'read',
@@ -54,6 +67,8 @@ class User(AbstractUser):
             'stock_adjustments': 'read',
             'sales': 'write',
             'audit': 'read',
+            'purchases': 'read',
+            'sales_reports': 'read',
         },
         AUDITOR: {
             'company': 'read',
@@ -63,8 +78,25 @@ class User(AbstractUser):
             'stock_adjustments': 'read',
             'sales': 'read',
             'audit': 'read',
+            'purchases': 'read',
+            'sales_reports': 'read',
+            'financial_reports': 'read',
+        },
+        CASHIER: {
+            'company': 'read',
+            'branches': 'read',
+            'pos': 'read',
+            'inventory': 'read',
+            'sales': 'write',
         },
     }
+
+    def can_view_cost_data(self) -> bool:
+        """Cost prices and profit margins: financial readers and stock managers only."""
+        return (
+            self.has_permission_for('financial_reports', 'read')
+            or self.has_permission_for('inventory', 'write')
+        )
 
     email = models.EmailField(
         unique=True,

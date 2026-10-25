@@ -1,4 +1,15 @@
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import BasePermission, SAFE_METHODS
+
+
+def require_scope(user, scope, action='read'):
+    """Raise 403 unless `user` holds `action` access on `scope`."""
+    if not user or not user.is_authenticated or not user.has_permission_for(scope, action):
+        raise PermissionDenied('You do not have permission to access this resource.')
+
+
+def can_view_cost_data(user) -> bool:
+    return bool(user and user.is_authenticated and user.can_view_cost_data())
 
 
 class ScopePermission(BasePermission):
